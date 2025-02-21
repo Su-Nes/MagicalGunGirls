@@ -52,7 +52,7 @@ public class ReadyWeapon : Attack
 
     protected override void SecondaryAttackTriggered()
     {
-        _fireProjectile.TriggerProjectilePublic();
+        _fireProjectile.FireProjectilePublic();
     }
 
     protected override void SecondaryAttackReleased()

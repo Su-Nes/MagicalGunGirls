@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof (NavMeshAgent))]
+//[RequireComponent(typeof (NavMeshAgent))]
 [RequireComponent(typeof (Rigidbody))]
 public class EnemyAI : MonoBehaviour
 {
-    protected NavMeshAgent _navMeshAgent;
-    //protected CharacterController _characterController;
-    protected Rigidbody _rigidbody;
+    protected NavMeshPath path;
+    private int cornerIndex;
+    protected CharacterController _characterController;
+    protected Rigidbody _rigidBody;
     protected Transform target;
     [SerializeField] protected SpriteFlicker _spriteFlicker;
     
@@ -17,31 +18,35 @@ public class EnemyAI : MonoBehaviour
     private float health;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float fallVelocity = 5f;
-    [SerializeField] private float stopDistance = .1f;
     private float stunTime;
     
         
-    private void Start()
+    protected virtual void Awake()
     {
-        _navMeshAgent = GetComponent<NavMeshAgent>();
-        //_characterController = GetComponent<CharacterController>();
-        _rigidbody = GetComponent<Rigidbody>();
+        path = new NavMeshPath();
+
+        _characterController = GetComponent<CharacterController>();
+        _rigidBody = GetComponent<Rigidbody>();
         target = GameObject.FindWithTag("Player").GetComponent<Transform>();
-        
-        _navMeshAgent.updatePosition = false;
-        _navMeshAgent.updateRotation = false;
-        _navMeshAgent.speed = moveSpeed / 100f;
 
         health = maxHealth;
     }
 
-    private void Update()
+    protected virtual void FixedUpdate()
     {
-        _navMeshAgent.SetDestination(target.position);
-        Vector3 dir = _navMeshAgent.nextPosition - transform.position;
-        Vector3 dirFlat = new(dir.x, -fallVelocity, dir.z);
-        if(Vector3.Distance(transform.position, _navMeshAgent.nextPosition) > stopDistance) // buffer to make sure the movement doesn't go weird when it's too close to the destination
+        if (!_characterController.enabled)
+            return;
+        
+        if (NavMesh.CalculatePath(transform.position, target.position, NavMesh.AllAreas, path))
+        {
+            /*for (int i = 0; i < path.corners.Length - 1; i++)
+                Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.red);*/
+            
+            Vector3 dir = path.corners[1] - transform.position;
+            Vector3 dirFlat = new(dir.x, 0f, dir.z);
+            
             Move(dirFlat.normalized, moveSpeed * Time.deltaTime);
+        }
         
         if (health <= 0f)
             Die();
@@ -49,12 +54,12 @@ public class EnemyAI : MonoBehaviour
 
     protected virtual void Move(Vector3 dir, float speed)
     {
-        //_characterController.Move(Vector3.down * fallVelocity);
-        //_characterController.Move(dir * (speed * Time.deltaTime));
-        if (stunTime <= 0f)
-            _rigidbody.velocity = dir * speed;
-        else
-            stunTime -= Time.deltaTime;
+        if (_characterController.enabled)
+        {
+            _characterController.Move(Vector3.down * fallVelocity);
+            _characterController.Move(dir * (speed * Time.deltaTime));
+        }
+        //_rigidBody.velocity = dir * speed;
     }
 
     public void TakeDamage(float healthValue)
@@ -65,7 +70,20 @@ public class EnemyAI : MonoBehaviour
 
     public void InflictStun(float stunLength)
     {
-        stunTime = stunLength;
+        StartCoroutine(StunTime(stunLength));
+    }
+
+    private IEnumerator StunTime(float time)
+    {
+        _rigidBody.isKinematic = false;
+        _characterController.enabled = false;
+        GetComponent<Collider>().isTrigger = false;
+
+        yield return new WaitForSeconds(time);
+        
+        _rigidBody.isKinematic = true;
+        _characterController.enabled = true;
+        GetComponent<Collider>().isTrigger = true;
     }
 
     private void Die()

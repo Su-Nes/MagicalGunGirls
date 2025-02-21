@@ -46,18 +46,6 @@ public class CharacterSwap : MonoBehaviour
 
     private void Swap()
     {
-        /*Vector3 currentPosition = Vector3.zero;
-        Quaternion currentRotation = Quaternion.identity;
-
-        if (currentCharacter != null)
-        {
-            currentPosition = currentCharacter.transform.position;
-            currentRotation = currentCharacter.transform.rotation;
-            Destroy(currentCharacter);
-        }
-
-        currentCharacter = Instantiate(characterPrefabs[whichCharacter], currentPosition, currentRotation);*/
-
         foreach (SetActiveCharacter ch in GetComponentsInChildren<SetActiveCharacter>())
         {
             ch.SetCharacterState(ch.transform.GetSiblingIndex() == whichCharacter); // enable only one char with index whichCharacter

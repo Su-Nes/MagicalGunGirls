@@ -10,6 +10,7 @@ public class RepelAbility : Ability
     [SerializeField] private float radius = 4f;
     [SerializeField] private float force = 6f;
     [SerializeField] private float stunTime = 1.5f;
+    [SerializeField] protected float damage;
     
 
     protected override void ActivateAbility()
@@ -24,6 +25,7 @@ public class RepelAbility : Ability
             if (col.TryGetComponent(out EnemyAI enemy))
             {
                 enemy.InflictStun(stunTime);
+                enemy.TakeDamage(damage);
             }
             
             if(col.TryGetComponent(out Rigidbody rb))

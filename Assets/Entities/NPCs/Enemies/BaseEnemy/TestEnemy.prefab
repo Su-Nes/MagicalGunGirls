@@ -195,13 +195,12 @@ GameObject:
   - component: {fileID: 4543085592136435262}
   - component: {fileID: 470644329168483772}
   - component: {fileID: 6738817171841711848}
-  - component: {fileID: 9215140873943889744}
-  - component: {fileID: 9027141096987335870}
+  - component: {fileID: 7668595227897088637}
   - component: {fileID: 4122772854691244460}
   - component: {fileID: 8093870161643622060}
   m_Layer: 8
   m_Name: TestEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -245,7 +244,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 2
@@ -256,7 +255,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7308939184360992740}
-  m_Material: {fileID: 13400000, guid: e41ae3c8f004f8b4197c2478dc7f9305, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -272,14 +271,14 @@ CapsuleCollider:
   m_Height: 3.65
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &9215140873943889744
-CapsuleCollider:
+--- !u!143 &7668595227897088637
+CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7308939184360992740}
-  m_Material: {fileID: 13400000, guid: e41ae3c8f004f8b4197c2478dc7f9305, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -290,33 +289,14 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
+  serializedVersion: 3
   m_Height: 3.65
-  m_Direction: 1
+  m_Radius: 1.2
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!195 &9027141096987335870
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7308939184360992740}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 1.5
-  m_Speed: 5
-  m_Acceleration: 20
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 0
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!114 &4122772854691244460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,9 +311,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteFlicker: {fileID: 3698154797184695404}
   maxHealth: 5
-  moveSpeed: 700
-  fallVelocity: 5
-  stopDistance: 1
+  moveSpeed: 300
+  fallVelocity: 0.3
 --- !u!114 &8093870161643622060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,3 +327,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 10
   damageInterval: 1
+  destroyOnHit: 0

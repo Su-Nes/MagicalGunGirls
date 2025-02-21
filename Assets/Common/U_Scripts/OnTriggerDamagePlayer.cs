@@ -7,6 +7,7 @@ public class OnTriggerDamagePlayer : MonoBehaviour
 {
     [SerializeField] private float damageAmount = 10f;
     [SerializeField] private float damageInterval = 1f;
+    [SerializeField] private bool destroyOnHit;
     private PlayerStatsManager player;
     private float damageTimer;
     
@@ -16,7 +17,8 @@ public class OnTriggerDamagePlayer : MonoBehaviour
         if (other.TryGetComponent(out PlayerStatsManager p))
         {
             player = p;
-        }
+        }else if (destroyOnHit && !other.CompareTag("Enemy"))
+            Destroy(gameObject);
     }
 
     private void Update()
@@ -27,6 +29,9 @@ public class OnTriggerDamagePlayer : MonoBehaviour
             {
                 damageTimer = damageInterval;
                 player.ModifyHealthValue(-damageAmount);
+                
+                if(destroyOnHit)
+                    Destroy(gameObject);
             }
 
             damageTimer -= Time.deltaTime;

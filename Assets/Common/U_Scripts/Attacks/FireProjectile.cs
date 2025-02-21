@@ -18,7 +18,7 @@ public class FireProjectile : Attack
         Destroy(newProjectile, projectileLifetime);
     }
 
-    public void TriggerProjectilePublic()
+    public void FireProjectilePublic()
     {
         PrimaryAttackTriggered();
     }

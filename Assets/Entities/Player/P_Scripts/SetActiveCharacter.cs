@@ -13,11 +13,6 @@ public class SetActiveCharacter : MonoBehaviour
     [SerializeField] private float UIActiveAlpha, UIInactiveAlpha;
     [SerializeField] private float selectedWidth, unselectedWidth;
     
-    private void Start()
-    {
-        characterSelectUI = GameObject.Find("CharacterSelectLayout").transform.GetChild(transform.GetSiblingIndex());
-        selectUIImage = characterSelectUI.GetComponent<Image>();
-    }
 
     public void SetCharacterState(bool activeSelf)
     {
@@ -26,24 +21,27 @@ public class SetActiveCharacter : MonoBehaviour
         {
             attacks.ReleaseAllManagedAttacks();
         }
+
+        if (selectUIImage == null)
+        {
+            characterSelectUI = GameObject.Find("CharacterSelectLayout").transform.GetChild(transform.GetSiblingIndex());
+            selectUIImage = characterSelectUI.GetComponent<Image>();
+        }
         
         // change UI
-        if (selectUIImage != null) // this if is just to stop the unassigned error. idk why it shows up but everything works *shrug*
-        {
-            selectUIImage.rectTransform.sizeDelta = activeSelf
-                ? new Vector2(selectedWidth, selectUIImage.rectTransform.sizeDelta.y)
-                : new Vector2(unselectedWidth, selectUIImage.rectTransform.sizeDelta.y);
+        selectUIImage.rectTransform.sizeDelta = activeSelf
+            ? new Vector2(selectedWidth, selectUIImage.rectTransform.sizeDelta.y)
+            : new Vector2(unselectedWidth, selectUIImage.rectTransform.sizeDelta.y);
+    
+        Color panelColor = selectUIImage.color; // set panel alpha according to active state
+        selectUIImage.color = activeSelf
+            ? new Color(panelColor.r, panelColor.g, panelColor.b, UIActiveAlpha)
+            : new Color(panelColor.r, panelColor.g, panelColor.b, UIInactiveAlpha);
         
-            Color panelColor = selectUIImage.color; // set panel alpha according to active state
-            selectUIImage.color = activeSelf
-                ? new Color(panelColor.r, panelColor.g, panelColor.b, UIActiveAlpha)
-                : new Color(panelColor.r, panelColor.g, panelColor.b, UIInactiveAlpha);
-            
-            foreach (Transform child in characterSelectUI)
-            {
-                if(child.GetSiblingIndex() != 0) // first child under UI should always be the character name text object
-                    child.gameObject.SetActive(!activeSelf); // if character is active, only the name is displayed
-            }                                               // if character is inactive, also display ammo and cooldown stats
-        }
+        foreach (Transform child in characterSelectUI)
+        {
+            if(child.GetSiblingIndex() != 0) // first child under UI should always be the character name text object
+                child.gameObject.SetActive(!activeSelf); // if character is active, only the name is displayed
+        }                                               // if character is inactive, also display ammo and cooldown stats
     }
 }

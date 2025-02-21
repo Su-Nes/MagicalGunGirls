@@ -17,7 +17,7 @@ public class CharacterStatManager : MonoBehaviour
     private Transform characterUI;
     
     
-    private void Start() // instantiate all weapon and ability UI objects and assign their managers
+    private void Awake() // instantiate all weapon and ability UI objects and assign their managers
     {
         characterUI = GameObject.Find("CharacterSelectLayout").transform.GetChild(transform.GetSiblingIndex());
 
