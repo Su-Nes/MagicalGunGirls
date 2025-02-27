@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     protected NavMeshPath path;
+    private NavMeshHit hit;
     private int cornerIndex;
     protected CharacterController _characterController;
     protected Rigidbody _rigidBody;
@@ -32,6 +34,11 @@ public class EnemyAI : MonoBehaviour
         health = maxHealth;
     }
 
+    private void OnEnable()
+    {
+        health = maxHealth;
+    }
+
     protected virtual void FixedUpdate()
     {
         if (!_characterController.enabled)
@@ -47,6 +54,10 @@ public class EnemyAI : MonoBehaviour
             
             Move(dirFlat.normalized, moveSpeed * Time.deltaTime);
         }
+
+        // dies if not found on nav mesh
+        if (!NavMesh.SamplePosition(transform.position, out hit, 5f, NavMesh.AllAreas))
+            Die();
         
         if (health <= 0f)
             Die();
@@ -88,6 +99,6 @@ public class EnemyAI : MonoBehaviour
 
     private void Die()
     {
-        Destroy(gameObject);
+        ObjectPoolManager.ReturnObjectToPool(gameObject);
     }
 }

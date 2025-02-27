@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-public class ReadyWeapon : Attack
+public class ReadyWeapon : Attack // this script needs rewriting
 {
     [Header("Weapon charge params: ")]
-    private Animator _animator;
+    [SerializeField] private Animator _animator;
     [SerializeField] private AmmoManager overwriteReload;
-    [SerializeField] private FireProjectile _fireProjectile;
+    [SerializeField] private FireProjectile beamProjectile;
     [SerializeField] private string aimParamName;
 
     [SerializeField] private UnityEvent primeEvent, releaseEvent;
@@ -20,57 +20,59 @@ public class ReadyWeapon : Attack
     private bool readying;
     
     
-    private void Start()
-    {
-        _animator = GetComponent<Animator>();
-    }
-    
     protected override void Update()
     {
-        base.Update(); // need this to get the inputs
-
-        if (readying)
-        {
-            if (overwriteReload != null)
-                overwriteReload.reloadOverwritten = true;
-            
-            timer += Time.deltaTime;
-            
-            ReleaseAllAttacks();
-        }
-        else
-            timer = 0f;
-    }
-    
-    protected override void SecondaryAttackPrimed()
-    {
-        primeEvent.Invoke();
+        if (!attackEnabled)
+            return;
         
-        _animator.SetBool(aimParamName, true);
-        readying = true;
+        if (Input.GetButton(attackInputName))
+        {
+            if (!readying) // what used to be AttackPrimed()
+            {
+                primeEvent.Invoke();
+                
+                if (overwriteReload != null)
+                {
+                    overwriteReload.reloadOverwritten = true;
+                    overwriteReload.DisableAllManagedAttacks();
+                }
+        
+                _animator.SetBool(aimParamName, true);
+                readying = true;
+            
+                timer = 0f;
+            }else // charge attack
+            {
+                if (overwriteReload != null)
+                    overwriteReload.reloadOverwritten = true;
+            
+                timer += Time.deltaTime;
+            }
+        }
+        
+        if (Input.GetButtonUp(attackInputName))
+        {
+            AttackReleased();
+        }
     }
 
-    protected override void SecondaryAttackTriggered()
+    protected override void AttackReleased()
     {
-        _fireProjectile.FireProjectilePublic();
-    }
-
-    protected override void SecondaryAttackReleased()
-    {
+        base.AttackTriggered(); // cooldown triggers
+        
+        readying = false;
+        _animator.SetBool(aimParamName, false);
+        releaseEvent.Invoke();
+        
         if (overwriteReload != null)
         {
             overwriteReload.reloadOverwritten = false;
             overwriteReload.OverwriteEnableAttacks();
-            overwriteReload.ReleaseAllManagedAttacks();
         }
         
-        _animator.SetBool(aimParamName, false);
-        
-        releaseEvent.Invoke();
-        
         if (timer >= readyTime)
-            SecondaryAttackTriggered();
-        
-        readying = false;
+        {
+            beamProjectile.FireProjectilePublic();
+        }
     }
 }

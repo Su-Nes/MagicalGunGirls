@@ -19,7 +19,7 @@ public class SetActiveCharacter : MonoBehaviour
         activeComponentParent.gameObject.SetActive(activeSelf); // activate character components
         if (TryGetComponent(out AttackManager attacks))
         {
-            attacks.ReleaseAllManagedAttacks();
+            //attacks.ReleaseAllManagedAttacks();
         }
 
         if (selectUIImage == null)

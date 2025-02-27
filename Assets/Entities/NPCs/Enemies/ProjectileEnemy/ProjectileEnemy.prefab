@@ -143,9 +143,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteFlicker: {fileID: 5050967590326730102}
   maxHealth: 4
-  moveSpeed: 200
+  moveSpeed: 250
   fallVelocity: 5
   firePeriod: 1
+  fireRangeFromPlayer: 15
   _fireProjectile: {fileID: 5303306193452175877}
   lookAheadMod: 2
 --- !u!1 &2837991288754268652
@@ -376,10 +377,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6275e1054baee4e4186efb805b6e7876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackEnabled: 1
   timeBetweenAttacks: 0.1
   fireOffset: 0
-  disablePrimaryAttack: 1
-  disableSecondaryAttack: 1
+  attackInputName: 
   _ammoManager: {fileID: 0}
   ammoSpentPerShot: 1
   resetReloadTimeOnFire: 0
@@ -390,4 +391,3 @@ MonoBehaviour:
       m_Calls: []
   projectile: {fileID: 4518477291927018458, guid: b0c5fcffa88c92a4eb3a162f92a202be,
     type: 3}
-  projectileLifetime: 5

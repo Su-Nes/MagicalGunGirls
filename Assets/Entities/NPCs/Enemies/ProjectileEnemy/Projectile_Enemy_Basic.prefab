@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2791045264581618943}
   - component: {fileID: -4293378790750071970}
   - component: {fileID: 3916216994728977004}
+  - component: {fileID: -8176977357190864802}
   m_Layer: 0
   m_Name: Projectile_Enemy_Basic
   m_TagString: Untagged
@@ -149,6 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f1ed2273a1c544396bc3511c099142, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifetime: 2.5
   moveSpeed: 0.3
 --- !u!114 &3916216994728977004
 MonoBehaviour:
@@ -164,4 +166,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 10
   damageInterval: 1
+  destroyOnHit: 1
+--- !u!114 &-8176977357190864802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4518477291927018458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770df84e22260f94aa8462d763a5bdb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  monitoring: 0
   destroyOnHit: 1

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ZAWARUDO : MonoBehaviour
 {
-    public KeyCode freezeKey = KeyCode.Space; // The key to toggle freezing
+        public KeyCode freezeKey = KeyCode.Space; // The key to toggle freezing
         public GameObject player; // Assign the player in the inspector
     
         private Dictionary<Rigidbody, (Vector3 velocity, Vector3 angularVelocity)> storedVelocities = new Dictionary<Rigidbody, (Vector3, Vector3)>();

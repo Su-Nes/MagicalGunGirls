@@ -11,21 +11,19 @@ public class AttackManager : MonoBehaviour
     protected virtual void EnableAttacks()
     {
         foreach (Attack attack in managedAttacks)
-            attack.enabled = true;
+            attack.EnableAttack();
     }
 
-    public virtual void ReleaseAllManagedAttacks()
+    public virtual void DisableAllManagedAttacks()
     {
-        foreach (Attack attack in managedAttacks)
-            attack.ReleaseAllAttacks();
+        DisableAttacks();
     }
 
     protected virtual void DisableAttacks()
     {
         foreach (Attack attack in managedAttacks)
         {
-            attack.ReleaseAllAttacks();
-            attack.enabled = false;
+            attack.DisableAttack();
         }
     }
     

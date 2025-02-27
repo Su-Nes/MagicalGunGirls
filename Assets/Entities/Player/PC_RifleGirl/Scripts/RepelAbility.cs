@@ -31,8 +31,15 @@ public class RepelAbility : Ability
             if(col.TryGetComponent(out Rigidbody rb))
             {
                 float distanceFromOrigin = Vector3.Distance(transform.position, rb.transform.position); // further away from player when repel = less force applied
-                rb.AddForce((rb.transform.position - transform.position).normalized * force / distanceFromOrigin, ForceMode.Impulse);
+                //rb.AddForce((rb.transform.position - transform.position).normalized * force / distanceFromOrigin, ForceMode.Impulse);
+                rb.AddExplosionForce(force, transform.position, radius);
             }
+            
+            if (col.TryGetComponent(out MoveObjectContinuous moveObjectContinuous))
+                moveObjectContinuous.ReverseMoveDirection();
+            
+            if (col.TryGetComponent(out OnTriggerDamageEnemy onTriggerDamageEnemy))
+                onTriggerDamageEnemy.SetMonitoring(true);
         }
     }
 }

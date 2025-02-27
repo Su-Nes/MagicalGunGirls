@@ -9,11 +9,6 @@ public class CharacterStatManager : MonoBehaviour
     [SerializeField] private string characterName = "MagGirl";
     [SerializeField] private GameObject nameTextUIObj, ammoUIObj, cooldownUIObj, abilityUIObj;
     
-    [Header("The Managers.")]
-    [SerializeField] private AmmoManager[] _ammoManagers;
-    [SerializeField] private CooldownManager[] _cooldownManagers;
-    [SerializeField] private CooldownManager[] _abilityCooldownManagers;
-    
     private Transform characterUI;
     
     
@@ -24,19 +19,19 @@ public class CharacterStatManager : MonoBehaviour
         GameObject nameObj = Instantiate(nameTextUIObj, Vector3.zero, Quaternion.identity, characterUI);
         nameObj.GetComponent<TMP_Text>().text = characterName;
         
-        foreach (AmmoManager a_m in _ammoManagers)
+        foreach (AmmoManager a_m in GetComponents<AmmoManager>())
         {
             GameObject newManager = Instantiate(ammoUIObj, Vector3.zero, Quaternion.identity, characterUI);
             newManager.GetComponent<ReadAmmoCount>()._AmmoManager = a_m; // read script that takes ammo value from assigned manager
         }
         
-        foreach (CooldownManager c_m in _cooldownManagers)
+        foreach (CooldownManager c_m in GetComponents<CooldownManager>())
         {
             GameObject newManager = Instantiate(cooldownUIObj, Vector3.zero, Quaternion.identity, characterUI);
             newManager.GetComponent<ReadChargeAmount>()._CooldownManager = c_m;
         }
         
-        foreach (CooldownManager c_m in _abilityCooldownManagers)
+        foreach (CooldownManager c_m in GetComponents<CooldownManager>())
         {
             GameObject newManager = Instantiate(abilityUIObj, Vector3.zero, Quaternion.identity, characterUI);
             newManager.GetComponent<ReadChargeAmount>()._CooldownManager = c_m;

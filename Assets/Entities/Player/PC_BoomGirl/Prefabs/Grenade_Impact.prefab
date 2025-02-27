@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 2997231774541425963}
   - component: {fileID: 8069881626476749603}
   - component: {fileID: 5751142135318400086}
-  m_Layer: 8
-  m_Name: Grenade
+  m_Layer: 0
+  m_Name: Grenade_Impact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,11 +149,11 @@ MonoBehaviour:
   effectObject: {fileID: 2931708523544185617, guid: 01de1207416aa7544b0a6092b0c01e76,
     type: 3}
   effectLifetime: 0.5
-  throwForce: 4.5
-  explodeOnImpact: 0
-  impactDetectionDelay: 0.5
+  throwForce: 6
+  explodeOnImpact: 1
+  impactDetectionDelay: 0.1
   explodeTimer: 1
-  radius: 10
-  damage: 2
+  radius: 7
+  damage: 1.5
   stunTime: 0.5
-  knockBack: 5
+  knockBack: 4

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,9 @@ public class BasicExplosive : MonoBehaviour
     [Header("Physics params: ")]
     [SerializeField] private float throwForce;
     [SerializeField] private bool explodeOnImpact;
+    [SerializeField] private float impactDetectionDelay = .5f;
     [SerializeField] private float explodeTimer;
+    [SerializeField] private float objectLifetime = 2f;
 
     [Header("Damage params: ")] 
     [SerializeField] private float radius = 10f;
@@ -23,15 +26,29 @@ public class BasicExplosive : MonoBehaviour
     private void Start()
     {
         GetComponent<Rigidbody>().AddForce(transform.forward * throwForce, ForceMode.Impulse);
-
+        
         if(!explodeOnImpact)
             StartCoroutine(ExplodeAfterTime(explodeTimer));
+        
+        Destroy(gameObject, objectLifetime);
+    }
+
+    private void Update()
+    {
+        if(explodeOnImpact)
+            impactDetectionDelay -= Time.deltaTime;
     }
 
     private IEnumerator ExplodeAfterTime(float time)
     {
         yield return new WaitForSeconds(time);
         Explode();
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if(explodeOnImpact && impactDetectionDelay <= 0f)
+            Explode();
     }
 
     private void Explode()

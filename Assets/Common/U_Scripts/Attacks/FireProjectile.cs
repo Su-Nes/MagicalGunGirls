@@ -6,20 +6,17 @@ public class FireProjectile : Attack
 {
     [Header("Projectile params: ")]
     [SerializeField] private GameObject projectile;
-    [SerializeField] private float projectileLifetime = 1f;
     
 
-    protected override void PrimaryAttackTriggered()
+    protected override void AttackTriggered()
     {
-        base.PrimaryAttackTriggered();
+        base.AttackTriggered();
         
-        GameObject newProjectile = Instantiate(projectile, transform.position, transform.rotation);
-        newProjectile.transform.SetParent(null);
-        Destroy(newProjectile, projectileLifetime);
+        FireProjectilePublic();
     }
 
     public void FireProjectilePublic()
     {
-        PrimaryAttackTriggered();
+        ObjectPoolManager.SpawnObject(projectile, transform.position, transform.rotation, ObjectPoolManager.PoolType.GameObject);
     }
 }

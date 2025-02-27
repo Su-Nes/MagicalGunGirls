@@ -6,6 +6,7 @@ public class ProjectileEnemy : EnemyAI
 {
     [Header("Projectile params: ")]
     [SerializeField] protected float firePeriod;
+    [SerializeField] protected float fireRangeFromPlayer = 15f;
     private float fireTimer;
     [SerializeField] protected FireProjectile _fireProjectile;
     [SerializeField] protected float lookAheadMod;
@@ -14,6 +15,9 @@ public class ProjectileEnemy : EnemyAI
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
+
+        if (Vector3.Distance(transform.position, target.position) > fireRangeFromPlayer)
+            return;
 
         if (fireTimer < firePeriod)
             fireTimer += Time.deltaTime;

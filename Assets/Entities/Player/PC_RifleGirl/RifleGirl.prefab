@@ -746,7 +746,7 @@ GameObject:
   - component: {fileID: 3949012904596951151}
   - component: {fileID: 1807309195353890118}
   m_Layer: 0
-  m_Name: DashAbility
+  m_Name: RepelAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -786,9 +786,9 @@ MonoBehaviour:
   effectObject: {fileID: 2931708523544185617, guid: d7b6fa4405c4c93429429a7a03cb70e1,
     type: 3}
   effectLifetime: 0.5
-  radius: 20
-  force: 14
-  stunTime: 1.5
+  radius: 6
+  force: 300
+  stunTime: 0.75
   damage: 0
 --- !u!1 &4523480638225719243
 GameObject:
@@ -799,6 +799,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 864187217822858324}
+  - component: {fileID: 358630038229659858}
   - component: {fileID: 2487028237311792093}
   m_Layer: 0
   m_Name: FireBeam
@@ -806,7 +807,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &864187217822858324
 Transform:
   m_ObjectHideFlags: 0
@@ -822,6 +823,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5653281455661819606}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &358630038229659858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4523480638225719243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3179409ad0e7e144bd4eb1e7b79d327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackEnabled: 1
+  timeBetweenAttacks: 0.1
+  fireOffset: 0
+  attackInputName: Fire2
+  _ammoManager: {fileID: 0}
+  ammoSpentPerShot: 0
+  resetReloadTimeOnFire: 0
+  _cooldownManager: {fileID: 1131578463462796103}
+  cooldownTime: 5
+  fireEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _animator: {fileID: 585038112657791295}
+  overwriteReload: {fileID: 7685292744564543013}
+  beamProjectile: {fileID: 2487028237311792093}
+  aimParamName: isAiming
+  primeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  releaseEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  readyTime: 0.33
 --- !u!114 &2487028237311792093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -834,33 +870,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6275e1054baee4e4186efb805b6e7876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackEnabled: 0
   timeBetweenAttacks: 0
   fireOffset: 0
-  disablePrimaryAttack: 1
-  disableSecondaryAttack: 0
+  attackInputName: 
   _ammoManager: {fileID: 0}
-  ammoSpentPerShot: 1
+  ammoSpentPerShot: 0
   resetReloadTimeOnFire: 0
-  _cooldownManager: {fileID: 1131578463462796103}
-  cooldownTime: 5
+  _cooldownManager: {fileID: 0}
+  cooldownTime: 0
   fireEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4523480638225719243}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   projectile: {fileID: 8671284217759299809, guid: 59d763efb2cb36c40b88d59ea0a2ba19,
     type: 3}
-  projectileLifetime: 0.2
 --- !u!1 &5594648080387526390
 GameObject:
   m_ObjectHideFlags: 0
@@ -1013,7 +1036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   managedAttacks:
-  - {fileID: 7080216206033524726}
+  - {fileID: 358630038229659858}
   managedAbilities: []
   cooldownUI: {fileID: 7982030149919399648}
 --- !u!114 &1388561449973821798
@@ -1070,12 +1093,6 @@ MonoBehaviour:
     type: 3}
   abilityUIObj: {fileID: 8998009456628543242, guid: 1e25d7c515fe4f54ca622882675a9b46,
     type: 3}
-  _ammoManagers:
-  - {fileID: 7685292744564543013}
-  _cooldownManagers:
-  - {fileID: 1131578463462796103}
-  _abilityCooldownManagers:
-  - {fileID: 1388561449973821798}
 --- !u!1 &5822648255859776034
 GameObject:
   m_ObjectHideFlags: 0
@@ -1120,10 +1137,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6275e1054baee4e4186efb805b6e7876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackEnabled: 1
   timeBetweenAttacks: 0.1
   fireOffset: 0
-  disablePrimaryAttack: 0
-  disableSecondaryAttack: 1
+  attackInputName: Fire1
   _ammoManager: {fileID: 7685292744564543013}
   ammoSpentPerShot: 1
   resetReloadTimeOnFire: 0
@@ -1134,7 +1151,6 @@ MonoBehaviour:
       m_Calls: []
   projectile: {fileID: 4518477291927018458, guid: d1fb05badf41ac64db6ab26973fcc9f8,
     type: 3}
-  projectileLifetime: 1
 --- !u!1 &6984527187486988735
 GameObject:
   m_ObjectHideFlags: 0
@@ -1179,10 +1195,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6275e1054baee4e4186efb805b6e7876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackEnabled: 1
   timeBetweenAttacks: 0.1
   fireOffset: 1
-  disablePrimaryAttack: 0
-  disableSecondaryAttack: 1
+  attackInputName: Fire1
   _ammoManager: {fileID: 7685292744564543013}
   ammoSpentPerShot: 1
   resetReloadTimeOnFire: 0
@@ -1193,7 +1209,6 @@ MonoBehaviour:
       m_Calls: []
   projectile: {fileID: 4518477291927018458, guid: d1fb05badf41ac64db6ab26973fcc9f8,
     type: 3}
-  projectileLifetime: 1
 --- !u!1 &7463392636945475785
 GameObject:
   m_ObjectHideFlags: 0
@@ -1446,7 +1461,6 @@ GameObject:
   - component: {fileID: 5653281455661819606}
   - component: {fileID: 585038112657791295}
   - component: {fileID: 4106709100210739188}
-  - component: {fileID: 7080216206033524726}
   m_Layer: 0
   m_Name: Weapon&AbilityHolder
   m_TagString: Untagged
@@ -1463,7 +1477,7 @@ Transform:
   m_GameObject: {fileID: 8758552530777885398}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.54899997, z: 0}
+  m_LocalPosition: {x: 0, y: 1.629, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1510,109 +1524,3 @@ MonoBehaviour:
   rayLayerMask:
     serializedVersion: 2
     m_Bits: 128
---- !u!114 &7080216206033524726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8758552530777885398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3179409ad0e7e144bd4eb1e7b79d327, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeBetweenAttacks: 0.1
-  fireOffset: 0
-  disablePrimaryAttack: 1
-  disableSecondaryAttack: 0
-  _ammoManager: {fileID: 0}
-  ammoSpentPerShot: 1
-  resetReloadTimeOnFire: 0
-  _cooldownManager: {fileID: 0}
-  cooldownTime: 5
-  fireEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  overwriteReload: {fileID: 7685292744564543013}
-  _fireProjectile: {fileID: 2487028237311792093}
-  aimParamName: isAiming
-  primeEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5983464317177091943}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2144697273960101790}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 4523480638225719243}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  releaseEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5983464317177091943}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 2144697273960101790}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 4523480638225719243}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  readyTime: 0.33
