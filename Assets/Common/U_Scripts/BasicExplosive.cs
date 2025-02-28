@@ -47,8 +47,12 @@ public class BasicExplosive : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if(explodeOnImpact && impactDetectionDelay <= 0f)
+        if (explodeOnImpact && impactDetectionDelay <= 0f)
+        {
             Explode();
+        
+            print(other.gameObject.name);
+        }
     }
 
     private void Explode()

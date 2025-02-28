@@ -153,6 +153,7 @@ MonoBehaviour:
   explodeOnImpact: 1
   impactDetectionDelay: 0.1
   explodeTimer: 1
+  objectLifetime: 5
   radius: 7
   damage: 1.5
   stunTime: 0.5

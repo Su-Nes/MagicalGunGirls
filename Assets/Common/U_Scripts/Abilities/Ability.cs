@@ -13,7 +13,7 @@ public class Ability : MonoBehaviour
     
     protected virtual void Update()
     {
-        if (Input.GetButtonDown("Ability"))
+        if (Input.GetButtonDown("Ability") || Input.GetButtonDown("Jump"))
         {
             ActivateAbility();
         }

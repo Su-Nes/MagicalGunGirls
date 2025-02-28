@@ -142,11 +142,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteFlicker: {fileID: 5050967590326730102}
-  maxHealth: 4
-  moveSpeed: 250
+  maxHealth: 5
+  moveSpeed: 275
   fallVelocity: 5
   firePeriod: 1
-  fireRangeFromPlayer: 15
+  fireRangeFromPlayer: 18
   _fireProjectile: {fileID: 5303306193452175877}
   lookAheadMod: 2
 --- !u!1 &2837991288754268652

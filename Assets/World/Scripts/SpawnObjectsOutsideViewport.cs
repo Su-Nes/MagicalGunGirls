@@ -24,24 +24,25 @@ public class SpawnObjectsOutsideViewport : MonoBehaviour
 
         if (timer <= 0f)
         {
-            SpawnRandomObjectGroup(Random.Range(groupSizeMin, groupSizeMax));
+            Vector2 randomDirection = Random.insideUnitCircle;
+            Vector3 randBasePosition = transform.localPosition + 
+                new Vector3(randomDirection.normalized.x, 0f, randomDirection.normalized.y) * (outsideOfCamDistance + groupSpawnRadius);
+            
+            SpawnObjectsRandomlyInCircleAtPoint(Random.Range(groupSizeMin, groupSizeMax), randBasePosition);
             
             timer = Random.Range(spawnTimerMin, spawnTimerMax);
         }
     }
 
-    private void SpawnRandomObjectGroup(int groupSize)
+    private void SpawnObjectsRandomlyInCircleAtPoint(int groupSize, Vector3 centrePoint)
     {
         for (int i = groupSize; i != 0; i--)
         {
-            Vector3 randBasePosition = transform.position + 
-                new Vector3(Random.insideUnitCircle.x, 0f, Random.insideUnitCircle.y) * (outsideOfCamDistance + groupSpawnRadius);
-            
             Vector3 randRadiusPosition = transform.position + 
                 new Vector3(Random.insideUnitCircle.x, 0f, Random.insideUnitCircle.y) * Random.Range(0f, groupSpawnRadius);
 
             ObjectPoolManager.SpawnObject(enemyRandomnessList[Random.Range(0, enemyRandomnessList.Length)], 
-                randBasePosition + randRadiusPosition, Quaternion.identity, ObjectPoolManager.PoolType.GameObject);
+                centrePoint + randRadiusPosition, Quaternion.identity, ObjectPoolManager.PoolType.GameObject);
         }
     }
 }

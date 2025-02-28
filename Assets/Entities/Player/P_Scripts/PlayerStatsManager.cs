@@ -31,6 +31,6 @@ public class PlayerStatsManager : MonoBehaviour
 
     private void Die()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        GameManager.Instance.GameOver();
     }
 }

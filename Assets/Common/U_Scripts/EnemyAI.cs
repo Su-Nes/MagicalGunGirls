@@ -36,7 +36,7 @@ public class EnemyAI : MonoBehaviour
 
     private void OnEnable()
     {
-        health = maxHealth;
+        
     }
 
     protected virtual void FixedUpdate()
@@ -57,7 +57,11 @@ public class EnemyAI : MonoBehaviour
 
         // dies if not found on nav mesh
         if (!NavMesh.SamplePosition(transform.position, out hit, 5f, NavMesh.AllAreas))
+        {
+            //print("deleted because entity is off nav mesh");
             Die();
+        }
+            
         
         if (health <= 0f)
             Die();
@@ -99,6 +103,9 @@ public class EnemyAI : MonoBehaviour
 
     private void Die()
     {
+        health = maxHealth; // for when this gets re-enabled in the pool
+        
         ObjectPoolManager.ReturnObjectToPool(gameObject);
+        ScoreManager.Instance.UpdateScore(1);
     }
 }

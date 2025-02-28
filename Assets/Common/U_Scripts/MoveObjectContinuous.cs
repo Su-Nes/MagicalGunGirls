@@ -14,6 +14,9 @@ public class MoveObjectContinuous : MonoBehaviour
     {
         if (lifetime > 0f)
             StartCoroutine(ReturnToPoolAfterTime());
+        
+        if (moveSpeed < 0)
+            ReverseMoveDirection();
     }
 
     private void FixedUpdate()

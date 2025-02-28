@@ -782,11 +782,11 @@ MonoBehaviour:
   _ammoManager: {fileID: 0}
   ammoSpentPerShot: 1
   _cooldownManager: {fileID: 1388561449973821798}
-  cooldownTime: 4
+  cooldownTime: 3.5
   effectObject: {fileID: 2931708523544185617, guid: d7b6fa4405c4c93429429a7a03cb70e1,
     type: 3}
   effectLifetime: 0.5
-  radius: 6
+  radius: 8
   force: 300
   stunTime: 0.75
   damage: 0

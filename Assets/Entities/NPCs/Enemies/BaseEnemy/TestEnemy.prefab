@@ -310,8 +310,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteFlicker: {fileID: 3698154797184695404}
-  maxHealth: 5
-  moveSpeed: 350
+  maxHealth: 4
+  moveSpeed: 500
   fallVelocity: 0.3
 --- !u!114 &8093870161643622060
 MonoBehaviour:
