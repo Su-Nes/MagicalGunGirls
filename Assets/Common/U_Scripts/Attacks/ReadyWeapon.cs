@@ -58,8 +58,6 @@ public class ReadyWeapon : Attack // this script needs rewriting
 
     protected override void AttackReleased()
     {
-        base.AttackTriggered(); // cooldown triggers
-        
         readying = false;
         _animator.SetBool(aimParamName, false);
         releaseEvent.Invoke();
@@ -72,6 +70,7 @@ public class ReadyWeapon : Attack // this script needs rewriting
         
         if (timer >= readyTime)
         {
+            base.AttackTriggered(); // cooldown triggers
             beamProjectile.FireProjectilePublic();
         }
     }
