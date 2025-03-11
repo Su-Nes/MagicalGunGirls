@@ -1,0 +1,86 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+
+[RequireComponent(typeof(Rigidbody))]
+public class PlayerMovement : MonoBehaviour
+{
+    [SerializeField] private float moveSpeed = 10f;
+    [SerializeField] private float wallAvoidDistance = .1f;
+    [SerializeField] private float wallDetectHeightMod = -1f;
+    [SerializeField] private float velocityDampenLerpOnMove = .1f;
+    [SerializeField] private LayerMask wallAvoidMask;
+    private Rigidbody rb;
+    private Vector3 direction;
+
+    private bool isMoving;
+    
+    
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    private void Update()
+    {
+        direction = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
+        isMoving = direction.magnitude > 0f;
+    }
+
+    private void FixedUpdate()
+    {
+        Move(CheckForWallCollision(direction * (moveSpeed * Time.deltaTime)) * (moveSpeed * Time.deltaTime));
+    }
+
+    private void Move(Vector3 moveVector)
+    {
+        rb.MovePosition(transform.position + moveVector);
+        DampenRBVelocity();
+        
+        AvoidWalls(moveVector);
+    }
+
+    private Vector3 CheckForWallCollision(Vector3 moveVector)
+    { // if move vector collides with a wall, return projected vector along that wall, otherwise return the same input vector
+        Ray checkRay = new Ray(transform.position + Vector3.down * wallDetectHeightMod + moveVector.normalized * GetComponent<CapsuleCollider>().radius * 2f, moveVector);
+        Debug.DrawRay(checkRay.origin + Vector3.up, checkRay.direction, Color.blue);
+        if (Physics.Raycast(checkRay, out RaycastHit hit, wallAvoidDistance, wallAvoidMask))
+        {
+            Debug.DrawRay(checkRay.origin, Vector3.ProjectOnPlane(moveVector, hit.normal) * 2f, Color.red);
+            return Vector3.ProjectOnPlane(moveVector, hit.normal);
+        }
+        return moveVector;
+    }
+
+    private void DampenRBVelocity()
+    {
+        Vector3 targetVelocity = new(0f, rb.velocity.y, 0f);
+        rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, velocityDampenLerpOnMove);
+    }
+
+    private void AvoidWalls(Vector3 movementVector)
+    {
+        if (Physics.Raycast(transform.position + movementVector.normalized * GetComponent<CapsuleCollider>().radius, movementVector, 
+                wallAvoidDistance, wallAvoidMask))
+        {
+            rb.MovePosition(transform.position - movementVector);
+        }
+    }
+
+    public void AddImpulseForce(Vector3 force)
+    {
+        rb.AddForce(force, ForceMode.Impulse);
+    }
+
+    public bool IsMoving()
+    {
+        return isMoving;
+    }
+
+    public Vector3 Direction()
+    {
+        return direction.normalized;
+    }
+}

@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         } else {
             _instance = this;
         }
-
+        
         highScoreText.text = PlayerPrefs.GetInt("HighScore").ToString("D3") + " kill record";
 
         Time.timeScale = 0f;

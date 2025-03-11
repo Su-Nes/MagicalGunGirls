@@ -1,0 +1,30 @@
+﻿title: TestNPCDialogue
+tags:
+---
+<<if visited("TestNPCDialogue") is false>>
+    Eileen: Testing, testing, 1, 2, 3.
+    Player: Cool axe, yo.
+    Eileen: Thanks.
+<<else>>
+    Eileen: Ew.
+<<endif>>
+
+-> How are you?
+    <<jump Eileen_Fine>>
+-> Can I hold your axe for a second? Please?
+    <<jump Eileen_Cringe>>
+===
+
+title: Eileen_Fine
+---
+    Eileen: Fine.
+    Player: Cool.
+===
+
+title: Eileen_Cringe
+---
+    Eileen: No. Go away.
+    Player: Aw...
+===
+
+

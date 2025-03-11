@@ -22,6 +22,9 @@ public class RepelAbility : Ability
         
         foreach (Collider col in Physics.OverlapSphere(transform.position, radius))
         {
+            if (col.TryGetComponent(out PlayerMovement playerMovement))
+                return; // don't affect player rigidbody
+            
             if (col.TryGetComponent(out EnemyAI enemy))
             {
                 enemy.InflictStun(stunTime);

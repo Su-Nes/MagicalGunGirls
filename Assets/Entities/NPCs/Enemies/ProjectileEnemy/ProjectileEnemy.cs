@@ -24,7 +24,7 @@ public class ProjectileEnemy : EnemyAI
         else
         {
             Vector3 aimTarget = new Vector3(target.position.x, _fireProjectile.transform.position.y, target.position.z) +
-                                target.GetComponent<PlayerMovement>().GetVelocity().normalized * lookAheadMod;
+                                target.GetComponent<PlayerMovementOld>().GetVelocity().normalized * lookAheadMod;
             _fireProjectile.transform.LookAt(aimTarget);
                 
             _fireProjectile.FireProjectilePublic();
