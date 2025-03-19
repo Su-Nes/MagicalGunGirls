@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileEnemy : EnemyAI
@@ -19,12 +17,15 @@ public class ProjectileEnemy : EnemyAI
         if (Vector3.Distance(transform.position, target.position) > fireRangeFromPlayer)
             return;
 
+        if (GameManager.Instance.FreezePlayer)
+            return; // don't fucking fire!!
+        
         if (fireTimer < firePeriod)
             fireTimer += Time.deltaTime;
         else
         {
             Vector3 aimTarget = new Vector3(target.position.x, _fireProjectile.transform.position.y, target.position.z) +
-                                target.GetComponent<PlayerMovementOld>().GetVelocity().normalized * lookAheadMod;
+                                target.GetComponent<PlayerMovement>().Direction().normalized * lookAheadMod;
             _fireProjectile.transform.LookAt(aimTarget);
                 
             _fireProjectile.FireProjectilePublic();

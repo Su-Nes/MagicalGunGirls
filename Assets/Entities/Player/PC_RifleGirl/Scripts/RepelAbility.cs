@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,30 +16,32 @@ public class RepelAbility : Ability
     protected override void ActivateAbility()
     {
         base.ActivateAbility();
-
+        
         GameObject newEffect = Instantiate(effectObject, transform.position, transform.rotation);
         Destroy(newEffect, effectLifetime);
         
+        
         foreach (Collider col in Physics.OverlapSphere(transform.position, radius))
         {
-            if (col.TryGetComponent(out PlayerMovement playerMovement))
-                return; // don't affect player rigidbody
-            
             if (col.TryGetComponent(out EnemyAI enemy))
             {
                 enemy.InflictStun(stunTime);
                 enemy.TakeDamage(damage);
             }
             
+            /*if (col.TryGetComponent(out PlayerMovement playerMovement))
+                    return; // don't affect player rigidbody*/
+            
             if(col.TryGetComponent(out Rigidbody rb))
             {
-                float distanceFromOrigin = Vector3.Distance(transform.position, rb.transform.position); // further away from player when repel = less force applied
-                //rb.AddForce((rb.transform.position - transform.position).normalized * force / distanceFromOrigin, ForceMode.Impulse);
                 rb.AddExplosionForce(force, transform.position, radius);
             }
-            
+
             if (col.TryGetComponent(out MoveObjectContinuous moveObjectContinuous))
-                moveObjectContinuous.ReverseMoveDirection();
+            {
+                moveObjectContinuous.SetMovementDirection(col.transform.position - transform.position);
+                
+            }
             
             if (col.TryGetComponent(out OnTriggerDamageEnemy onTriggerDamageEnemy))
                 onTriggerDamageEnemy.SetMonitoring(true);

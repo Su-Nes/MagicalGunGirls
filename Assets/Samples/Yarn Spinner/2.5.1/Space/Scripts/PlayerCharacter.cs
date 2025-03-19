@@ -3,7 +3,6 @@ Yarn Spinner is licensed to you under the terms found in the file LICENSE.md.
 */
 
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 #if USE_INPUTSYSTEM && ENABLE_INPUT_SYSTEM

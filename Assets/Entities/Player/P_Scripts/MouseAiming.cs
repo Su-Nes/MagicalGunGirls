@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MouseAiming : MonoBehaviour
@@ -16,6 +14,9 @@ public class MouseAiming : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.FreezePlayer)
+            return;
+        
         Ray camRay = mainCamera.ScreenPointToRay(Input.mousePosition);
         Debug.DrawRay(camRay.origin, camRay.direction * 99f, Color.blue);
         if (Physics.Raycast(camRay.origin, camRay.direction, out camRayHit, 99f, rayLayerMask))

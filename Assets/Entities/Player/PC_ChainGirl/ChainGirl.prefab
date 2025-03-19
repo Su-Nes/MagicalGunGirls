@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   managedAttacks:
-  - {fileID: 1812883583449675451}
+  - {fileID: 0}
   managedAbilities: []
   ammoText: {fileID: 4838318751676641397}
   cooldownUI: {fileID: 745419204271598322}
@@ -77,7 +77,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   managedAttacks: []
   managedAbilities:
-  - {fileID: 8046610913227823620}
+  - {fileID: 0}
   cooldownUI: {fileID: 6296013071071475627}
 --- !u!114 &6173903132568216960
 MonoBehaviour:
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   managedAttacks:
-  - {fileID: 5127256862697370826}
+  - {fileID: 0}
   managedAbilities: []
   cooldownUI: {fileID: 5004649915810307692}
 --- !u!114 &8596941956983053080
@@ -133,62 +133,6 @@ MonoBehaviour:
     type: 3}
   abilityUIObj: {fileID: 8998009456628543242, guid: 1e25d7c515fe4f54ca622882675a9b46,
     type: 3}
---- !u!1 &421901824357160450
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5965781233842992014}
-  - component: {fileID: 8046610913227823620}
-  m_Layer: 0
-  m_Name: GrenadeJumpAbility
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5965781233842992014
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 421901824357160450}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.77, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2694054752729320578}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8046610913227823620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 421901824357160450}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33927aee03813c94592f9fdb72084478, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _ammoManager: {fileID: 0}
-  ammoSpentPerShot: 1
-  _cooldownManager: {fileID: 123647591120118844}
-  cooldownTime: 3
-  effectObject: {fileID: 2931708523544185617, guid: 01de1207416aa7544b0a6092b0c01e76,
-    type: 3}
-  effectLifetime: 0.5
-  radius: 4
-  force: 150
-  stunTime: 0.5
-  damage: 1
-  verticalVelocity: 15
 --- !u!1 &445952908744401447
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,7 +610,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &4228375406569912314
+--- !u!1 &2813546866449019798
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -674,56 +618,29 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1067049567228966516}
-  - component: {fileID: 5127256862697370826}
+  - component: {fileID: 9004360170650498389}
   m_Layer: 0
-  m_Name: SecondaryGrenadeLauncher
+  m_Name: Attacks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1067049567228966516
+--- !u!4 &9004360170650498389
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4228375406569912314}
+  m_GameObject: {fileID: 2813546866449019798}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.198, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2694054752729320578}
+  m_Father: {fileID: 414651497431932748}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5127256862697370826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4228375406569912314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6275e1054baee4e4186efb805b6e7876, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackEnabled: 1
-  timeBetweenAttacks: 0
-  fireOffset: 0
-  attackInputName: Fire2
-  _ammoManager: {fileID: 0}
-  ammoSpentPerShot: 0
-  resetReloadTimeOnFire: 0
-  _cooldownManager: {fileID: 6173903132568216960}
-  cooldownTime: 4
-  fireEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  projectile: {fileID: 8017275846083002272, guid: 5f1d3124c9a102b49bccaa637b22c5bd,
-    type: 3}
 --- !u!1 &4837147015430673522
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,8 +887,6 @@ Transform:
   m_Children:
   - {fileID: 4512650273492417512}
   - {fileID: 414651497431932748}
-  - {fileID: 1067049567228966516}
-  - {fileID: 5965781233842992014}
   m_Father: {fileID: 385932858468772408}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &732094444607087612
@@ -998,9 +913,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 414651497431932748}
-  - component: {fileID: 1812883583449675451}
   m_Layer: 0
-  m_Name: GrenadeLauncher
+  m_Name: ChainMelee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1018,35 +932,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 9004360170650498389}
   m_Father: {fileID: 2694054752729320578}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1812883583449675451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8614408076407365916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6275e1054baee4e4186efb805b6e7876, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackEnabled: 1
-  timeBetweenAttacks: 0.5
-  fireOffset: 0
-  attackInputName: Fire1
-  _ammoManager: {fileID: 1042529591637068625}
-  ammoSpentPerShot: 1
-  resetReloadTimeOnFire: 1
-  _cooldownManager: {fileID: 0}
-  cooldownTime: 5
-  fireEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  projectile: {fileID: 8017275846083002272, guid: 6791d1c3e2af7fc4999ac57fc593bd1b,
-    type: 3}
 --- !u!1 &8947658934658121023
 GameObject:
   m_ObjectHideFlags: 0

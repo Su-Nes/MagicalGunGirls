@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof (Rigidbody))]
@@ -51,7 +49,7 @@ public class BasicExplosive : MonoBehaviour
         {
             Explode();
         
-            print(other.gameObject.name);
+            //print(other.gameObject.name);
         }
     }
 

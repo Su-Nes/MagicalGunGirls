@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine;
 
@@ -28,22 +25,23 @@ public class Attack : MonoBehaviour
     {
         if (fireOffset)
             attackTimer = timeBetweenAttacks / 2f;
-        else
-            attackTimer = timeBetweenAttacks;
     }
 
     protected virtual void Update()
     {
+        if (GameManager.Instance.FreezePlayer)
+            return;
+        
         if (!attackEnabled || attackInputName.Length <= 0)
             return;
         
         if (Input.GetButton(attackInputName))
         {
-            attackTimer += Time.deltaTime;
-            if (attackTimer >= timeBetweenAttacks)
+            attackTimer -= Time.deltaTime;
+            if (attackTimer < 0f)
             {
                 AttackTriggered();
-                attackTimer = 0f;
+                attackTimer = timeBetweenAttacks;
                 
                 fireEvent.Invoke();
             }
@@ -88,6 +86,6 @@ public class Attack : MonoBehaviour
         if (fireOffset)
             attackTimer = timeBetweenAttacks / 2f;
         else
-            attackTimer = timeBetweenAttacks;
+            attackTimer = 0;
     }
 }

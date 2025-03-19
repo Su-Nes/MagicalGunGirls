@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Ability : MonoBehaviour
@@ -13,6 +11,9 @@ public class Ability : MonoBehaviour
     
     protected virtual void Update()
     {
+        if (GameManager.Instance.FreezePlayer)
+            return;
+        
         if (Input.GetButtonDown("Ability") || Input.GetButtonDown("Jump"))
         {
             ActivateAbility();

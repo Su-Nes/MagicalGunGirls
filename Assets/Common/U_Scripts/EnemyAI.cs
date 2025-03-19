@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -41,6 +39,9 @@ public class EnemyAI : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
+        if (GameManager.Instance.FreezePlayer)
+            return;
+        
         if (!_characterController.enabled)
             return;
         
@@ -56,7 +57,7 @@ public class EnemyAI : MonoBehaviour
         }
 
         // dies if not found on nav mesh
-        if (!NavMesh.SamplePosition(transform.position, out hit, 5f, NavMesh.AllAreas))
+        if (!NavMesh.SamplePosition(transform.position, out hit, 5f, NavMesh.AllAreas) && moveSpeed > 0)
         {
             //print("deleted because entity is off nav mesh");
             Die();
@@ -105,7 +106,12 @@ public class EnemyAI : MonoBehaviour
     {
         health = maxHealth; // for when this gets re-enabled in the pool
         
-        ObjectPoolManager.ReturnObjectToPool(gameObject);
-        ScoreManager.Instance.UpdateScore(1);
+        if (ObjectPoolManager.IsInPool(gameObject))
+            ObjectPoolManager.ReturnObjectToPool(gameObject);
+        else 
+            Destroy(gameObject);    
+        
+        if (ScoreManager.Instance is not null)
+            ScoreManager.Instance.UpdateScore(1);
     }
 }

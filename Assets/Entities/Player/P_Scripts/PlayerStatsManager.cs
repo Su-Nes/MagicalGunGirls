@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Yarn.Unity;
 
 public class PlayerStatsManager : MonoBehaviour
 {
@@ -24,9 +22,12 @@ public class PlayerStatsManager : MonoBehaviour
             Die();
     }
 
+    [YarnCommand("AddHealth")]
     public void ModifyHealthValue(float add)
     {
         health += add;
+        if (health > maxHealth)
+            health = maxHealth;
     }
 
     private void Die()

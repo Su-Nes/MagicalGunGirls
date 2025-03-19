@@ -1,6 +1,4 @@
-using System;
 using System.Linq;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -102,6 +100,7 @@ public class ObjectPoolManager : MonoBehaviour
         if (pool == null)
         {
             Debug.LogWarning("Trying to release an object that is not pooled: " + obj.name);
+            //Destroy(obj);
         }
         else
         {
@@ -109,6 +108,24 @@ public class ObjectPoolManager : MonoBehaviour
             pool.InactiveObjects.Add(obj);
         }
     }
+
+    public static bool IsInPool(GameObject obj)
+    {
+        string goName = obj.name[..^7];
+        PooledObjectInfo pool = ObjectPools.Find(p => p.LookupString == goName);
+
+        return pool is not null;
+    }
+
+    
+    /*public void ReturnAllObjectsToPool()
+    {
+        foreach (PooledObjectInfo pools in ObjectPools)
+        {
+            for (int i = pools.InactiveObjects.Count; i != 0; i--)
+                ReturnObjectToPool(pools.InactiveObjects[0]);
+        }
+    }*/
 
     private static GameObject SetParentObject(PoolType poolType)
     {

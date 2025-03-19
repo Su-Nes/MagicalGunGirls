@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MoveObjectContinuous : MonoBehaviour
@@ -8,25 +6,26 @@ public class MoveObjectContinuous : MonoBehaviour
     [Tooltip("Lifetime of this object. If 0, lives forever.")] 
     [SerializeField] private float lifetime = 2.5f;
     public float moveSpeed = 10f;
+
+    private Vector3 direction;
     
 
     private void OnEnable()
     {
         if (lifetime > 0f)
             StartCoroutine(ReturnToPoolAfterTime());
-        
-        if (moveSpeed < 0)
-            ReverseMoveDirection();
+
+        direction = transform.forward;
     }
 
     private void FixedUpdate()
     {
-        transform.position += transform.forward * moveSpeed;
+        transform.position += direction.normalized * moveSpeed;
     }
 
-    public void ReverseMoveDirection()
+    public void SetMovementDirection(Vector3 dir)
     {
-        moveSpeed *= -1f;
+        direction = dir;
     }
     
     private IEnumerator ReturnToPoolAfterTime()

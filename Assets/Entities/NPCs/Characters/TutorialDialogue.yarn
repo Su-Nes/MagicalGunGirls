@@ -1,0 +1,98 @@
+﻿title: TutorialDialogueMovement
+tags:
+---
+    Eileen: Ah, you're finally awake!
+    Eileen: Let's get you moving with the WASD keys.
+    Eileen: Get over to me and I'll tell you how to shoot stuff and use your abilities.
+===
+
+title: TutorialDialoguePrimaryFire
+tags:
+---
+    Eileen: Hey, nice to see you in person again.
+    Eileen: Use the left mouse button to primary fire.
+    Eileen: Try to clear this hallway of rot.
+    Eileen: See you on the other side!
+    <<PlayAnimation Eileen FlyOverRot>>
+    <<DisableGameObject Eileen>>
+===
+
+title: TutorialDialogueSecondaryFire
+tags:
+---
+    Eileen: Well done!
+    Eileen: Use your secondary fire to destroy the rot behind this wall.
+    Eileen: Remember, some abilities and weapons may require you to hold down the input.
+    <<PlayAnimation Eileen FlyOverGate>>
+    <<EnableGameObject Eileen>>
+===
+
+title: TutorialDialogueAbility
+tags: 
+---
+    Eileen: Use your dash ability to get over this gap!
+    Eileen: Trigger it by pressing left shift or spacebar.
+===
+
+title: CharacterSwitchTutorial
+tags:
+---
+    Eileen: You've been joined by another character!
+    Eileen: Switch to them on the fly by pressing Q or E.
+    Eileen: This character's ability allows her to repel enemies and projectiles.
+    Eileen: And remember, switching characters mid fight is essential to maximise your damage and survivability.
+    Eileen: Come talk to me if you want to try fighting against living targets!
+===
+
+
+title: Program
+tags: 
+---
+    <<declare $battleArenaEnabled = false>>
+===
+
+title: BattleArenaOpenChoice
+tags: 
+---
+<<if $battleArenaEnabled is false>>
+    <<if visited("TriggerCombat")>>
+        Eileen: Would you like to finish this tutorial and move on to the challenge arena?
+        
+        -> Yes.
+            <<jump GoToNextScene>>
+        -> I want to hang around here a little longer.
+    <<endif>>
+
+    Eileen: Want me to start sending in enemies?
+    
+    -> Show me what you got.
+        <<jump TriggerCombat>>
+    -> Give me some more time.
+        Eileen: Oki doki.
+<<else>>
+    Eileen: Want to stop training?
+    
+    -> Yes!!
+        <<set $battleArenaEnabled to false>>
+        <<SetSpawnerActivity EnemySpawner false>>
+        <<AddHealth Player 9999>>
+        <<DestroyAllEnemies GameManager>>
+    -> No!!
+<<endif>>
+===
+
+title: TriggerCombat
+tags: 
+---
+    Eileen: Incoming!
+    <<set $battleArenaEnabled to true>>
+    <<SetSpawnerActivity EnemySpawner true>>
+===
+
+title: GoToNextScene
+tags: 
+---
+    Eileen: That will conclude this tutorial, then.
+    Eileen: Good luck out there! Kill 'em all.
+    <<LoadNextScene GameManager>>
+===
