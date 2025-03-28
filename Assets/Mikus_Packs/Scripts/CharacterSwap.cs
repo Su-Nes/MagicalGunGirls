@@ -41,6 +41,12 @@ public class CharacterSwap : MonoBehaviour
             whichCharacter = whichCharacter == transform.childCount - 1 ? 0 : whichCharacter + 1;
             Swap();
         }
+
+        if (Input.inputString.Length > 0 && int.TryParse(Input.inputString, out int inputInt))
+        {
+            Swap(inputInt - 1);
+        }
+            
     }
 
     private void Swap()
@@ -48,6 +54,17 @@ public class CharacterSwap : MonoBehaviour
         foreach (SetActiveCharacter ch in GetComponentsInChildren<SetActiveCharacter>())
         {
             ch.SetCharacterState(ch.transform.GetSiblingIndex() == whichCharacter); // enable only one char with index whichCharacter
+        }
+    }
+    
+    private void Swap(int characterIndex)
+    {
+        if (characterIndex > GetComponentsInChildren<SetActiveCharacter>().Length - 1)
+            return;
+            
+        foreach (SetActiveCharacter ch in GetComponentsInChildren<SetActiveCharacter>())
+        {
+            ch.SetCharacterState(ch.transform.GetSiblingIndex() == characterIndex); // enable only one char with index whichCharacter
         }
     }
 }

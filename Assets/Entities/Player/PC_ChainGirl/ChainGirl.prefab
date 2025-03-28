@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeComponentParent: {fileID: 385932858468772408}
+  characterSpeed: 225
   UIActiveAlpha: 1
   UIInactiveAlpha: 0.1
   selectedWidth: 250

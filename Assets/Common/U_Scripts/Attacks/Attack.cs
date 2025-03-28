@@ -19,43 +19,41 @@ public class Attack : MonoBehaviour
     [SerializeField] private float cooldownTime = 5f;
 
     [SerializeField] private UnityEvent fireEvent;
-    
 
+    [Header("Visual: ")]
+    [SerializeField] private Animator animator;
+    [SerializeField] private string animationName;
+    
+    
     private void Start()
     {
         if (fireOffset)
             attackTimer = timeBetweenAttacks / 2f;
     }
-
+    
     protected virtual void Update()
     {
+        attackTimer -= Time.deltaTime; // cooldown between shots
+        
         if (GameManager.Instance.FreezePlayer)
             return;
         
         if (!attackEnabled || attackInputName.Length <= 0)
             return;
         
+        if (fireOffset && Input.GetButtonDown(attackInputName))
+            attackTimer = timeBetweenAttacks / 2f;
+        
         if (Input.GetButton(attackInputName))
         {
-            attackTimer -= Time.deltaTime;
             if (attackTimer < 0f)
             {
                 AttackTriggered();
-                attackTimer = timeBetweenAttacks;
+                AttackReleased();
                 
                 fireEvent.Invoke();
             }
         }
-        
-        if (Input.GetButtonUp(attackInputName))
-        {
-            AttackReleased();
-        }
-    }
-
-    public void ReleaseAttack()
-    {
-        AttackReleased();
     }
     
     public void DisableAttack()
@@ -65,11 +63,17 @@ public class Attack : MonoBehaviour
 
     public void EnableAttack()
     {
+        //attackTimer = 0f;
         attackEnabled = true;
     }
 
     protected virtual void AttackTriggered()
     {
+        if (animator != null)
+        {
+            animator.Play(animationName);
+        }
+        
         if (_ammoManager != null)
         {
             _ammoManager.SpendBullet(ammoSpentPerShot);
@@ -83,9 +87,6 @@ public class Attack : MonoBehaviour
     
     protected virtual void AttackReleased()
     {
-        if (fireOffset)
-            attackTimer = timeBetweenAttacks / 2f;
-        else
-            attackTimer = 0;
+        attackTimer = timeBetweenAttacks;
     }
 }

@@ -6,6 +6,7 @@ public class MouseAiming : MonoBehaviour
     private RaycastHit camRayHit;
     [SerializeField] private LayerMask rayLayerMask;
     private Vector3 cursorWorldPosition;
+    public Vector3 CursorWorldPosition { get { return cursorWorldPosition; } }
     
     private void Start()
     {

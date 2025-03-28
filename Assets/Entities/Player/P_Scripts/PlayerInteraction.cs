@@ -22,7 +22,7 @@ public class PlayerInteraction : MonoBehaviour
     
     private void Update()
     {
-        if (playerMovement.IsMoving())
+        if (playerMovement.IsMoving)
             direction = playerMovement.Direction();
 
         Vector3 sphereOrigin = transform.position + direction * sphereCastDistance;

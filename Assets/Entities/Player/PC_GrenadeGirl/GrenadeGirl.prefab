@@ -30,9 +30,9 @@ Transform:
   m_GameObject: {fileID: 71587438018056645}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.1450994, y: 0.17500645, z: -1.2341442}
-  m_LocalScale: {x: 1.21, y: 1.21, z: 1.21}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 1.42, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 385932858468772408}
   m_Father: {fileID: 0}
@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeComponentParent: {fileID: 385932858468772408}
+  characterSpeed: 225
   UIActiveAlpha: 1
   UIInactiveAlpha: 0.1
   selectedWidth: 250
@@ -444,7 +445,7 @@ Transform:
   m_GameObject: {fileID: 1617044206870589790}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.84900004, y: 1.539, z: -0.0050000907}
+  m_LocalPosition: {x: -0.738, y: 2.6, z: -0.005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -460,6 +461,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9000333115225641350}
   - component: {fileID: 8969262382762339693}
+  - component: {fileID: 4880108968776188837}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -476,8 +478,8 @@ Transform:
   m_GameObject: {fileID: 2068905946280499359}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.33000007, z: 0}
-  m_LocalScale: {x: 0.33, y: 0.33, z: 0.33}
+  m_LocalPosition: {x: 0, y: 1.42, z: 0}
+  m_LocalScale: {x: 0.22, y: 0.22, z: 0.22}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 385932858468772408}
@@ -523,17 +525,38 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0d87511b81f5a854390183ea04985a11, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 30bf9b97bb5538743a3e054609d11144, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 14.11621, y: 35}
+  m_Size: {x: 8.52, y: 9.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &4880108968776188837
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068905946280499359}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 02eaaec3b0da0eb40ab3e3cd9ee1d62c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2399538467838742615
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,7 +659,7 @@ Transform:
   m_GameObject: {fileID: 4228375406569912314}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.198, z: 0}
+  m_LocalPosition: {x: 0.141, y: 0.9870002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -666,8 +689,14 @@ MonoBehaviour:
   fireEvent:
     m_PersistentCalls:
       m_Calls: []
+  animator: {fileID: 4880108968776188837}
+  animationName: GrenadeGirl_Attack1
   projectile: {fileID: 8017275846083002272, guid: 5f1d3124c9a102b49bccaa637b22c5bd,
     type: 3}
+  SFX: {fileID: 0}
+  SFXVolume: 1
+  minPitch: 0.9
+  maxPitch: 1.1
 --- !u!1 &4837147015430673522
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,7 +988,7 @@ Transform:
   m_GameObject: {fileID: 8614408076407365916}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.14099997, y: 0.9870002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -989,8 +1018,14 @@ MonoBehaviour:
   fireEvent:
     m_PersistentCalls:
       m_Calls: []
+  animator: {fileID: 4880108968776188837}
+  animationName: GrenadeGirl_Attack1
   projectile: {fileID: 8017275846083002272, guid: 6791d1c3e2af7fc4999ac57fc593bd1b,
     type: 3}
+  SFX: {fileID: 0}
+  SFXVolume: 1
+  minPitch: 0.9
+  maxPitch: 1.1
 --- !u!1 &8947658934658121023
 GameObject:
   m_ObjectHideFlags: 0

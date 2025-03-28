@@ -1,20 +1,24 @@
+using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class ObjectPoolManager : MonoBehaviour
 {
     public static List<PooledObjectInfo> ObjectPools = new();
 
+    private static List<GameObject> AllObjects = new();
+
     private GameObject _objectPoolEmptyHolder;
 
-    private static GameObject _gameObjectsEmpty;
-    private static GameObject _particleSystemsEmpty;
+    private static GameObject _gameObjectsEmpty, _particleSystemsEmpty, _audioSourceEmpty;
 
     public enum PoolType
     {
         GameObject,
         ParticleSystem_NOT_IMPLEMENTED,
+        AudioSource,
         None
     }
 
@@ -30,6 +34,9 @@ public class ObjectPoolManager : MonoBehaviour
 
         _particleSystemsEmpty = new GameObject("PooledParticleSystems");
         _particleSystemsEmpty.transform.SetParent(transform);
+
+        _audioSourceEmpty = new GameObject("AudioSources");
+        _audioSourceEmpty.transform.SetParent(transform);
     }
 
     public static GameObject SpawnObject(GameObject objToSpawn, Vector3 spawnPosition, Quaternion spawnRotation, PoolType poolType = PoolType.None)
@@ -49,6 +56,7 @@ public class ObjectPoolManager : MonoBehaviour
             GameObject parentObject = SetParentObject(poolType);
             
             spawnableObj = Instantiate(objToSpawn, spawnPosition, spawnRotation);
+            AllObjects.Add(spawnableObj);
 
             if (parentObject != null)
             {
@@ -81,6 +89,7 @@ public class ObjectPoolManager : MonoBehaviour
         if (spawnableObj == null)
         {
             spawnableObj = Instantiate(objToSpawn, parent);
+            AllObjects.Add(spawnableObj);
         }
         else
         {
@@ -116,16 +125,15 @@ public class ObjectPoolManager : MonoBehaviour
 
         return pool is not null;
     }
-
     
-    /*public void ReturnAllObjectsToPool()
+    public static void ReturnAllPooledObjectsToPool()
     {
-        foreach (PooledObjectInfo pools in ObjectPools)
+        for (int i = 0; i < AllObjects.Count; i++)
         {
-            for (int i = pools.InactiveObjects.Count; i != 0; i--)
-                ReturnObjectToPool(pools.InactiveObjects[0]);
+            ReturnObjectToPool(AllObjects[i].gameObject);
         }
-    }*/
+        AllObjects.Clear();
+    }
 
     private static GameObject SetParentObject(PoolType poolType)
     {
@@ -136,6 +144,9 @@ public class ObjectPoolManager : MonoBehaviour
             
             case PoolType.ParticleSystem_NOT_IMPLEMENTED:
                 return _particleSystemsEmpty;
+            
+            case PoolType.AudioSource:
+                return _audioSourceEmpty;
             
             case PoolType.None:
                 return null;

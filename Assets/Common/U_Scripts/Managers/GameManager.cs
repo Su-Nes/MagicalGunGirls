@@ -1,5 +1,7 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using Yarn.Unity;
 
@@ -7,6 +9,8 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
     public static GameManager Instance { get { return _instance; } }
+
+    [SerializeField] private GameObject pauseScreen;
     
     private DialogueRunner dialogueRunner;
     private bool freezePlayer;
@@ -14,6 +18,10 @@ public class GameManager : MonoBehaviour
     {
         get { return freezePlayer; }
     }
+    
+    private Volume postProcessing;
+    private float chromeAbbDefault, vignetteDefault;
+    
 
     private void Awake()
     {
@@ -32,6 +40,12 @@ public class GameManager : MonoBehaviour
     {
         //Tell our 'OnLevelFinishedLoading' function to start listening for a scene change as soon as this script is enabled.
         SceneManager.sceneLoaded += OnLevelFinishedLoading;
+
+        postProcessing = transform.GetComponentInChildren<Volume>(); // for resetting post processing
+        postProcessing.profile.TryGet(out ChromaticAberration ca);
+        chromeAbbDefault = ca.intensity.value;
+        postProcessing.profile.TryGet(out Vignette v);
+        vignetteDefault = v.intensity.value;
     }
         
     private void OnDisable()
@@ -42,15 +56,15 @@ public class GameManager : MonoBehaviour
         // this function gets called whenever a scene in loaded in
     private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("Level Loaded");
-        Debug.Log(scene.name);
-        Debug.Log(mode);
-
         dialogueRunner = FindObjectOfType<DialogueRunner>(); // get the newly loaded scene's dialogue runner
+        
+        postProcessing.profile.TryGet(out ChromaticAberration ca); // reset post processing
+        ca.intensity.value = chromeAbbDefault;
+        postProcessing.profile.TryGet(out Vignette v);
+        v.intensity.value = vignetteDefault;
         
         // [could have code for image fade out here]
     }
-
     
     public void GameOver()
     {
@@ -58,18 +72,24 @@ public class GameManager : MonoBehaviour
     }
 
     private void Update()
-    { // remove all player control and pause enemy AI when dialogue is active
-        freezePlayer = dialogueRunner.IsDialogueRunning;
+    { // this bool is checked by other scripts. when it is true, their update methods return null
+        freezePlayer = dialogueRunner.IsDialogueRunning || pauseScreen.activeSelf;
+
+        if (Input.GetButtonDown("Cancel")) // toggle pause
+        {
+            ToggleGamePause();
+        }
     }
-    
-    public void Play()
+
+    public void ToggleGamePause()
     {
-        Time.timeScale = 1f;
+        pauseScreen.SetActive(!pauseScreen.activeSelf);
     }
-    
-    public void Pause()
+
+    public void QuitApplication()
     {
-        Time.timeScale = 0f;
+        Application.Quit();
+        print("Quitting game.");
     }
 
     [YarnCommand("DestroyAllEnemies")]

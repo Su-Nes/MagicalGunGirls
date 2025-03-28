@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5417050057062253626}
   - component: {fileID: 8524401232732384688}
+  - component: {fileID: 1794577175559151043}
   m_Layer: 0
   m_Name: GrenadeJumpAbility
   m_TagString: Untagged
@@ -48,11 +49,38 @@ MonoBehaviour:
   ammoSpentPerShot: 1
   _cooldownManager: {fileID: 0}
   cooldownTime: 3
-  effectObject: {fileID: 2931708523544185617, guid: 01de1207416aa7544b0a6092b0c01e76,
+  verticalVelocity: 18
+  bombDropRecoil: 3
+  bombDropDelay: 0.7
+--- !u!114 &1794577175559151043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034898359192805814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6275e1054baee4e4186efb805b6e7876, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackEnabled: 1
+  timeBetweenAttacks: 0.1
+  fireOffset: 0
+  attackInputName: 
+  _ammoManager: {fileID: 0}
+  ammoSpentPerShot: 1
+  resetReloadTimeOnFire: 0
+  _cooldownManager: {fileID: 0}
+  cooldownTime: 5
+  fireEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  animator: {fileID: 0}
+  animationName: 
+  projectile: {fileID: 3176096138509602598, guid: d255d2729a6dcd8408acd317b3a7f435,
     type: 3}
-  effectLifetime: 0.5
-  radius: 4
-  force: 150
-  stunTime: 0.5
-  damage: 1
-  verticalVelocity: 15
+  SFX: {fileID: 0}
+  SFXVolume: 1
+  minPitch: 0.9
+  maxPitch: 1.1

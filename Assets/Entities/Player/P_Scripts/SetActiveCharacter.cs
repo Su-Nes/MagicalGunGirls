@@ -1,3 +1,4 @@
+using System;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -7,17 +8,25 @@ public class SetActiveCharacter : MonoBehaviour
     private Transform characterSelectUI;
     private Image selectUIImage;
     
+    private PlayerMovement playerMovement;
+
+    [SerializeField] private float characterSpeed;
     [SerializeField] private float UIActiveAlpha, UIInactiveAlpha;
     [SerializeField] private float selectedWidth, unselectedWidth;
-    
+
+
+    private void Awake()
+    {
+        playerMovement = FindObjectOfType<PlayerMovement>();
+        
+    }
 
     public void SetCharacterState(bool activeSelf)
     {
+        if(activeSelf)
+            playerMovement.MoveSpeed = characterSpeed;
+        
         activeComponentParent.gameObject.SetActive(activeSelf); // activate character components
-        if (TryGetComponent(out AttackManager attacks))
-        {
-            //attacks.ReleaseAllManagedAttacks();
-        }
 
         if (selectUIImage == null)
         {

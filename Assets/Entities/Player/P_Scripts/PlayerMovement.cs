@@ -4,15 +4,16 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 10f;
+    public float MoveSpeed { get { return moveSpeed;} set { moveSpeed = value; } }
     [SerializeField] private float velocityDampenLerpOnMove = .1f;
     private Rigidbody rb;
     private Vector3 direction;
     
     private float freeVelocityTime;
-    
-    private bool isMoving;
-    
-    
+
+    public bool IsMoving { get; private set; }
+
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -21,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         direction = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
-        isMoving = direction.magnitude > 0f;
+        IsMoving = direction.magnitude > 0f;
     }
     
     private void FixedUpdate()
@@ -52,11 +53,6 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.AddForce(force, ForceMode.Impulse);
         freeVelocityTime = releaseVelocityDampenTime;
-    }
-    
-    public bool IsMoving()
-    {
-        return isMoving;
     }
     
     public Vector3 Direction()
