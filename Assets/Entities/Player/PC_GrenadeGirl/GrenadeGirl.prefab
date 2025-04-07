@@ -111,8 +111,8 @@ MonoBehaviour:
   characterSpeed: 225
   UIActiveAlpha: 1
   UIInactiveAlpha: 0.1
-  selectedWidth: 250
-  unselectedWidth: 150
+  selectedWidth: 300
+  unselectedWidth: 200
 --- !u!114 &8943739260857700713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,8 +131,6 @@ MonoBehaviour:
   ammoUIObj: {fileID: 3396401311175264777, guid: 33202e6ef62ebc142aca950d13627e36,
     type: 3}
   cooldownUIObj: {fileID: 8998009456628543242, guid: 1e25d7c515fe4f54ca622882675a9b46,
-    type: 3}
-  abilityUIObj: {fileID: 8998009456628543242, guid: 1e25d7c515fe4f54ca622882675a9b46,
     type: 3}
 --- !u!1 &445952908744401447
 GameObject:

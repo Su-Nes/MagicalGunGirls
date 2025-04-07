@@ -4,7 +4,7 @@ using UnityEngine;
 public class CharacterStatManager : MonoBehaviour
 {
     [SerializeField] private string characterName = "MagGirl";
-    [SerializeField] private GameObject nameTextUIObj, ammoUIObj, cooldownUIObj, abilityUIObj;
+    [SerializeField] private GameObject nameTextUIObj, ammoUIObj, cooldownUIObj;
     
     private Transform characterUI;
     
@@ -25,12 +25,6 @@ public class CharacterStatManager : MonoBehaviour
         foreach (CooldownManager c_m in GetComponents<CooldownManager>())
         {
             GameObject newManager = Instantiate(cooldownUIObj, Vector3.zero, Quaternion.identity, characterUI);
-            newManager.GetComponent<ReadChargeAmount>()._CooldownManager = c_m;
-        }
-        
-        foreach (CooldownManager c_m in GetComponents<CooldownManager>())
-        {
-            GameObject newManager = Instantiate(abilityUIObj, Vector3.zero, Quaternion.identity, characterUI);
             newManager.GetComponent<ReadChargeAmount>()._CooldownManager = c_m;
         }
     }
