@@ -711,6 +711,7 @@ GameObject:
   - component: {fileID: 535731319}
   - component: {fileID: 535731318}
   - component: {fileID: 535731317}
+  - component: {fileID: 535731320}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -801,6 +802,25 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &535731320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535731315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 654e77d30292b0c4d86e3145c38b53d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelSelect: {fileID: 0}
+  levelText: {fileID: 0}
+  selectButton: {fileID: 0}
+  levelName: 
+  mission2Button: {fileID: 888787209}
+  mission2Object: {fileID: 535731315}
+  objectsToDeactivate: []
 --- !u!1 &641942238
 GameObject:
   m_ObjectHideFlags: 0
@@ -947,6 +967,7 @@ GameObject:
   - component: {fileID: 662570089}
   - component: {fileID: 662570088}
   - component: {fileID: 662570087}
+  - component: {fileID: 662570091}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1039,6 +1060,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &662570091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662570086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 654e77d30292b0c4d86e3145c38b53d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelSelect: {fileID: 0}
+  levelText: {fileID: 0}
+  selectButton: {fileID: 768720455}
+  levelName: 
+  mission2Button: {fileID: 888787209}
+  mission2Object: {fileID: 535731315}
+  objectsToDeactivate: []
 --- !u!1 &668061125
 GameObject:
   m_ObjectHideFlags: 0
