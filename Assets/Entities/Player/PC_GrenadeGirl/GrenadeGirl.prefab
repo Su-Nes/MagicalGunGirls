@@ -125,12 +125,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b21160a946822da45a7dc40e1f7b89a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Grenade Girl
+  characterName: Vickey
   nameTextUIObj: {fileID: 2217331195668907801, guid: c6c403e8031f7e64ab77303e6f147dd9,
     type: 3}
   ammoUIObj: {fileID: 3396401311175264777, guid: 33202e6ef62ebc142aca950d13627e36,
     type: 3}
   cooldownUIObj: {fileID: 8998009456628543242, guid: 1e25d7c515fe4f54ca622882675a9b46,
+    type: 3}
+  descriptionUIObj: {fileID: 6707048607902378974, guid: 4b7b4532ee025f1499d518e15009df78,
     type: 3}
 --- !u!1 &445952908744401447
 GameObject:

@@ -1,10 +1,15 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CharacterSwap : MonoBehaviour
 {
+    [SerializeField] private int maxCharacters = 2;
+    [SerializeField] private TMP_Text teamSizeText;
     [SerializeField] private List<GameObject> characterPrefabs;
-    [SerializeField] private GameObject panelUIObj;
+    public int CharacterCount { get { return characterPrefabs.Count; } }
+    [SerializeField] private Transform teamDisplayParent;
+    [SerializeField] private GameObject panelUIObj, charNameDisplayText;
     private Transform UIParent;
     private GameObject currentCharacter;
     private int whichCharacter;
@@ -12,11 +17,7 @@ public class CharacterSwap : MonoBehaviour
     private void Awake()
     {
         UIParent = GameObject.Find("CharacterSelectLayout").transform;
-        foreach (GameObject ch in characterPrefabs)
-        {
-            Instantiate(panelUIObj, Vector3.zero, Quaternion.identity, UIParent);
-            Instantiate(ch, transform.position, Quaternion.identity, transform);
-        }
+        InitialiseCharacters();
     }
 
     private void Start()
@@ -47,6 +48,60 @@ public class CharacterSwap : MonoBehaviour
             Swap(inputInt - 1);
         }
             
+    }
+
+    private void InitialiseCharacters()
+    {
+        teamSizeText.text = $"Max team size: {maxCharacters}";
+        
+        foreach (Transform child in UIParent)
+        {
+            Destroy(child.gameObject);
+        }
+        
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+        
+        foreach (Transform child in teamDisplayParent)
+        {
+            Destroy(child.gameObject);
+        }
+        
+        foreach (GameObject ch in characterPrefabs)
+        {
+            Instantiate(panelUIObj, Vector3.zero, Quaternion.identity, UIParent);
+            Instantiate(ch, transform.position, transform.rotation, transform);
+            TMP_Text charName = Instantiate(charNameDisplayText, Vector3.zero, Quaternion.identity, teamDisplayParent).GetComponent<TMP_Text>();
+            charName.text = ch.GetComponent<CharacterStatManager>().CharacterName;
+        }
+
+        Swap(transform.childCount - 1);
+    }
+
+    public void AddCharacter(GameObject character, bool increaseCharacterLimit = false)
+    {
+        if (increaseCharacterLimit)
+            maxCharacters++;
+        
+        if (characterPrefabs.Count >= maxCharacters)
+            return;
+        
+        characterPrefabs.Add(character);
+        InitialiseCharacters();
+    }
+
+    public void RemoveCharacter(GameObject character)
+    {
+        characterPrefabs.Remove(character);
+        InitialiseCharacters();
+    }
+
+    public void ClearTeam()
+    {
+        characterPrefabs.Clear();
+        InitialiseCharacters();
     }
 
     private void Swap()

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DebugEnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject enemy;
+    [SerializeField] private GameObject enemy1, enemy2, enemy3;
     [SerializeField] private float spawnTimer = 3f;
     private float timer;
     [SerializeField] private int groupSize = 6;
@@ -19,13 +19,15 @@ public class DebugEnemySpawner : MonoBehaviour
         }
     }
 
-    private void SpawnGroup()
+    public void SpawnGroup()
     {
         for(int i = groupSize; i != 0; i--)
         {
             Vector3 randPosition = new(Random.Range(-spawnRadius, spawnRadius), 0f,
                 Random.Range(-spawnRadius, spawnRadius));
-            Instantiate(enemy, transform.position + randPosition, transform.rotation);
+            ObjectPoolManager.SpawnObject(enemy1, transform.position + randPosition, transform.rotation, transform);
+            ObjectPoolManager.SpawnObject(enemy2, transform.position + randPosition, transform.rotation, transform);
+            ObjectPoolManager.SpawnObject(enemy3, transform.position + randPosition, transform.rotation, transform);
         }
     }
 }

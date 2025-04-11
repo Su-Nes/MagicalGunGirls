@@ -4,7 +4,9 @@ using UnityEngine;
 public class CharacterStatManager : MonoBehaviour
 {
     [SerializeField] private string characterName = "MagGirl";
+    public string CharacterName { get { return characterName; } }
     [SerializeField] private GameObject nameTextUIObj, ammoUIObj, cooldownUIObj;
+    public GameObject descriptionUIObj;
     
     private Transform characterUI;
     

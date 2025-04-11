@@ -1,0 +1,41 @@
+﻿title: EileenIntroduction
+tags:
+---
+<<if visited("EileenBaseCamp") is false>>
+    Eileen: Hi, Evelyn! How are you faring?
+    Legs are weak, vision is still blurry, and it feels like there's a crater in my chest.
+    Could always be worse, I guess.
+    Eileen: Well, as long as your brain is working, we have everything we need to succeed.
+    I suppose so.
+    Eileen: I remember you mentioned wanting to go through the training projection again.
+    Eileen: We still have some time until the mission, so now's a good chance.
+    
+    -> Yeah, I wanted to practice leading the unit before we set out. (Play tutorial)
+        Eileen: Alright then, let's get started.
+        <<LoadSceneWithName GameManager Playtest_1>>
+        <<stop>>
+    -> I changed my mind.
+        Eileen: If you say so.
+        Eileen: On another note, Trina hasn't returned from her scouting mission yet. I think we should send someone out there to search for her.
+        Eileen: Her mission is written on the board.
+        I'll check it out.
+<<else>>
+    -> I want to practice leading the unit before we set out. (Play tutorial)
+        Eileen: Alright, let's get started.
+        <<LoadSceneWithName GameManager Playtest_1>>
+        <<stop>>
+    -> Not now.
+        Eileen: On another note, Trina hasn't returned from her scouting mission yet. I think we should send someone out there to search for her.
+        Eileen: Her mission is written on the board.
+        I'll check it out.
+<<endif>>
+===
+
+title: StartOperation
+---
+    Eileen: We set out at your command, Evelyn.
+    
+        -> Start operation Stork's Nest.
+            <<LoadSceneWithName GameManager 1stLevel>>
+        -> Give me a moment.
+===

@@ -3,9 +3,10 @@ using UnityEngine.UI;
 
 public class MissionButton : MonoBehaviour
 {
-    public string missionName; // Self explanitory
-    public string missionDescription; // Same here
-    public string sceneToLoad; // Here too
+    [SerializeField] private string missionName; // Self explanatory
+    [TextArea(2, 5)]
+    [SerializeField] private string missionDescription; // Same here
+    [SerializeField] private string sceneToLoad; // Here too
 
     private Button button; // Add the button that's needed
 

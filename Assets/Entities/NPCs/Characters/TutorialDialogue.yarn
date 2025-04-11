@@ -1,15 +1,15 @@
 ﻿title: TutorialDialogueMovement
 tags:
 ---
-    Eileen: Ah, you're finally awake!
+    Eileen: Welcome to the astral training projection space!
     Eileen: Let's get you moving with the WASD keys.
-    Eileen: Get over to me and I'll tell you how to shoot stuff and use your abilities.
+    I think I understood that already.
+    Eileen: Right, yeah... Anyways, get over to me and I'll tell you how to shoot stuff and use your abilities.
 ===
 
 title: TutorialDialoguePrimaryFire
 tags:
 ---
-    Eileen: Hey, nice to see you in person again.
     Eileen: Use the left mouse button to primary fire.
     Eileen: Try to clear this hallway of rot.
     Eileen: See you on the other side!
@@ -20,7 +20,6 @@ tags:
 title: TutorialDialogueSecondaryFire
 tags:
 ---
-    Eileen: Well done!
     Eileen: Use your secondary fire to destroy the rot behind this wall.
     Eileen: Remember, some abilities and weapons may require you to hold down the input.
     <<PlayAnimation Eileen FlyOverGate>>
@@ -37,10 +36,10 @@ tags:
 title: CharacterSwitchTutorial
 tags:
 ---
-    Eileen: You've been joined by another character!
+    Eileen: You've been joined by another fighter!
     Eileen: Switch to them on the fly by pressing Q or E.
-    Eileen: This character's ability allows her to repel enemies and projectiles.
-    Eileen: And remember, switching characters mid fight is essential to maximise your damage and survivability.
+    Eileen: Vickey's ability allows her to repel enemies and projectiles.
+    Eileen: Remember, switching characters mid fight is essential to maximise your damage and survivability.
     Eileen: Come talk to me if you want to try fighting against living targets!
 ===
 
@@ -56,7 +55,7 @@ tags:
 ---
 <<if $battleArenaEnabled is false>>
     <<if visited("TriggerCombat")>>
-        Eileen: Would you like to finish this tutorial and move on to the challenge arena?
+        Eileen: Would you like to finish this tutorial and return to base camp?
         
         -> Yes.
             <<jump GoToNextScene>>

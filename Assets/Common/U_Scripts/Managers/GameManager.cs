@@ -3,14 +3,17 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Yarn.Unity;
 
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
     public static GameManager Instance { get { return _instance; } }
-
+    
     [SerializeField] private GameObject pauseScreen;
+    private bool pauseScreenEnabled;
+    [SerializeField] private Image overlay;
     
     private DialogueRunner dialogueRunner;
     private bool freezePlayer;
@@ -34,7 +37,6 @@ public class GameManager : MonoBehaviour
         
         DontDestroyOnLoad(gameObject);
     }
-    
     
     private void OnEnable()
     {
@@ -63,7 +65,10 @@ public class GameManager : MonoBehaviour
         postProcessing.profile.TryGet(out Vignette v);
         v.intensity.value = vignetteDefault;
         
-        // [could have code for image fade out here]
+        overlay.color = new Color(Color.black.r, Color.black.g, Color.black.b, 1f);
+        overlay.CrossFadeAlpha(0f, .5f, true);
+
+        pauseScreenEnabled = true;
     }
     
     public void GameOver()
@@ -73,9 +78,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     { // this bool is checked by other scripts. when it is true, their update methods return null
-        freezePlayer = dialogueRunner.IsDialogueRunning || pauseScreen.activeSelf;
+        if (dialogueRunner != null)
+            freezePlayer = dialogueRunner.IsDialogueRunning || pauseScreen.activeSelf;
 
-        if (Input.GetButtonDown("Cancel")) // toggle pause
+        if (Input.GetButtonDown("Cancel") && pauseScreenEnabled) // toggle pause
         {
             ToggleGamePause();
         }
@@ -84,6 +90,11 @@ public class GameManager : MonoBehaviour
     public void ToggleGamePause()
     {
         pauseScreen.SetActive(!pauseScreen.activeSelf);
+    }
+
+    public void DisablePauseForCurrentScene()
+    {
+        pauseScreenEnabled = false;
     }
 
     public void QuitApplication()
@@ -102,20 +113,37 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // this could be made into an IEnumerator for the fade
+
     [YarnCommand("LoadNextScene")]
-    public void LoadNextSceneInBuild()
+    public void LoadNextSceneInBuild(float crossFadeTime = .5f)
     {
         StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
     }
+    
+    [YarnCommand("LoadSceneWithName")]
+    public void LoadSceneWithName(string sceneName)
+    {
+        StartCoroutine(LoadScene(sceneName));
+    }
 
     
-    public IEnumerator LoadScene(int sceneIndex)
+    private IEnumerator LoadScene(int sceneIndex, float crossFadeTime = .5f)
     {
-        // [insert screen fade code here]
+        overlay.CrossFadeAlpha(1, crossFadeTime, true);
         
-        dialogueRunner.Stop();
-        yield return null;
+        if (dialogueRunner != null)
+            dialogueRunner.Stop();
+        yield return new WaitForSeconds(crossFadeTime);
         SceneManager.LoadScene(sceneIndex);
+    }
+    
+    private IEnumerator LoadScene(string sceneName, float crossFadeTime = .5f)
+    {
+        overlay.CrossFadeAlpha(1, crossFadeTime, true);
+        
+        if (dialogueRunner != null)
+            dialogueRunner.Stop();
+        yield return new WaitForSeconds(crossFadeTime);
+        SceneManager.LoadScene(sceneName);
     }
 }

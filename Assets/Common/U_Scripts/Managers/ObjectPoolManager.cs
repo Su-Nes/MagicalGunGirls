@@ -74,6 +74,36 @@ public class ObjectPoolManager : MonoBehaviour
         return spawnableObj;
     }
     
+    public static GameObject SpawnObject(GameObject objToSpawn, Vector3 spawnPosition, Quaternion spawnRotation, Transform parent)
+    {
+        PooledObjectInfo pool = ObjectPools.Find(p => p.LookupString == objToSpawn.name);
+
+        if (pool == null) // if nonexistent pool, create one
+        {
+            pool = new PooledObjectInfo() { LookupString = objToSpawn.name };
+            ObjectPools.Add(pool);
+        }
+
+        GameObject spawnableObj = pool.InactiveObjects.FirstOrDefault();
+
+        if (spawnableObj == null)
+        {
+            spawnableObj = Instantiate(objToSpawn, spawnPosition, spawnRotation);
+            AllObjects.Add(spawnableObj);
+
+            spawnableObj.transform.SetParent(parent);
+        }
+        else
+        {
+            spawnableObj.transform.position = spawnPosition;
+            spawnableObj.transform.rotation = spawnRotation;
+            pool.InactiveObjects.Remove(spawnableObj);
+            spawnableObj.SetActive(true);
+        }
+
+        return spawnableObj;
+    }
+    
     public static GameObject SpawnObject(GameObject objToSpawn, Transform parent)
     {
         PooledObjectInfo pool = ObjectPools.Find(p => p.LookupString == objToSpawn.name);

@@ -1,0 +1,11 @@
+﻿title: SavingTrina
+tags:
+---
+    Trina: Hey, Ev, how's it goin'?
+    What the hell are you still doing out here? Why haven't you returned to base?
+    Trina: Huh? How long have I been away for?
+    Days.
+    Trina: Shit... Sorry about that... I'll come back now.
+    Trina: Wait. I hear enemies!
+    <<TrinaEnemyEncounter TrinaSequence>>
+===

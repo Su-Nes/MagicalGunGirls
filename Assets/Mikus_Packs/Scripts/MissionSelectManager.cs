@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -6,8 +7,8 @@ public class MissionSelectManager : MonoBehaviour
 {
     public static MissionSelectManager Instance;
 
-    public Text missionNameText; //Self explanitory
-    public Text missionDescriptionText; //Same here
+    public TMP_Text missionTitleText; //Self explanitory
+    public TMP_Text missionDescriptionText; //Same here
     public Button confirmButton; //Here too 
 
     private string selectedSceneName; //Mmmmmmmmm.... level
@@ -29,9 +30,9 @@ public class MissionSelectManager : MonoBehaviour
         }
     }
 
-    public void DisplayMissionDetails(string name, string description, string scene)
+    public void DisplayMissionDetails(string title, string description, string scene)
     {
-        missionNameText.text = name;
+        missionTitleText.text = title;
         missionDescriptionText.text = description;
         selectedSceneName = scene;
     }
