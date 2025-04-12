@@ -7,15 +7,12 @@ using UnityEngine.UI;
 public class TeamCompositionManager : MonoBehaviour
 {
     [SerializeField] private Transform viewport;
-    private DataPersistenceManager dataPersistenceManager;
 
     private void Start()
     {
         Time.timeScale = 0f;
         
-        dataPersistenceManager = FindObjectOfType<DataPersistenceManager>();
-        
-        foreach (GameObject character in dataPersistenceManager.UnlockedCharacters)
+        foreach (GameObject character in DataPersistenceManager.Instance.UnlockedCharacters)
         {
             Instantiate(character.GetComponent<CharacterStatManager>().descriptionUIObj, Vector3.zero, Quaternion.identity, viewport);
         }

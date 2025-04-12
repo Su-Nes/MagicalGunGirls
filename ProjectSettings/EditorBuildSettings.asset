@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/World/Levels/MainMenu/MainMenu.unity
+    path: Assets/World/Levels/0_MainMenu/MainMenu.unity
     guid: 900f025eacf5b164293ad4864657d77f
   - enabled: 1
-    path: Assets/World/Levels/BaseCamp/BaseCamp.unity
+    path: Assets/World/Levels/1_BaseCamp/BaseCamp.unity
     guid: 5b86eaecf13144e4ca4ab08b30c58f36
   - enabled: 1
     path: Assets/World/Levels/TutorialScenes/Playtest_1.unity

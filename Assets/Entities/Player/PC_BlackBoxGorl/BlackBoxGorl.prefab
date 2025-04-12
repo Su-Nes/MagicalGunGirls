@@ -921,7 +921,8 @@ MonoBehaviour:
     type: 3}
   cooldownUIObj: {fileID: 8998009456628543242, guid: 1e25d7c515fe4f54ca622882675a9b46,
     type: 3}
-  descriptionUIObj: {fileID: 0}
+  descriptionUIObj: {fileID: 6707048607902378974, guid: 763447545f595b7499d3974c89d016e7,
+    type: 3}
 --- !u!1 &8623779256778030844
 GameObject:
   m_ObjectHideFlags: 0

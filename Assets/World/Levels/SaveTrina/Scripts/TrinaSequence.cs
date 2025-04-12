@@ -23,7 +23,16 @@ public class TrinaSequence : MonoBehaviour
 
     private void Update()
     {
-        if (enemyParent.childCount <= 0 && !sequenceFinished)
+        if (trinaObj.activeSelf)
+            return;
+
+        foreach (Transform enemy in enemyParent)
+        {
+            if (enemy.gameObject.activeSelf)
+                return;
+        }
+        
+        if (!sequenceFinished)
         {
             sequenceFinished = true;
             GameManager.Instance.LoadSceneWithName("BaseCamp_Evening");

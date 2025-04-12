@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CharacterSwap : MonoBehaviour
 {
-    [SerializeField] private int maxCharacters = 2;
     [SerializeField] private TMP_Text teamSizeText;
     [SerializeField] private List<GameObject> characterPrefabs;
     public int CharacterCount { get { return characterPrefabs.Count; } }
@@ -17,11 +16,12 @@ public class CharacterSwap : MonoBehaviour
     private void Awake()
     {
         UIParent = GameObject.Find("CharacterSelectLayout").transform;
-        InitialiseCharacters();
     }
 
     private void Start()
     {
+        InitialiseCharacters();
+        
         if (characterPrefabs.Count > 0)
         {
             whichCharacter = 0;
@@ -52,7 +52,7 @@ public class CharacterSwap : MonoBehaviour
 
     private void InitialiseCharacters()
     {
-        teamSizeText.text = $"Max team size: {maxCharacters}";
+        teamSizeText.text = $"Max team size: {DataPersistenceManager.Instance.maxCharacters}";
         
         foreach (Transform child in UIParent)
         {
@@ -76,16 +76,16 @@ public class CharacterSwap : MonoBehaviour
             TMP_Text charName = Instantiate(charNameDisplayText, Vector3.zero, Quaternion.identity, teamDisplayParent).GetComponent<TMP_Text>();
             charName.text = ch.GetComponent<CharacterStatManager>().CharacterName;
         }
-
+        
         Swap(transform.childCount - 1);
     }
 
     public void AddCharacter(GameObject character, bool increaseCharacterLimit = false)
     {
         if (increaseCharacterLimit)
-            maxCharacters++;
+            DataPersistenceManager.Instance.maxCharacters++;
         
-        if (characterPrefabs.Count >= maxCharacters)
+        if (characterPrefabs.Count >= DataPersistenceManager.Instance.maxCharacters)
             return;
         
         characterPrefabs.Add(character);

@@ -30,6 +30,8 @@ public class CorpseBallAI : EnemyAI
     
     protected override void FixedUpdate()
     {
+        rb.isKinematic = GameManager.Instance.FreezePlayer;
+        
         if (NavMesh.CalculatePath(transform.position, target.position, NavMesh.AllAreas, path))
         {
             Vector3 dir = path.corners[1] - transform.position;
