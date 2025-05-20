@@ -3,15 +3,18 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
+    [Header("INSERT STATS OBJECT")]
+    [SerializeField] private Stats characterStatSO;
+    [Header("END STATS OBJECT")]
+    
     [Header("Attack base parameters: ")] 
     [SerializeField] protected bool attackEnabled = true;
-    [SerializeField] protected float timeBetweenAttacks = .1f;
     [Tooltip("If ya' want multiple attack sources to fire with alternate timings, switch this on.")]
     [SerializeField] protected bool fireOffset;
     [SerializeField] protected string attackInputName = "Fire1";
     private float attackTimer;
-    
-    [Header("Usage managers: ")]
+
+    [Header("Usage managers: ")] 
     [SerializeField] private AmmoManager _ammoManager;
     [SerializeField] private int ammoSpentPerShot = 1;
     [SerializeField] private bool resetReloadTimeOnFire;
@@ -27,8 +30,9 @@ public class Attack : MonoBehaviour
     
     private void Start()
     {
+        print(transform.root);
         if (fireOffset)
-            attackTimer = timeBetweenAttacks / 2f;
+            attackTimer = characterStatSO.fireDelay / 2f;
     }
     
     protected virtual void Update()
@@ -42,7 +46,7 @@ public class Attack : MonoBehaviour
             return;
         
         if (fireOffset && Input.GetButtonDown(attackInputName))
-            attackTimer = timeBetweenAttacks / 2f;
+            attackTimer = characterStatSO.fireDelay / 2f;
         
         if (Input.GetButton(attackInputName))
         {
@@ -82,11 +86,11 @@ public class Attack : MonoBehaviour
         }
         
         if (_cooldownManager != null)
-            _cooldownManager.TriggerCooldown(cooldownTime);
+            _cooldownManager.TriggerCooldown(cooldownTime * characterStatSO.cooldownModifier);
     }
     
     protected virtual void AttackReleased()
     {
-        attackTimer = timeBetweenAttacks;
+        attackTimer = characterStatSO.fireDelay;
     }
 }

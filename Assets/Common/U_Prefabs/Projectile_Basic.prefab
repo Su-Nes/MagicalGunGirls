@@ -164,6 +164,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 770df84e22260f94aa8462d763a5bdb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterStatSO: {fileID: 11400000, guid: 008e068757af7e6448b3769437a0c8ec, type: 2}
   damage: 1.2
+  lifetime: 1
+  delayBetweenHits: 0.5
   monitoring: 1
   destroyOnHit: 1
+  continuousDamage: 0
+  destroysProjectiles: 0
+  overwriteDisableObj: {fileID: 0}

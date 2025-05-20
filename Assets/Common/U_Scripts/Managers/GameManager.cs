@@ -16,11 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Image overlay;
     
     private DialogueRunner dialogueRunner;
-    private bool freezePlayer;
-    public bool FreezePlayer
-    {
-        get { return freezePlayer; }
-    }
+    public bool FreezePlayer;
     
     private Volume postProcessing;
     private float chromeAbbDefault, vignetteDefault;
@@ -79,7 +75,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     { // this bool is checked by other scripts. when it is true, their update methods return null
         if (dialogueRunner != null)
-            freezePlayer = dialogueRunner.IsDialogueRunning || pauseScreen.activeSelf;
+            FreezePlayer = dialogueRunner.IsDialogueRunning || pauseScreen.activeSelf;
 
         if (Input.GetButtonDown("Cancel") && pauseScreenEnabled) // toggle pause
         {

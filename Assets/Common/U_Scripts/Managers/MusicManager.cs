@@ -1,11 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MusicManager : MonoBehaviour
 {
-    [SerializeField] private AudioClip[] musicTracks;
+    [SerializeField] private AudioClip[] sceneMusicArray;
     private int trackIndex;
 
     [SerializeField] private float fadeSpeed = .5f;
@@ -22,18 +25,22 @@ public class MusicManager : MonoBehaviour
         } else {
             _instance = this;
         }
+        
     }
 
-    
-    public void FadeToNextTrack()
+    private void OnEnable()
     {
-        Fade(musicTracks[trackIndex], GetComponent<AudioSource>().volume);
-        trackIndex++;
+        SceneManager.activeSceneChanged += FadeToTrackWithIndex;
     }
-    
-    private void Fade(AudioClip clip, float volume)
+
+    private void OnDisable()
     {
-        StartCoroutine(FadeIt(clip, volume));
+        SceneManager.activeSceneChanged -= FadeToTrackWithIndex;
+    }
+
+    public void FadeToTrackWithIndex(Scene current, Scene next)
+    {
+        StartCoroutine(FadeIt(sceneMusicArray[next.buildIndex], 1f));
     }
     
     private IEnumerator FadeIt(AudioClip clip, float volume)

@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class Ability : MonoBehaviour
 {
-    [Header("Usage managers: ")]
+    [Header("Usage managers: ")] 
+    [SerializeField] private Stats characterStatSO;
     [SerializeField] private AmmoManager _ammoManager;
     [SerializeField] private int ammoSpentPerShot = 1;
     [SerializeField] private CooldownManager _cooldownManager;
@@ -26,6 +27,6 @@ public class Ability : MonoBehaviour
             _ammoManager.SpendBullet(ammoSpentPerShot);
         
         if (_cooldownManager != null)
-            _cooldownManager.TriggerCooldown(cooldownTime);
+            _cooldownManager.TriggerCooldown(cooldownTime * characterStatSO.cooldownModifier);
     }
 }

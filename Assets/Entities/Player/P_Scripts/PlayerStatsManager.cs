@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -9,7 +10,10 @@ using Yarn.Unity;
 public class PlayerStatsManager : MonoBehaviour
 {
     [SerializeField] private float maxHealth = 100f;
-    [SerializeField] private Image healthUI;
+    private bool isDead;
+    public bool Invincible;
+    [SerializeField] private Image healthUIBar;
+    [SerializeField] private TMP_Text healthUIText; 
     private float health;
     
     [Header("Hit effects: ")]
@@ -39,9 +43,10 @@ public class PlayerStatsManager : MonoBehaviour
 
     private void Update()
     {
-        healthUI.fillAmount = health / maxHealth;
-        
-        if (health <= 0f)
+        healthUIBar.fillAmount = health / maxHealth;
+        healthUIText.text = $"{health}/{maxHealth}";
+
+        if (health <= 0f && !isDead)
             Die();
     }
 
@@ -49,9 +54,22 @@ public class PlayerStatsManager : MonoBehaviour
     public void ModifyHealthValue(float add)
     {
         if (add < 0f)
+        {
+            if (Invincible)
+                return;
             StartCoroutine(GetHitEffect());
+        }
         
         health += add;
+        if (health > maxHealth)
+            health = maxHealth;
+    }
+    
+    public void ModifyMaxHealthValue(float add)
+    {
+        maxHealth += add;
+        ModifyHealthValue(add);
+        
         if (health > maxHealth)
             health = maxHealth;
     }
@@ -71,6 +89,7 @@ public class PlayerStatsManager : MonoBehaviour
 
     private void Die()
     {
+        isDead = true;
         GameManager.Instance.GameOver();
     }
 }

@@ -19,6 +19,7 @@ public class EnemyAI : MonoBehaviour
     private float stunTime;
     
     [SerializeField] protected SpriteFlicker _spriteFlicker;
+    [SerializeField] protected GameObject deathParticles;
     
     
         
@@ -101,7 +102,10 @@ public class EnemyAI : MonoBehaviour
         if (ObjectPoolManager.IsInPool(gameObject))
             ObjectPoolManager.ReturnObjectToPool(gameObject);
         else 
-            Destroy(gameObject);    
+            Destroy(gameObject);
+
+        ObjectPoolManager.SpawnObject(deathParticles, transform.position, deathParticles.transform.rotation,
+            ObjectPoolManager.PoolType.GameObject);
         
         if (ScoreManager.Instance is not null)
             ScoreManager.Instance.UpdateScore(1);

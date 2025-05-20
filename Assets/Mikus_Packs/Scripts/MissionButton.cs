@@ -7,9 +7,11 @@ public class MissionButton : MonoBehaviour
     [TextArea(2, 5)]
     [SerializeField] private string missionDescription; // Same here
     [SerializeField] private string sceneToLoad; // Here too
+    [SerializeField] private Upgrade upgrade;
 
     private Button button; // Add the button that's needed
-
+    
+    
     private void Start()
     {
         button = GetComponent<Button>();
@@ -21,6 +23,6 @@ public class MissionButton : MonoBehaviour
 
     private void OnMissionSelected()
     {
-        MissionSelectManager.Instance.DisplayMissionDetails(missionName, missionDescription, sceneToLoad);
+        MissionSelectManager.Instance.DisplayMissionDetails(missionName, missionDescription, sceneToLoad, upgrade);
     }
 }

@@ -1854,7 +1854,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 4717386454101131173, guid: ca1f5ab2a0226f24ebd6ae1a858f187c,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: dfeabcb6fbf9d8f4dba44395bbaf865e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2bb1041e32325c44193ca07072eac5fc, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1952,10 +1952,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d90252461d20f4469587e02d40bd5be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicTracks:
-  - {fileID: 8300000, guid: 18c61ecd972a94745be805011b001ba0, type: 3}
-  - {fileID: 8300000, guid: 695d0f4141640cb4184f091e7c4328e3, type: 3}
-  fadeSpeed: 0.5
+  sceneMusicArray:
+  - {fileID: 8300000, guid: dfeabcb6fbf9d8f4dba44395bbaf865e, type: 3}
+  - {fileID: 8300000, guid: 2bb1041e32325c44193ca07072eac5fc, type: 3}
+  - {fileID: 8300000, guid: 2bb1041e32325c44193ca07072eac5fc, type: 3}
+  fadeSpeed: 2
 --- !u!1 &3087198158339157408
 GameObject:
   m_ObjectHideFlags: 0
@@ -3570,6 +3571,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseScreen: {fileID: 3465770552032247004}
   overlay: {fileID: 5133425959824091961}
+  FreezePlayer: 0
 --- !u!1 &5357640861619028670
 GameObject:
   m_ObjectHideFlags: 0
@@ -4023,6 +4025,7 @@ MonoBehaviour:
   unlockedCharacters:
   - {fileID: 5664205877566595544, guid: 6898ade274ac48d45babdf593ba37ef7, type: 3}
   - {fileID: 71587438018056645, guid: 9efa9c5f706874d4cb42eeb9275248c1, type: 3}
+  maxCharacters: 2
 --- !u!1 &5937156914479391120
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,10 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof (Rigidbody))]
 public class BasicExplosive : MonoBehaviour
 {
-    [SerializeField] private Renderer modelRenderer;
-    [SerializeField] private GameObject effectObject;
-    [SerializeField] private float effectLifetime = 1f;
-    
     private enum StartDirection
     {
         Forward,
@@ -18,6 +14,14 @@ public class BasicExplosive : MonoBehaviour
         Up,
         Down
     }
+    
+    [Header("INSERT STATS OBJECT")]
+    [SerializeField] private Stats characterStatSO;
+    [Header("END STATS OBJECT")]
+    
+    [SerializeField] private Renderer modelRenderer;
+    [SerializeField] private GameObject effectObject;
+    [SerializeField] private float effectLifetime = 1f;
     
     [Header("Physics params: ")]
     [SerializeField] private float throwForce;
@@ -107,7 +111,7 @@ public class BasicExplosive : MonoBehaviour
             
             if (col.TryGetComponent(out EnemyAI enemy))
             {
-                enemy.TakeDamage(damage);
+                enemy.TakeDamage(damage * characterStatSO.attackDmgModifier);
                 enemy.InflictStun(stunTime);
             }
             

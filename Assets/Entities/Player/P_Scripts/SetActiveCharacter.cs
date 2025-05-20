@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class SetActiveCharacter : MonoBehaviour
 {
+    [Header("INSERT STATS OBJECT")]
+    [SerializeField] private Stats characterStatSO;
+    [Header("END STATS OBJECT")]
+    
     [SerializeField] private Transform activeComponentParent;
     private Transform characterSelectUI;
     private Image selectUIImage;
     
     private PlayerMovement playerMovement;
-
-    [SerializeField] private float characterSpeed;
+    
     [SerializeField] private float UIActiveAlpha, UIInactiveAlpha;
     [SerializeField] private float selectedWidth, unselectedWidth;
 
@@ -24,7 +27,7 @@ public class SetActiveCharacter : MonoBehaviour
     public void SetCharacterState(bool activeSelf)
     {
         if(activeSelf)
-            playerMovement.MoveSpeed = characterSpeed;
+            playerMovement.MoveSpeed = characterStatSO.moveSpeed;
         
         activeComponentParent.gameObject.SetActive(activeSelf); // activate character components
 

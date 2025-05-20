@@ -7,11 +7,10 @@ public class MissionSelectManager : MonoBehaviour
 {
     public static MissionSelectManager Instance;
 
-    public TMP_Text missionTitleText; //Self explanitory
-    public TMP_Text missionDescriptionText; //Same here
-    public Button confirmButton; //Here too 
+    [SerializeField] private TMP_Text missionTitleText, missionDescriptionText, missionUpgradeText;
+    [SerializeField] private Button confirmButton;
 
-    private string selectedSceneName; //Mmmmmmmmm.... level
+    private string selectedSceneName;
 
     private void Awake()
     {
@@ -30,10 +29,11 @@ public class MissionSelectManager : MonoBehaviour
         }
     }
 
-    public void DisplayMissionDetails(string title, string description, string scene)
+    public void DisplayMissionDetails(string title, string description, string scene, Upgrade upgrade)
     {
         missionTitleText.text = title;
         missionDescriptionText.text = description;
+        missionUpgradeText.text = upgrade.upgradeDescription;
         selectedSceneName = scene;
     }
 
