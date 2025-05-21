@@ -7,6 +7,7 @@ public class MissionSelectManager : MonoBehaviour
 {
     public static MissionSelectManager Instance;
 
+    [SerializeField] private GameObject missionCanvas;
     [SerializeField] private TMP_Text missionTitleText, missionDescriptionText, missionUpgradeText;
     [SerializeField] private Button confirmButton;
 
@@ -29,12 +30,18 @@ public class MissionSelectManager : MonoBehaviour
         }
     }
 
-    public void DisplayMissionDetails(string title, string description, string scene, Upgrade upgrade)
+    public void ToggleDisplay()
     {
-        missionTitleText.text = title;
-        missionDescriptionText.text = description;
-        missionUpgradeText.text = upgrade.upgradeDescription;
-        selectedSceneName = scene;
+        missionCanvas.SetActive(!missionCanvas.activeSelf);
+        GameManager.Instance.FreezePlayer = missionCanvas.activeSelf;
+    }
+
+    public void DisplayMissionDetails(Mission mission)
+    {
+        missionTitleText.text = mission.missionTitle;
+        missionDescriptionText.text = mission.description;
+        missionUpgradeText.text = $"Reward: {mission.upgrade.upgradeDescription}";
+        selectedSceneName = mission.sceneToLoad;
     }
 
     private void OnConfirmMission()

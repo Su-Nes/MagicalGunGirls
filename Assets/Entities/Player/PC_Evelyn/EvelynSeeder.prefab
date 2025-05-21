@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25aee8530def7814fb1a06be830d7d74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterStatSO: {fileID: 11400000, guid: dcfc2348731e2ad4cbfdb2f84564136a, type: 2}
   activeComponentParent: {fileID: 385932858468772408}
-  characterSpeed: 100
   UIActiveAlpha: 1
   UIInactiveAlpha: 0.1
   selectedWidth: 300
