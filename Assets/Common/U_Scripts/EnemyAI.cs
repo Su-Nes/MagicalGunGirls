@@ -98,7 +98,11 @@ public class EnemyAI : MonoBehaviour
     protected virtual void Die()
     {
         health = maxHealth; // for when this gets re-enabled in the pool
-        
+
+        // Notify MissionManager BEFORE destroying or pooling
+        if (MissionManager.Instance != null)
+            MissionManager.Instance.EnemyKilled();
+
         if (ObjectPoolManager.IsInPool(gameObject))
             ObjectPoolManager.ReturnObjectToPool(gameObject);
         else 
@@ -106,8 +110,9 @@ public class EnemyAI : MonoBehaviour
 
         ObjectPoolManager.SpawnObject(deathParticles, transform.position, deathParticles.transform.rotation,
             ObjectPoolManager.PoolType.GameObject);
-        
+
         if (ScoreManager.Instance is not null)
             ScoreManager.Instance.UpdateScore(1);
     }
+
 }
