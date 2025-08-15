@@ -30,7 +30,7 @@ public class CorpseBallAI : EnemyAI
     
     protected override void FixedUpdate()
     {
-        rb.isKinematic = GameManager.Instance.FreezePlayer;
+        rb.isKinematic = GameManager.Instance.FreezeEnemies;
         
         if (NavMesh.CalculatePath(transform.position, target.position, NavMesh.AllAreas, path))
         {

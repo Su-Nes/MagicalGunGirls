@@ -20,15 +20,3 @@ public class AddUpgrade : MonoBehaviour
         character.ApplyUpgrade(upgrade);
     }
 }
-
-/*[CustomEditor(typeof(AddUpgrade))]
-class DebugUpgrades : Editor {
-    
-    
-    public override void OnInspectorGUI() {
-        if (GUILayout.Button("Test Upgrade"))
-        {
-            debugStats.ApplyUpgrade(debugUpgrade);
-        }
-    }
-}*/

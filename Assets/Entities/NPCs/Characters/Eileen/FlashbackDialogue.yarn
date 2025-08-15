@@ -1,0 +1,26 @@
+﻿title: Controls
+tags:
+---
+    <<FreezePlayer GameManager false>>
+    <<AutomaticDialogue GameManager true>>
+    WASD to move. Left Click to primary attack.
+===
+
+title: SecondaryControls
+tags:
+---
+    <<FreezePlayer GameManager false>>
+    <<AutomaticDialogue GameManager true>>
+    Right click to fire secondary attack. Left Shift or Spacebar to activate special ability.
+===
+
+title: SendBackup
+tags:
+---
+    <<FreezePlayer GameManager false>>
+    <<AutomaticDialogue GameManager true 2>>
+    Evelyn: I'm encountering heavy rot presence. Requesting backup.
+    Trina: Roger that. Coming in!
+    <<InvokeEvent FlashbackFightSequencing>>
+    Switch between characters with Q and E or number keys.
+===

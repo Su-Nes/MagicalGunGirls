@@ -1,0 +1,21 @@
+﻿title: EileenIntroduction
+tags:
+---
+    Eileen: Hi, Evelyn! How are you faring?
+    Evelyn: Legs are weak, vision is still blurry, and it feels like there's a crater in my chest.
+    Evelyn: Could always be worse, I guess.
+    Eileen: Well, as long as your brain is working, we have everything we need to succeed.
+    Evelyn: I suppose so.
+    Eileen: On another note, Trina hasn't returned from her scouting mission yet. I think we should send someone out there to search for her.
+    Eileen: The rescue mission has been posted to the board.
+    Evelyn: That damn Trina... OK, I'll check it out.
+===
+
+title: StartOperation
+---
+    Eileen: We set out at your command, Evelyn.
+    
+        -> Start operation Stork's Nest.
+            <<LoadSceneWithName GameManager 1stLevel>>
+        -> Give me a moment.
+===

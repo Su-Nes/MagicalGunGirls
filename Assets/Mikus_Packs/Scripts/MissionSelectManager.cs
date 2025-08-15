@@ -11,7 +11,7 @@ public class MissionSelectManager : MonoBehaviour
     [SerializeField] private TMP_Text missionTitleText, missionDescriptionText, missionUpgradeText;
     [SerializeField] private Button confirmButton;
 
-    private string selectedSceneName;
+    public Mission currentMission;
 
     private void Awake()
     {
@@ -38,17 +38,14 @@ public class MissionSelectManager : MonoBehaviour
 
     public void DisplayMissionDetails(Mission mission)
     {
+        currentMission = mission;
         missionTitleText.text = mission.missionTitle;
         missionDescriptionText.text = mission.description;
-        missionUpgradeText.text = $"Reward: {mission.upgrade.upgradeDescription}";
-        selectedSceneName = mission.sceneToLoad;
+        missionUpgradeText.text = $"Reward: {mission.mendingNectarReward}MN";
     }
 
     private void OnConfirmMission()
     {
-        if (!string.IsNullOrEmpty(selectedSceneName))
-        {
-            SceneManager.LoadScene(selectedSceneName);
-        }
+        SceneManager.LoadScene(currentMission.sceneToLoad);
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
@@ -11,12 +12,12 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
     public static GameManager Instance { get { return _instance; } }
     
-    [SerializeField] private GameObject pauseScreen;
+    [SerializeField] private GameObject pauseScreen, dialogueAdvanceButton;
     private bool pauseScreenEnabled;
     [SerializeField] private Image overlay;
     
     private DialogueRunner dialogueRunner;
-    public bool FreezePlayer;
+    public bool FreezePlayer, FreezeEnemies;
     
     private Volume postProcessing;
     private float chromeAbbDefault, vignetteDefault;
@@ -32,6 +33,8 @@ public class GameManager : MonoBehaviour
         }
         
         DontDestroyOnLoad(gameObject);
+
+        dialogueRunner = FindObjectOfType<DialogueRunner>();
     }
     
     private void OnEnable()
@@ -54,7 +57,7 @@ public class GameManager : MonoBehaviour
         // this function gets called whenever a scene in loaded in
     private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        dialogueRunner = FindObjectOfType<DialogueRunner>(); // get the newly loaded scene's dialogue runner
+        dialogueRunner.Stop();
         
         postProcessing.profile.TryGet(out ChromaticAberration ca); // reset post processing
         ca.intensity.value = chromeAbbDefault;
@@ -74,18 +77,43 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     { // this bool is checked by other scripts. when it is true, their update methods return null
-        if (dialogueRunner != null)
-            FreezePlayer = dialogueRunner.IsDialogueRunning || pauseScreen.activeSelf;
-
         if (Input.GetButtonDown("Cancel") && pauseScreenEnabled) // toggle pause
         {
             ToggleGamePause();
         }
     }
 
+    public void SetFreezePlayer(bool freeze)
+    {
+        FreezePlayer = freeze;
+    }
+
+    [YarnCommand("FreezePlayer")]
+    public void DelayFreezePlayer(bool freeze, float delay = .01f)
+    { // this bool is checked by other scripts (player movement mostly). when it is true, their update methods return null
+        StartCoroutine(ReheatPlayer(freeze, delay));
+    }
+
+    [YarnCommand("AutomaticDialogue")]
+    public void SetDialogueAutomatic(bool state, float holdTime = 3f)
+    {
+        LineView lineView = FindObjectOfType<LineView>();
+        lineView.autoAdvance = state;
+        lineView.holdTime = holdTime;
+        dialogueAdvanceButton.GetComponent<Image>().enabled = !state;
+        dialogueAdvanceButton.transform.GetChild(0).gameObject.SetActive(!state);
+    }
+
+    private IEnumerator ReheatPlayer(bool freeze, float delay) // this is to bypass line 88
+    {
+        yield return new WaitForSeconds(delay);
+        FreezePlayer = freeze;
+    }
+
     public void ToggleGamePause()
     {
         pauseScreen.SetActive(!pauseScreen.activeSelf);
+        Time.timeScale = pauseScreen.activeSelf ? 0f : 1f; // freeze time on pause
     }
 
     public void DisablePauseForCurrentScene()

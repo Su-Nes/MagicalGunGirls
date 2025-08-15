@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class DashAbility : Ability
 {
+    [Header("Dash!")]
     [SerializeField] private float dashForce = 7f;
     
     private PlayerMovement playerMovement;

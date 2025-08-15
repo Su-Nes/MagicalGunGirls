@@ -8,9 +8,10 @@ public class JumpBombAbility : Ability
     [SerializeField] private float verticalVelocity = 10f;
     [SerializeField] private float bombDropRecoil = 2f;
     [SerializeField] private float bombDropDelay = .7f;
-    private FireProjectile bombLauncher;
     
+    private FireProjectile bombLauncher;
     private PlayerMovement playerController;
+    
 
 
     private void Awake()

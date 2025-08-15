@@ -12,8 +12,9 @@ public class AmmoManager : AttackManager
     [SerializeField] private TMP_Text ammoText;
     [SerializeField] private Image cooldownUI;
     [HideInInspector] public bool reloadOverwritten;
-
+    [SerializeField] private float reloadTime = 1f;
     [SerializeField] private bool fillConsecutively;
+    [SerializeField] private int maxAmmo;
     private int bulletCount;
     private float reloadTimer;
 
@@ -26,8 +27,8 @@ public class AmmoManager : AttackManager
     
     private void Start()
     {
-        bulletCount = characterStatSO.maxAmmo;
-        for (int i = characterStatSO.maxAmmo; i != 0; i--)
+        bulletCount = maxAmmo + characterStatSO.bonusMaxAmmo;
+        for (int i = bulletCount; i != 0; i--)
         {
             CreateDisplayObject();
         }
@@ -37,7 +38,7 @@ public class AmmoManager : AttackManager
 
     private void Update()
     {
-        cooldownUI.fillAmount = reloadTimer / characterStatSO.reloadTime;
+        cooldownUI.fillAmount = reloadTimer / (reloadTime * characterStatSO.reloadTimeModifier);
         
         if (!fillConsecutively)
         {
@@ -48,26 +49,26 @@ public class AmmoManager : AttackManager
             
                 reloadTimer += Time.deltaTime;
             
-                if (reloadTimer >= characterStatSO.reloadTime)
+                if (reloadTimer >= reloadTime * characterStatSO.reloadTimeModifier)
                 {
                     if (!reloadOverwritten)
                         EnableAttacks();
                 
-                    bulletCount = fillConsecutively && bulletCount < characterStatSO.maxAmmo ? +1 : characterStatSO.maxAmmo;
+                    bulletCount = fillConsecutively && bulletCount < maxAmmo + characterStatSO.bonusMaxAmmo ? +1 : maxAmmo + characterStatSO.bonusMaxAmmo;
                     reloadTimer = 0f;
                     
                     CreateDisplayObject();
                 }
             }
         }
-        else if (bulletCount < characterStatSO.maxAmmo)
+        else if (bulletCount < maxAmmo + characterStatSO.bonusMaxAmmo)
         {
             if (bulletCount <= 0f)
                 DisableAttacks();
             
             reloadTimer += Time.deltaTime;
         
-            if (reloadTimer >= characterStatSO.reloadTime)
+            if (reloadTimer >= reloadTime * characterStatSO.reloadTimeModifier)
             {
                 if (!reloadOverwritten)
                     EnableAttacks();
@@ -95,7 +96,7 @@ public class AmmoManager : AttackManager
 
     public string AmmoString()
     {
-        return bulletCount.ToString("D2") + "/" + characterStatSO.maxAmmo.ToString("D2");
+        return bulletCount.ToString("D2") + "/" + (maxAmmo + characterStatSO.bonusMaxAmmo).ToString("D2");
     }
 
     private void CreateDisplayObject()

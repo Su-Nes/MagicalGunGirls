@@ -10,11 +10,10 @@ public class AddCharacterToTeam : MonoBehaviour
     
     private void Start()
     {
-        GetComponent<Button>().onClick.AddListener(AddCharacter);
         characterSwap = FindObjectOfType<CharacterSwap>();
     }
 
-    private void AddCharacter()
+    public void AddCharacter()
     {
         characterSwap.AddCharacter(characterPrefab);
     }

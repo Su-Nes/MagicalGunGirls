@@ -107,9 +107,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 8.841473
+  m_Height: 18.72462
   m_Direction: 1
-  m_Center: {x: 0, y: -3.9207358, z: 0}
+  m_Center: {x: 0, y: -8.8623085, z: 0}
 --- !u!54 &2791045264581618943
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStatSO: {fileID: 11400000, guid: 008e068757af7e6448b3769437a0c8ec, type: 2}
-  damage: 1.2
+  damage: 1.75
   lifetime: 1
   delayBetweenHits: 0.5
   monitoring: 1

@@ -38,6 +38,7 @@ public class SFXManager : MonoBehaviour
     private IEnumerator RemoveAudioSource(GameObject obj, float time)
     {
         yield return new WaitForSeconds(time);
-        ObjectPoolManager.ReturnObjectToPool(obj);
+        if(obj != null)
+            ObjectPoolManager.ReturnObjectToPool(obj);
     }
 }

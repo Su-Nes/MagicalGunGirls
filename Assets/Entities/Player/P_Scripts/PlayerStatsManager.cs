@@ -15,8 +15,9 @@ public class PlayerStatsManager : MonoBehaviour
     [SerializeField] private Image healthUIBar;
     [SerializeField] private TMP_Text healthUIText; 
     private float health;
-    
-    [Header("Hit effects: ")]
+
+    [Header("Hit effects: ")] 
+    [SerializeField] private AudioClip takeHitSFX;
     [SerializeField] private float effectLerp = .3f;
     [SerializeField] private float chromeAbbMaxIntensity = .8f;
     [SerializeField] private float vignetteMaxIntensity = .8f;
@@ -63,6 +64,9 @@ public class PlayerStatsManager : MonoBehaviour
         health += add;
         if (health > maxHealth)
             health = maxHealth;
+
+        if (health < 0f)
+            health = 0f;
     }
     
     public void ModifyMaxHealthValue(float add)
@@ -76,6 +80,8 @@ public class PlayerStatsManager : MonoBehaviour
 
     private IEnumerator GetHitEffect()
     {
+        SFXManager.Instance.PlaySFXClip(takeHitSFX, transform.position, 1f, .9f, 1f);
+        
         chromeAbb.intensity.value = chromeAbbMaxIntensity;
         vignette.intensity.value = vignetteMaxIntensity;
         

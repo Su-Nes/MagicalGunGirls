@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b786526f684d7d246a3fa2f4e52365d8, type: 3}
+  m_Name: +MaxHealth
+  m_EditorClassIdentifier: 
+  upgradeDescription: +20 shared HP
+  cost: 150
+  bonusMaxHealth: 20
+  cooldownModifierMultReduction: 0
+  reloadSpeedMultReduction: 0
+  fireDelayMultReduction: 0
+  bonusAttackModifier: 0
+  bonusMoveSpeed: 0
+  bonusAmmo: 0

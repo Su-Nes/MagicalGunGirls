@@ -15,12 +15,15 @@ public class BasicExplosive : MonoBehaviour
         Down
     }
     
+    [SerializeField] private AudioClip SFX;
+    [SerializeField] private float SFXVolume = 1f;
+    [SerializeField] private float minPitch = .9f, maxPitch = 1.1f;
+    
     [Header("INSERT STATS OBJECT")]
     [SerializeField] private Stats characterStatSO;
     [Header("END STATS OBJECT")]
     
-    [SerializeField] private Renderer modelRenderer;
-    [SerializeField] private GameObject effectObject;
+    [SerializeField] private GameObject effectObject, model;
     [SerializeField] private float effectLifetime = 1f;
     
     [Header("Physics params: ")]
@@ -31,7 +34,6 @@ public class BasicExplosive : MonoBehaviour
     [SerializeField] private float impactDetectionDelay = .5f;
     private float impactDetectionTimer;
     [SerializeField] private float explodeTimer;
-    [SerializeField] private float objectLifetime = 2f;
 
     [Header("Damage params: ")] 
     [SerializeField] private float radius = 10f;
@@ -56,14 +58,12 @@ public class BasicExplosive : MonoBehaviour
         GetComponent<Rigidbody>().AddForce(direction * throwForce, ForceMode.Impulse);
         
         StartCoroutine(ExplodeAfterTime(explodeTimer));
-        
-        Destroy(gameObject, objectLifetime);
     }
 
     private void OnEnable()
     {
         impactDetectionTimer = impactDetectionDelay;
-        modelRenderer.enabled = true;
+        model.SetActive(true);
     }
 
     private void Update()
@@ -79,7 +79,6 @@ public class BasicExplosive : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        print(other.gameObject.name);
         if (explodeOnImpact && impactDetectionTimer <= 0f)
         {
             Explode();
@@ -96,10 +95,13 @@ public class BasicExplosive : MonoBehaviour
 
     private void Explode()
     {
-        if (!modelRenderer.enabled)
+        if (!model.activeSelf)
             return;
         
-        modelRenderer.enabled = false; // use this as the check for whether the explosion has gone off yet
+        model.SetActive(false); // use this as the check for whether the explosion has gone off yet
+        
+        if(SFX != null)
+            SFXManager.Instance.PlaySFXClip(SFX, transform.position, SFXVolume, minPitch, maxPitch);
         
         GameObject newEffect = Instantiate(effectObject, transform.position, transform.rotation);
         Destroy(newEffect, effectLifetime);
@@ -121,5 +123,7 @@ public class BasicExplosive : MonoBehaviour
                 rb.AddForce((rb.transform.position - transform.position).normalized * knockBack / distanceFromOrigin, ForceMode.Impulse);
             }
         }
+        
+        ObjectPoolManager.ReturnObjectToPool(gameObject);
     }
 }

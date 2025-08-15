@@ -46,10 +46,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27ad3831c73932043a2f8c7a9621fa19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterStatSO: {fileID: 11400000, guid: 227d8cddc5c4da249b28ce5b4e122b8e, type: 2}
   _ammoManager: {fileID: 0}
   ammoSpentPerShot: 1
   _cooldownManager: {fileID: 7192677796458012209}
   cooldownTime: 2
+  SFX: {fileID: 8300000, guid: e086fcb539bcc4e4b9def700e3014d27, type: 3}
+  SFXVolume: 1
+  minPitch: 0.9
+  maxPitch: 1.1
   dashForce: 100
   damageDuration: 0.2
   stinger: {fileID: 3294161344577610409}
@@ -81,6 +86,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stinger
+      objectReference: {fileID: 0}
+    - target: {fileID: 7019564222043067590, guid: 471568b90b2c5b94b9053af0c37a7e80,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7647482545497132668, guid: 471568b90b2c5b94b9053af0c37a7e80,
         type: 3}

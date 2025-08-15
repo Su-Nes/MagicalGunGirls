@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStatSO: {fileID: 11400000, guid: 227d8cddc5c4da249b28ce5b4e122b8e, type: 2}
-  damage: 15
+  damage: 10
   lifetime: 0.3
   delayBetweenHits: 0.5
   monitoring: 1

@@ -6,7 +6,7 @@ using UnityEngine;
 public class DataPersistenceManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> unlockedCharacters = new();
-    public int maxCharacters = 2;
+    public int maxCharacters = 2, mendingNectar, missionsCompleted;
     
     private static DataPersistenceManager _instance;
     public static DataPersistenceManager Instance { get { return _instance; } }
@@ -27,7 +27,6 @@ public class DataPersistenceManager : MonoBehaviour
     {
         get { return unlockedCharacters; }
     }
-    
     
     public void UnlockCharacter(GameObject character)
     {

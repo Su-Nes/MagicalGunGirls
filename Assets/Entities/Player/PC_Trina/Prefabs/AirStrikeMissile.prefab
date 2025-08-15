@@ -97,8 +97,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3be6b48859f829340abc53ab43c4680c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SFX: {fileID: 8300000, guid: cc4b41f1fb0887b48b0bfb33f04fc3f5, type: 3}
+  SFXVolume: 1
+  minPitch: 1
+  maxPitch: 1
+  characterStatSO: {fileID: 11400000, guid: 78202ad9fa2c92042a3f8e2ca6a78a6a, type: 2}
   modelRenderer: {fileID: 8684870692134813350}
-  effectObject: {fileID: 270152106369743988, guid: ec09fce2176757f44bcd1ee39f2ce7ce,
+  effectObject: {fileID: 5162910912013668194, guid: d524f79a464d2954b82c93322480277c,
     type: 3}
   effectLifetime: 1
   throwForce: 30
@@ -107,7 +112,6 @@ MonoBehaviour:
   impactDetectionDelay: 0.1
   explodeTimer: 2.5
   objectLifetime: 3
-  characterStatSO: {fileID: 11400000, guid: 78202ad9fa2c92042a3f8e2ca6a78a6a, type: 2}
   radius: 10
   damage: 15
   stunTime: 0.5

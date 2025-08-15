@@ -40,6 +40,9 @@ public class MoveObjectContinuous : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GameManager.Instance.FreezeEnemies)
+            return;
+            
         transform.position += direction.normalized * moveSpeed;
     }
 

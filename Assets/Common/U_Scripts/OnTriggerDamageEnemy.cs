@@ -31,7 +31,7 @@ public class OnTriggerDamageEnemy : MonoBehaviour
             return;
         
         if(other.TryGetComponent(out EnemyAI enemy))
-            enemy.TakeDamage(damage);
+            enemy.TakeDamage(damage * characterStatSO.attackDmgModifier);
 
         if (destroysProjectiles)
         {
@@ -40,9 +40,15 @@ public class OnTriggerDamageEnemy : MonoBehaviour
                 ObjectPoolManager.ReturnObjectToPool(p.gameObject);
             }
         }
-        
-        if(destroyOnHit)
+
+        if (other.gameObject.layer == 6) // don't destroy on collision with ground
+            return;
+
+        if (destroyOnHit)
+        {
+            
             ObjectPoolManager.ReturnObjectToPool(overwriteDisableObj);
+        }
     }
 
     private void OnTriggerStay(Collider other)

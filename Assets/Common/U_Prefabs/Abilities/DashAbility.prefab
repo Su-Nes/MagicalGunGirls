@@ -44,8 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c743a1cb992f4349872a37147b2f032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterStatSO: {fileID: 11400000, guid: 008e068757af7e6448b3769437a0c8ec, type: 2}
   _ammoManager: {fileID: 0}
   ammoSpentPerShot: 1
   _cooldownManager: {fileID: 0}
   cooldownTime: 1
+  SFX: {fileID: 8300000, guid: e086fcb539bcc4e4b9def700e3014d27, type: 3}
   dashForce: 90

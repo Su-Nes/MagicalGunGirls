@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5514135438583252738}
   - component: {fileID: 5924831375073217707}
   - component: {fileID: 2172500527203202855}
+  - component: {fileID: 2171438696910038066}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -107,6 +108,25 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2171438696910038066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3329291368772197064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e75fbb486465c8a478fa0e13248d1f66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - {fileID: 8300000, guid: 3b25db96107c2e44ba6499bf1e581b71, type: 3}
+  - {fileID: 8300000, guid: 99b3b35a3b80b2b44acedfee6dc15326, type: 3}
+  - {fileID: 8300000, guid: 7631f0fd1fb0ee5489ed4d9ec8df05a0, type: 3}
+  SFXVolume: 0.5
+  minPitch: 0.8
+  maxPitch: 1.2
 --- !u!1 &7208049592400078014
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,6 +240,7 @@ GameObject:
   - component: {fileID: 7668595227897088637}
   - component: {fileID: 4122772854691244460}
   - component: {fileID: 8093870161643622060}
+  - component: {fileID: 8807666044466136131}
   m_Layer: 8
   m_Name: Toothy
   m_TagString: Enemy
@@ -312,13 +333,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 3.65
+  m_Height: 6
   m_Radius: 1.2
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1.18, z: 0}
 --- !u!114 &4122772854691244460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,11 +353,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 4
+  health: 0
   moveSpeed: 500
   fallVelocity: 0.3
   _spriteFlicker: {fileID: 3698154797184695404}
   deathParticles: {fileID: 270152106369743988, guid: 3d14b5ee44077bc4a8b905087d1e8660,
     type: 3}
+  hurtSound: {fileID: 8300000, guid: efa37fddcf8b4ad44bc6e9391bb9e525, type: 3}
 --- !u!114 &8093870161643622060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,3 +375,21 @@ MonoBehaviour:
   damageAmount: 10
   damageInterval: 1
   destroyOnHit: 0
+--- !u!114 &8807666044466136131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7308939184360992740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e75fbb486465c8a478fa0e13248d1f66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - {fileID: 8300000, guid: 0632c473238a72c4d80464c8aea4c7b3, type: 3}
+  - {fileID: 8300000, guid: 28c85aa4a177a2344b3f179e5da230fb, type: 3}
+  SFXVolume: 1
+  minPitch: 0.9
+  maxPitch: 1.1

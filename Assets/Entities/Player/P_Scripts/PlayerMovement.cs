@@ -1,10 +1,11 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Yarn.Unity;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
-    
     [SerializeField] private float moveSpeed = 10f;
     public float MoveSpeed { get { return moveSpeed;} set { moveSpeed = value; } }
     [SerializeField] private float velocityDampenLerpOnMove = .1f;
@@ -58,7 +59,6 @@ public class PlayerMovement : MonoBehaviour
             float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
             return angle < maxSlopeAngle && angle != 0f;
         }
-
         return false;
     }
 

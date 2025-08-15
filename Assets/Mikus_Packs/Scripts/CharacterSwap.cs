@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
+using Yarn.Unity;
 
 public class CharacterSwap : MonoBehaviour
 {
@@ -47,7 +49,6 @@ public class CharacterSwap : MonoBehaviour
         {
             Swap(inputInt - 1);
         }
-            
     }
 
     private void InitialiseCharacters()
@@ -78,9 +79,20 @@ public class CharacterSwap : MonoBehaviour
         }
         
         Swap(transform.childCount - 1);
+        whichCharacter = transform.childCount - 2;
     }
 
-    public void AddCharacter(GameObject character, bool increaseCharacterLimit = false)
+    public void AddCharacter(GameObject character)
+    {
+        if (characterPrefabs.Count >= DataPersistenceManager.Instance.maxCharacters)
+            return;
+        
+        characterPrefabs.Add(character);
+        characterPrefabs = characterPrefabs.Distinct().ToList();
+        InitialiseCharacters();
+    }
+    
+    public void AddCharacter(GameObject character, bool increaseCharacterLimit)
     {
         if (increaseCharacterLimit)
             DataPersistenceManager.Instance.maxCharacters++;
@@ -90,6 +102,12 @@ public class CharacterSwap : MonoBehaviour
         
         characterPrefabs.Add(character);
         InitialiseCharacters();
+        
+        if (characterPrefabs.Count > 0)
+        {
+            whichCharacter = 0;
+            Swap();
+        }
     }
 
     public void RemoveCharacter(GameObject character)

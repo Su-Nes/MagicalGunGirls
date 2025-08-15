@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 730712907967036814}
   - component: {fileID: 3169127267232109952}
   - component: {fileID: 6087677128600513353}
+  - component: {fileID: 8642268730958813859}
   m_Layer: 8
   m_Name: CorpseBall
   m_TagString: Untagged
@@ -98,18 +99,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 15
+  health: 0
   moveSpeed: 200
   fallVelocity: 5
   _spriteFlicker: {fileID: 0}
   deathParticles: {fileID: 270152106369743988, guid: 3d14b5ee44077bc4a8b905087d1e8660,
     type: 3}
+  hurtSound: {fileID: 8300000, guid: efa37fddcf8b4ad44bc6e9391bb9e525, type: 3}
   splitBallCount: 3
   splitBallObj: {fileID: 2337053378836740986, guid: 26e86c4727f13ab49b042c155df77749,
     type: 3}
   ballExplodeForce: 12
   ballSpawnDistance: 0.5
   renderers:
-  - {fileID: 7494003273865327930}
+  - {fileID: 4700968526894047941}
   flickerMat: {fileID: 2100000, guid: 517f994104ea9ae4da95242c40579f23, type: 2}
   flickerDuration: 0.15
 --- !u!114 &6087677128600513353
@@ -127,6 +130,24 @@ MonoBehaviour:
   damageAmount: 10
   damageInterval: 1
   destroyOnHit: 0
+--- !u!114 &8642268730958813859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2337053378836740986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e75fbb486465c8a478fa0e13248d1f66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - {fileID: 8300000, guid: 0632c473238a72c4d80464c8aea4c7b3, type: 3}
+  - {fileID: 8300000, guid: 28c85aa4a177a2344b3f179e5da230fb, type: 3}
+  SFXVolume: 0.5
+  minPitch: 0.6
+  maxPitch: 0.7
 --- !u!1 &2421293273709516298
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,16 +310,12 @@ PrefabInstance:
       value: CorpseBallModel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 65702495048144492, guid: a1ea375938d47ae41b5a364cd1b671a5, type: 3}
+    - {fileID: 5050422055867433376, guid: a1ea375938d47ae41b5a364cd1b671a5, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1ea375938d47ae41b5a364cd1b671a5, type: 3}
---- !u!23 &7494003273865327930 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: a1ea375938d47ae41b5a364cd1b671a5,
-    type: 3}
-  m_PrefabInstance: {fileID: 9205808318373292478}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8668057750921842261 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a1ea375938d47ae41b5a364cd1b671a5,

@@ -18,7 +18,7 @@ public class ProjectileEnemy : EnemyAI
         if (Vector3.Distance(transform.position, target.position) > fireRangeFromPlayer)
             return;
 
-        if (GameManager.Instance.FreezePlayer)
+        if (GameManager.Instance.FreezeEnemies)
             return; // don't fucking fire!!
         
         if (fireTimer < firePeriod)

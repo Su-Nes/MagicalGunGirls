@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class StingerAbility : Ability
 {
+    [Header("Stinger!")]
     [SerializeField] private float dashForce = 7f, damageDuration = .25f;
     [SerializeField] private OnTriggerDamageEnemy stinger;
     private PlayerMovement playerMovement;

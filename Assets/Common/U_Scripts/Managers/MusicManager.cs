@@ -40,7 +40,10 @@ public class MusicManager : MonoBehaviour
 
     public void FadeToTrackWithIndex(Scene current, Scene next)
     {
-        StartCoroutine(FadeIt(sceneMusicArray[next.buildIndex], 1f));
+        if(next.buildIndex < sceneMusicArray.Length)
+            StartCoroutine(FadeIt(sceneMusicArray[next.buildIndex], 1f));
+        else 
+            Debug.LogWarning("This scene has no related music track set!");
     }
     
     private IEnumerator FadeIt(AudioClip clip, float volume)

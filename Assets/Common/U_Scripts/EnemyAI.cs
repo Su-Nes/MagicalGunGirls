@@ -4,6 +4,7 @@ using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof (Rigidbody))]
+[RequireComponent(typeof(PlayRandomSound))]
 public class EnemyAI : MonoBehaviour
 {
     protected NavMeshPath path;
@@ -11,16 +12,17 @@ public class EnemyAI : MonoBehaviour
     private CharacterController _characterController;
     private Rigidbody _rigidBody;
     protected Transform target;
-    
-    [SerializeField] private float maxHealth = 5;
-    protected float health;
+    protected Vector3 targetPos;
+
+    [SerializeField] protected float maxHealth = 5;
+    [SerializeField] protected float health;
     [SerializeField] protected float moveSpeed;
     [SerializeField] private float fallVelocity = 5f;
-    private float stunTime;
+    private float stunTime, spawnInvincibilityTimer, spawnInvincibilityTime = .5f;
     
     [SerializeField] protected SpriteFlicker _spriteFlicker;
     [SerializeField] protected GameObject deathParticles;
-    
+    [SerializeField] protected AudioClip hurtSound;
     
         
     protected virtual void Awake()
@@ -32,17 +34,23 @@ public class EnemyAI : MonoBehaviour
         target = GameObject.FindWithTag("Player").GetComponent<Transform>();
 
         health = maxHealth;
+        spawnInvincibilityTimer = spawnInvincibilityTime;
     }
 
     protected virtual void FixedUpdate()
     {
-        if (GameManager.Instance.FreezePlayer)
+        spawnInvincibilityTimer -= Time.deltaTime;
+        
+        if (GameManager.Instance.FreezeEnemies)
             return;
         
         if (_characterController != null && !_characterController.enabled)
             return;
+
+        targetPos = target.position;
+        targetPos.y = transform.position.y;
         
-        if (NavMesh.CalculatePath(transform.position, target.position, NavMesh.AllAreas, path))
+        if (NavMesh.CalculatePath(transform.position, targetPos, NavMesh.AllAreas, path))
         {
             Vector3 dir = path.corners[1] - transform.position;
             Vector3 dirFlat = new(dir.x, 0f, dir.z);
@@ -53,7 +61,7 @@ public class EnemyAI : MonoBehaviour
         // dies if not found on nav mesh
         if (!NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 5f, NavMesh.AllAreas) && moveSpeed > 0)
         {
-            print($"{name} deleted because entity is off nav mesh");
+            Debug.LogWarning($"{name} deleted because entity is off nav mesh");
             Die();
         }
         
@@ -72,8 +80,12 @@ public class EnemyAI : MonoBehaviour
 
     public virtual void TakeDamage(float healthValue)
     {
+        if (spawnInvincibilityTimer > 0f)
+            return;
+
         health -= healthValue;
         _spriteFlicker.Flicker();
+        SFXManager.Instance.PlaySFXClip(hurtSound, transform.position, .5f, .7f, 1.05f);
     }
 
     public void InflictStun(float stunLength)
@@ -98,6 +110,7 @@ public class EnemyAI : MonoBehaviour
     protected virtual void Die()
     {
         health = maxHealth; // for when this gets re-enabled in the pool
+        spawnInvincibilityTimer = spawnInvincibilityTime;
 
         // Notify MissionManager BEFORE destroying or pooling
         if (MissionManager.Instance != null)
@@ -110,9 +123,10 @@ public class EnemyAI : MonoBehaviour
 
         ObjectPoolManager.SpawnObject(deathParticles, transform.position, deathParticles.transform.rotation,
             ObjectPoolManager.PoolType.GameObject);
-
+        
+        GetComponent<PlayRandomSound>().Play(); // death SFX
+        
         if (ScoreManager.Instance is not null)
             ScoreManager.Instance.UpdateScore(1);
     }
-
 }

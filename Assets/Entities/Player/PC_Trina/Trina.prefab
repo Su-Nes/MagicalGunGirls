@@ -59,7 +59,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -476,6 +476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1378696677404930605}
   - component: {fileID: 3239146572875245660}
+  - component: {fileID: 6741984162702732590}
   m_Layer: 0
   m_Name: RocketLauncher
   m_TagString: Untagged
@@ -510,11 +511,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6275e1054baee4e4186efb805b6e7876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackEnabled: 1
   characterStatSO: {fileID: 11400000, guid: 78202ad9fa2c92042a3f8e2ca6a78a6a, type: 2}
+  attackEnabled: 1
   fireOffset: 0
   attackInputName: Fire1
-  _ammoManager: {fileID: 7685292744564543013}
+  _ammoManager: {fileID: 6741984162702732590}
   ammoSpentPerShot: 1
   resetReloadTimeOnFire: 1
   _cooldownManager: {fileID: 0}
@@ -524,13 +525,40 @@ MonoBehaviour:
       m_Calls: []
   animator: {fileID: 5256232209021759509}
   animationName: BlackBoxGorl_Attack1
+  muzzleFlash: {fileID: 0}
+  SFX: {fileID: 8300000, guid: f281b6a03e503164fba0a2a19fe693e6, type: 3}
+  SFXVolume: 0.8
+  minPitch: 0.9
+  maxPitch: 1.1
   projectile: {fileID: 7577338156716580612, guid: aac7033e7540a184c83f9e6fc1f8f1c9,
     type: 3}
   alternateProjectileFlip: 0
-  SFX: {fileID: 0}
-  SFXVolume: 1
-  minPitch: 0.9
-  maxPitch: 1.1
+--- !u!114 &6741984162702732590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2851634040499070935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8babbc48c577e4640a6e30c10105df54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  managedAttacks:
+  - {fileID: 3239146572875245660}
+  managedAbilities: []
+  characterStatSO: {fileID: 11400000, guid: 78202ad9fa2c92042a3f8e2ca6a78a6a, type: 2}
+  ammoText: {fileID: 5061685460491350967}
+  cooldownUI: {fileID: 6034852005311947241}
+  reloadOverwritten: 0
+  reloadTime: 2
+  fillConsecutively: 1
+  maxAmmo: 4
+  objParent: {fileID: 0}
+  objRepresentation: {fileID: 0}
+  UIParent: {fileID: 0}
+  UIRepresentation: {fileID: 0}
 --- !u!1 &3537124546414602716
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,7 +652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -699,7 +727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -775,7 +803,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -800,7 +828,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3425074594900473169}
-  - component: {fileID: 7685292744564543013}
   - component: {fileID: 1131578463462796103}
   - component: {fileID: 1388561449973821798}
   - component: {fileID: 3023848770481501266}
@@ -828,30 +855,6 @@ Transform:
   - {fileID: 8007236020981180829}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7685292744564543013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5664205877566595544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8babbc48c577e4640a6e30c10105df54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  managedAttacks:
-  - {fileID: 3239146572875245660}
-  managedAbilities: []
-  characterStatSO: {fileID: 11400000, guid: 78202ad9fa2c92042a3f8e2ca6a78a6a, type: 2}
-  ammoText: {fileID: 5061685460491350967}
-  cooldownUI: {fileID: 6034852005311947241}
-  reloadOverwritten: 0
-  fillConsecutively: 1
-  objParent: {fileID: 0}
-  objRepresentation: {fileID: 0}
-  UIParent: {fileID: 0}
-  UIRepresentation: {fileID: 0}
 --- !u!114 &1131578463462796103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -896,8 +899,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25aee8530def7814fb1a06be830d7d74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeComponentParent: {fileID: 8007236020981180829}
   characterStatSO: {fileID: 11400000, guid: 78202ad9fa2c92042a3f8e2ca6a78a6a, type: 2}
+  activeComponentParent: {fileID: 8007236020981180829}
   UIActiveAlpha: 1
   UIInactiveAlpha: 0.1
   selectedWidth: 300
@@ -921,8 +924,9 @@ MonoBehaviour:
     type: 3}
   cooldownUIObj: {fileID: 8998009456628543242, guid: 1e25d7c515fe4f54ca622882675a9b46,
     type: 3}
-  descriptionUIObj: {fileID: 6707048607902378974, guid: 763447545f595b7499d3974c89d016e7,
+  descriptionUIObj: {fileID: 3134400491335614732, guid: b3aef0f1578f1eb449912d8391d8ca10,
     type: 3}
+  upgradeUIObj: {fileID: 0}
 --- !u!1 &8623779256778030844
 GameObject:
   m_ObjectHideFlags: 0
@@ -967,8 +971,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84c8cbd15519fd24b8d6acd7aeea004d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackEnabled: 1
   characterStatSO: {fileID: 11400000, guid: 78202ad9fa2c92042a3f8e2ca6a78a6a, type: 2}
+  attackEnabled: 1
   fireOffset: 0
   attackInputName: Fire2
   _ammoManager: {fileID: 0}
@@ -981,14 +985,15 @@ MonoBehaviour:
       m_Calls: []
   animator: {fileID: 5256232209021759509}
   animationName: BlackBoxGorl_Attack1
+  muzzleFlash: {fileID: 0}
+  SFX: {fileID: 8300000, guid: 4d17a7a091745da47b1893ca4578599a, type: 3}
+  SFXVolume: 0.6
+  minPitch: 1
+  maxPitch: 1
   projectile: {fileID: 3176096138509602598, guid: d255d2729a6dcd8408acd317b3a7f435,
     type: 3}
   mouseAiming: {fileID: 4106709100210739188}
   objectPlacementOffset: {x: 0, y: 20, z: 0}
-  SFX: {fileID: 0}
-  SFXVolume: 1
-  minPitch: 0.9
-  maxPitch: 1.1
 --- !u!1 &8696072350229777730
 GameObject:
   m_ObjectHideFlags: 0
@@ -1049,7 +1054,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1185,6 +1190,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1794577175559151043, guid: 98a2e3dc097d9db41af39fd842fa903f,
         type: 3}
+      propertyPath: SFX
+      value: 
+      objectReference: {fileID: 8300000, guid: e330fac3e1acfa6469d416aeaa5903ca, type: 3}
+    - target: {fileID: 1794577175559151043, guid: 98a2e3dc097d9db41af39fd842fa903f,
+        type: 3}
+      propertyPath: maxPitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794577175559151043, guid: 98a2e3dc097d9db41af39fd842fa903f,
+        type: 3}
+      propertyPath: minPitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794577175559151043, guid: 98a2e3dc097d9db41af39fd842fa903f,
+        type: 3}
+      propertyPath: SFXVolume
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794577175559151043, guid: 98a2e3dc097d9db41af39fd842fa903f,
+        type: 3}
+      propertyPath: cooldownTime
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794577175559151043, guid: 98a2e3dc097d9db41af39fd842fa903f,
+        type: 3}
       propertyPath: characterStatSO
       value: 
       objectReference: {fileID: 11400000, guid: 78202ad9fa2c92042a3f8e2ca6a78a6a,
@@ -1243,6 +1273,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8524401232732384688, guid: 98a2e3dc097d9db41af39fd842fa903f,
+        type: 3}
+      propertyPath: SFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 642db2c031e7f4747a7b014ae06e8db6, type: 3}
+    - target: {fileID: 8524401232732384688, guid: 98a2e3dc097d9db41af39fd842fa903f,
+        type: 3}
+      propertyPath: maxPitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8524401232732384688, guid: 98a2e3dc097d9db41af39fd842fa903f,
+        type: 3}
+      propertyPath: minPitch
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8524401232732384688, guid: 98a2e3dc097d9db41af39fd842fa903f,
         type: 3}

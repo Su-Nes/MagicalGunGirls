@@ -8,4 +8,9 @@ public class CallLoadScene : MonoBehaviour
     {
         GameManager.Instance.LoadNextSceneInBuild();
     }
+
+    public void LoadSceneWithName(string scene)
+    {
+        GameManager.Instance.LoadSceneWithName(scene);
+    }
 }

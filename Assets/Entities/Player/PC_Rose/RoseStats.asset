@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fc0cb2007aeae640a702296ee09d807, type: 3}
   m_Name: RoseStats
   m_EditorClassIdentifier: 
-  cooldownModifier: 1.5
+  cooldownModifier: 1.25
   moveSpeed: 225
-  maxAmmo: 3
-  baseAttackDmg: 0
-  specialAttackDmg: 0
+  maxAmmo: 40
+  fireDelay: 0.2
+  reloadTime: 2
+  attackDmgModifier: 1

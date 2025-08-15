@@ -7,22 +7,21 @@ public class Stats : ScriptableObject
 {
     public float cooldownModifier = 1.5f;
     public float moveSpeed = 225f;
-    public int maxAmmo = 3;
-    public float fireDelay = 1f;
-    public float reloadTime = 2f;
-    public float attackDmgModifier;
+    public int bonusMaxAmmo;
+    public float fireDelayMultiplier = 1f;
+    public float reloadTimeModifier = 1f;
+    public float attackDmgModifier = 1f;
 
     public void ApplyUpgrade(Upgrade upgrade)
     {
         FindObjectOfType<PlayerStatsManager>().ModifyMaxHealthValue(upgrade.bonusMaxHealth);
         
-        cooldownModifier *= upgrade.cooldownModifierReductionMultiplication;
-        reloadTime *= upgrade.reloadSpeedReductionMultiplication;
-        fireDelay *= upgrade.fireDelayReductionMultiplication;
-        
+        cooldownModifier += upgrade.cooldownModifierMultReduction;
+        reloadTimeModifier += upgrade.reloadSpeedMultReduction;
+        fireDelayMultiplier += upgrade.fireDelayMultReduction;
         attackDmgModifier += upgrade.bonusAttackModifier;
         
         moveSpeed += upgrade.bonusMoveSpeed;
-        maxAmmo += upgrade.bonusAmmo;
+        bonusMaxAmmo += upgrade.bonusAmmo;
     }
 }
