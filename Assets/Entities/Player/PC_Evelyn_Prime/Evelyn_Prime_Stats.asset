@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Evelyn_Prime_Stats
   m_EditorClassIdentifier: 
   cooldownModifier: 1
-  moveSpeed: 250
+  moveSpeed: 240
   bonusMaxAmmo: 0
-  fireDelay: 0.3
-  reloadTime: 0.4
+  fireDelayMultiplier: 0.6
+  reloadTimeModifier: 1
   attackDmgModifier: 1

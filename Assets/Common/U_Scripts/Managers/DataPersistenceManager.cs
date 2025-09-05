@@ -7,6 +7,7 @@ public class DataPersistenceManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> unlockedCharacters = new();
     public int maxCharacters = 2, mendingNectar, missionsCompleted;
+    public float maxPlayerHealth = 100f;
     
     private static DataPersistenceManager _instance;
     public static DataPersistenceManager Instance { get { return _instance; } }

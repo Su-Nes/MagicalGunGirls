@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownModifier: 1.25
   moveSpeed: 155
-  maxAmmo: 4
-  fireDelay: 1
-  reloadTime: 2
+  bonusMaxAmmo: 0
+  fireDelayMultiplier: 2
+  reloadTimeModifier: 1
   attackDmgModifier: 1

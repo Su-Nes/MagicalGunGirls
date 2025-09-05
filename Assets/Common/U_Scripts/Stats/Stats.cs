@@ -14,14 +14,14 @@ public class Stats : ScriptableObject
 
     public void ApplyUpgrade(Upgrade upgrade)
     {
-        FindObjectOfType<PlayerStatsManager>().ModifyMaxHealthValue(upgrade.bonusMaxHealth);
+        DataPersistenceManager.Instance.maxPlayerHealth += upgrade.BonusMaxHealth;
         
-        cooldownModifier += upgrade.cooldownModifierMultReduction;
-        reloadTimeModifier += upgrade.reloadSpeedMultReduction;
-        fireDelayMultiplier += upgrade.fireDelayMultReduction;
-        attackDmgModifier += upgrade.bonusAttackModifier;
+        cooldownModifier += upgrade.CooldownModifierMultReduction;
+        reloadTimeModifier += upgrade.ReloadSpeedMultReduction;
+        fireDelayMultiplier += upgrade.FireDelayMultReduction;
+        attackDmgModifier += upgrade.BonusAttackModifier;
         
-        moveSpeed += upgrade.bonusMoveSpeed;
-        bonusMaxAmmo += upgrade.bonusAmmo;
+        moveSpeed += upgrade.BonusMoveSpeed;
+        bonusMaxAmmo += upgrade.BonusAmmo;
     }
 }

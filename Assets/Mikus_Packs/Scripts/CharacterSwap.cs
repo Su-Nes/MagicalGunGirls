@@ -75,7 +75,7 @@ public class CharacterSwap : MonoBehaviour
             Instantiate(panelUIObj, Vector3.zero, Quaternion.identity, UIParent);
             Instantiate(ch, transform.position, transform.rotation, transform);
             TMP_Text charName = Instantiate(charNameDisplayText, Vector3.zero, Quaternion.identity, teamDisplayParent).GetComponent<TMP_Text>();
-            charName.text = ch.GetComponent<CharacterStatManager>().CharacterName;
+            charName.text = ch.GetComponent<CharacterUIManager>().CharacterName;
         }
         
         Swap(transform.childCount - 1);

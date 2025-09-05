@@ -34,11 +34,11 @@ public class Attack : MonoBehaviour
     [SerializeField] private float minPitch = .9f, maxPitch = 1.1f;
     
     
-    private void Start()
+    /*private void Start()
     {
         if (fireOffset)
-            attackTimer = fireDelay * characterStatSO.fireDelayMultiplier / 2f;
-    }
+            attackTimer = fireDelay * characterStatSO.fireDelayMultiplier * .5f;
+    }*/
     
     protected virtual void Update()
     {
@@ -51,7 +51,7 @@ public class Attack : MonoBehaviour
             return;
         
         if (fireOffset && Input.GetButtonDown(attackInputName))
-            attackTimer = characterStatSO.fireDelayMultiplier / 2f;
+            attackTimer = fireDelay * characterStatSO.fireDelayMultiplier / 2f;
         
         if (Input.GetButton(attackInputName))
         {

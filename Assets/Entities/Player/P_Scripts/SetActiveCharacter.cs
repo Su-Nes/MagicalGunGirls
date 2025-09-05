@@ -21,7 +21,6 @@ public class SetActiveCharacter : MonoBehaviour
     private void Awake()
     {
         playerMovement = FindObjectOfType<PlayerMovement>();
-        
     }
 
     public void SetCharacterState(bool activeSelf)
@@ -46,11 +45,15 @@ public class SetActiveCharacter : MonoBehaviour
         selectUIImage.color = activeSelf
             ? new Color(panelColor.r, panelColor.g, panelColor.b, UIActiveAlpha)
             : new Color(panelColor.r, panelColor.g, panelColor.b, UIInactiveAlpha);
-        
-        foreach (Transform child in characterSelectUI)
+
+        characterSelectUI.GetComponent<HorizontalLayoutGroup>().childAlignment = activeSelf
+            ? TextAnchor.MiddleRight
+            : TextAnchor.MiddleLeft;
+
+        /*foreach (Transform child in characterSelectUI)
         {
             if(child.GetSiblingIndex() != 0) // first child under UI should always be the character name text object
                 child.gameObject.SetActive(!activeSelf); // if character is active, only the name is displayed
-        }                                               // if character is inactive, also display ammo and cooldown stats
+        }         */ // if character is inactive, also display ammo and cooldown stats
     }
 }

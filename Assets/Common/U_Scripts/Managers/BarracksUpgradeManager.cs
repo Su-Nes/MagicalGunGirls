@@ -10,10 +10,8 @@ public class BarracksUpgradeManager : MonoBehaviour
     public static BarracksUpgradeManager Instance;
 
     [SerializeField] private GameObject shopCanvas, upgradeSelectCanvas;
-    [SerializeField] private Transform characterButtonHolder;
+    [SerializeField] private Transform characterButtonHolder, characterStoreHolder;
     [SerializeField] private TMP_Text upgradeDescriptionText, upgradeCostText;
-
-    private Upgrade currentUpgrade;
     
 
     private void Awake()
@@ -32,13 +30,14 @@ public class BarracksUpgradeManager : MonoBehaviour
     {
         shopCanvas.SetActive(!shopCanvas.activeSelf);
         GameManager.Instance.FreezePlayer = shopCanvas.activeSelf;
+        
+        RefreshCharacterSelect();
     }
 
     public void DisplayUpgradeDetails(Upgrade upgrade)
     {
-        currentUpgrade = upgrade;
-        upgradeDescriptionText.text = upgrade.upgradeDescription;
-        upgradeCostText.text = upgrade.cost.ToString();
+        upgradeDescriptionText.text = upgrade.UpgradeDescription;
+        upgradeCostText.text = upgrade.Cost.ToString();
     }
 
     public void OnConfirmUpgrade()
@@ -46,11 +45,6 @@ public class BarracksUpgradeManager : MonoBehaviour
         RefreshCharacterSelect();
         
         upgradeSelectCanvas.SetActive(true);
-        foreach (ApplyUpgradeToCharacter character in characterButtonHolder
-                     .GetComponentsInChildren<ApplyUpgradeToCharacter>())
-        {
-            character.upgradeToApply = currentUpgrade;
-        }
     }
 
     private void RefreshCharacterSelect()
@@ -62,8 +56,38 @@ public class BarracksUpgradeManager : MonoBehaviour
 
         foreach (GameObject character in DataPersistenceManager.Instance.UnlockedCharacters)
         {
-            Instantiate(character.GetComponent<CharacterStatManager>().upgradeUIObj, Vector3.zero, Quaternion.identity,
+            // create button and assign the menu for it
+            GameObject newCharButton = Instantiate(character.GetComponent<CharacterUIManager>().upgradeUIObj, Vector3.zero, Quaternion.identity,
                 characterButtonHolder);
+            newCharButton.GetComponent<Button>().onClick.AddListener(delegate
+                {EnableCharacterUpgradeScreen(character.GetComponent<CharacterUIManager>().CharacterName);});
+        }
+    }
+
+    public void EnableCharacterUpgradeScreen(string charName)
+    {
+        int i = 0;
+        foreach (Transform button in characterStoreHolder)
+        {
+            if (button.name.Contains(charName))
+                break;
+            i++;
+        }
+
+        if (i > characterButtonHolder.childCount - 1)
+        {
+            Debug.LogError($"No corresponding button for name: {charName}");
+            return;
+        }
+        
+        characterStoreHolder.GetChild(i).gameObject.SetActive(true);
+    }
+
+    public void DisableCharacterUpgradeScreens()
+    {
+        foreach (Transform button in characterButtonHolder)
+        {
+            button.gameObject.SetActive(false);
         }
     }
 

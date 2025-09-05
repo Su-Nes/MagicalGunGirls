@@ -8,7 +8,7 @@ public class ApplyUpgradeToCharacter : MonoBehaviour
 {
     [SerializeField] private Stats characterStats;
     [SerializeField] private TMP_Text statsText;
-    public Upgrade upgradeToApply;
+    public Upgrade UpgradeValues;
     private CharacterSwap characterSwap;
     private BarracksUpgradeManager barracks;
     
@@ -23,7 +23,7 @@ public class ApplyUpgradeToCharacter : MonoBehaviour
     
     public void ApplyUpgrade()
     {
-        characterStats.ApplyUpgrade(upgradeToApply);
+        characterStats.ApplyUpgrade(UpgradeValues);
         barracks.FinishUpgrade();
     }
 }

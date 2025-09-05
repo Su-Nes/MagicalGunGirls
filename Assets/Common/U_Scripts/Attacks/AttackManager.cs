@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class AttackManager : MonoBehaviour
 {
+    [Header("INSERT STATS OBJECT")]
+    [SerializeField] protected Stats characterStatSO;
+    [SerializeField] protected CharacterUIManager statUIManager;
+    [Header("END STATS OBJECT")]
+    
     [SerializeField] protected Attack[] managedAttacks;
     [SerializeField] protected Ability[] managedAbilities;
     

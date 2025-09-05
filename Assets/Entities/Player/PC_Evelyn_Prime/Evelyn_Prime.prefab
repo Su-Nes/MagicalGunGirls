@@ -31,6 +31,7 @@ Transform:
   m_LocalScale: {x: 1.21, y: 1.21, z: 1.21}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6293988080795437673}
   - {fileID: 385932858468772408}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -72,6 +73,7 @@ MonoBehaviour:
   cooldownUIObj: {fileID: 8998009456628543242, guid: 1e25d7c515fe4f54ca622882675a9b46,
     type: 3}
   descriptionUIObj: {fileID: 0}
+  upgradeUIObj: {fileID: 0}
 --- !u!1 &213149667175714495
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,7 +84,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5098802014692531885}
   - component: {fileID: 3989899101608667972}
-  - component: {fileID: 528380283461851341}
   m_Layer: 0
   m_Name: TimeStopAbility
   m_TagString: Untagged
@@ -123,8 +124,10 @@ MonoBehaviour:
   characterStatSO: {fileID: 11400000, guid: 227d8cddc5c4da249b28ce5b4e122b8e, type: 2}
   _ammoManager: {fileID: 0}
   ammoSpentPerShot: 1
-  _cooldownManager: {fileID: 528380283461851341}
+  _cooldownManager: {fileID: 2563380851863977912}
   cooldownTime: 3
+  animator: {fileID: 0}
+  animationName: 
   SFX: {fileID: 0}
   SFXVolume: 1
   minPitch: 0.9
@@ -133,22 +136,6 @@ MonoBehaviour:
   UIOverlay: {fileID: 2567770558865943043}
   startSFX: {fileID: 947422675617934707}
   endSFX: {fileID: 4193803981987882304}
---- !u!114 &528380283461851341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 213149667175714495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 260f97b644e575744a019ccf5d03f603, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  managedAttacks: []
-  managedAbilities:
-  - {fileID: 3989899101608667972}
-  cooldownUI: {fileID: 6296013071071475627}
 --- !u!1 &752219134433050099
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,6 +271,56 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &1443325162075528094
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7586739136812927198}
+  - component: {fileID: 2563380851863977912}
+  m_Layer: 0
+  m_Name: Ability
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7586739136812927198
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443325162075528094}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6293988080795437673}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2563380851863977912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443325162075528094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 260f97b644e575744a019ccf5d03f603, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterStatSO: {fileID: 11400000, guid: 227d8cddc5c4da249b28ce5b4e122b8e, type: 2}
+  statUIManager: {fileID: 8943739260857700713}
+  managedAttacks: []
+  managedAbilities:
+  - {fileID: 3989899101608667972}
+  cooldownUI: {fileID: 6296013071071475627}
 --- !u!1 &1500441850785344424
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,6 +793,65 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &4258713160147125581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4326725363692516861}
+  - component: {fileID: 3006028970299485603}
+  m_Layer: 0
+  m_Name: PrimaryAttack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4326725363692516861
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4258713160147125581}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6293988080795437673}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3006028970299485603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4258713160147125581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8babbc48c577e4640a6e30c10105df54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterStatSO: {fileID: 11400000, guid: 227d8cddc5c4da249b28ce5b4e122b8e, type: 2}
+  statUIManager: {fileID: 8943739260857700713}
+  managedAttacks:
+  - {fileID: 2045316549085875550}
+  managedAbilities: []
+  ammoText: {fileID: 4838318751676641397}
+  cooldownUI: {fileID: 745419204271598322}
+  reloadOverwritten: 0
+  reloadTime: 0.2
+  fillConsecutively: 1
+  maxAmmo: 99
+  objParent: {fileID: 0}
+  objRepresentation: {fileID: 0}
+  UIParent: {fileID: 0}
+  UIRepresentation: {fileID: 0}
 --- !u!1 &4293250249020322980
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,7 +1025,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3671802014778491302}
   - component: {fileID: 7355081881814406268}
-  - component: {fileID: 4573012229067136669}
   m_Layer: 0
   m_Name: Sawblades
   m_TagString: Untagged
@@ -968,8 +1063,9 @@ MonoBehaviour:
   attackEnabled: 1
   fireOffset: 0
   attackInputName: Fire2
-  _ammoManager: {fileID: 4573012229067136669}
+  _ammoManager: {fileID: 4833050449234521825}
   ammoSpentPerShot: 1
+  fireDelay: 0.5
   resetReloadTimeOnFire: 0
   _cooldownManager: {fileID: 0}
   cooldownTime: 5
@@ -986,32 +1082,6 @@ MonoBehaviour:
   projectile: {fileID: 8009059539556113737, guid: 38309ae57be98494985024ea914963b9,
     type: 3}
   alternateProjectileFlip: 0
---- !u!114 &4573012229067136669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5767384093683532444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8babbc48c577e4640a6e30c10105df54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  managedAttacks:
-  - {fileID: 7355081881814406268}
-  managedAbilities: []
-  characterStatSO: {fileID: 11400000, guid: 227d8cddc5c4da249b28ce5b4e122b8e, type: 2}
-  ammoText: {fileID: 149183677419947043}
-  cooldownUI: {fileID: 7200959551582630442}
-  reloadOverwritten: 0
-  reloadTime: 5
-  fillConsecutively: 0
-  maxAmmo: 4
-  objParent: {fileID: 0}
-  objRepresentation: {fileID: 0}
-  UIParent: {fileID: 0}
-  UIRepresentation: {fileID: 0}
 --- !u!1 &6108678817706646569
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,7 +1242,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6144611199048577665}
   - component: {fileID: 2045316549085875550}
-  - component: {fileID: 8872988968253005424}
   m_Layer: 0
   m_Name: MeleeScythe
   m_TagString: Untagged
@@ -1211,8 +1280,9 @@ MonoBehaviour:
   attackEnabled: 1
   fireOffset: 0
   attackInputName: Fire1
-  _ammoManager: {fileID: 8872988968253005424}
+  _ammoManager: {fileID: 3006028970299485603}
   ammoSpentPerShot: 1
+  fireDelay: 0.5
   resetReloadTimeOnFire: 0
   _cooldownManager: {fileID: 0}
   cooldownTime: 5
@@ -1229,28 +1299,61 @@ MonoBehaviour:
   projectile: {fileID: 2264224514617327657, guid: 6b666abd141fed34e81290801f4b0ce1,
     type: 3}
   alternateProjectileFlip: 1
---- !u!114 &8872988968253005424
+--- !u!1 &7293250310437103944
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7355654798010725858}
+  - component: {fileID: 4833050449234521825}
+  m_Layer: 0
+  m_Name: SecondaryAttack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7355654798010725858
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7293250310437103944}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6293988080795437673}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4833050449234521825
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6661127885323048602}
+  m_GameObject: {fileID: 7293250310437103944}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8babbc48c577e4640a6e30c10105df54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  managedAttacks:
-  - {fileID: 2045316549085875550}
-  managedAbilities: []
   characterStatSO: {fileID: 11400000, guid: 227d8cddc5c4da249b28ce5b4e122b8e, type: 2}
-  ammoText: {fileID: 4838318751676641397}
-  cooldownUI: {fileID: 745419204271598322}
+  statUIManager: {fileID: 8943739260857700713}
+  managedAttacks:
+  - {fileID: 7355081881814406268}
+  managedAbilities: []
+  ammoText: {fileID: 149183677419947043}
+  cooldownUI: {fileID: 7200959551582630442}
   reloadOverwritten: 0
-  reloadTime: 0.2
-  fillConsecutively: 1
-  maxAmmo: 99
+  reloadTime: 5
+  fillConsecutively: 0
+  maxAmmo: 4
   objParent: {fileID: 0}
   objRepresentation: {fileID: 0}
   UIParent: {fileID: 0}
@@ -1487,6 +1590,40 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &7737308322479356291
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6293988080795437673}
+  m_Layer: 0
+  m_Name: AttackManagers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6293988080795437673
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7737308322479356291}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4326725363692516861}
+  - {fileID: 7355654798010725858}
+  - {fileID: 7586739136812927198}
+  m_Father: {fileID: 2240018849327538609}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7867610722613283782
 GameObject:
   m_ObjectHideFlags: 0

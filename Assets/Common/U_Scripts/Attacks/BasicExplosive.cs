@@ -21,7 +21,6 @@ public class BasicExplosive : MonoBehaviour
     
     [Header("INSERT STATS OBJECT")]
     [SerializeField] private Stats characterStatSO;
-    [Header("END STATS OBJECT")]
     
     [SerializeField] private GameObject effectObject, model;
     [SerializeField] private float effectLifetime = 1f;

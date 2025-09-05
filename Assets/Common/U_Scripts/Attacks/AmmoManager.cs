@@ -4,10 +4,6 @@ using UnityEngine.UI;
 
 public class AmmoManager : AttackManager
 {
-    [Header("INSERT STATS OBJECT")]
-    [SerializeField] private Stats characterStatSO;
-    [Header("END STATS OBJECT")]
-    
     [Header("Ammo params: ")]
     [SerializeField] private TMP_Text ammoText;
     [SerializeField] private Image cooldownUI;
@@ -25,8 +21,13 @@ public class AmmoManager : AttackManager
     [SerializeField] private GameObject UIRepresentation;
     
     
-    private void Start()
+    private void Awake()
     {
+        if (statUIManager != null)
+            statUIManager.CreateUI(this);
+        else
+            Debug.LogError($"{name} doesn't have a stat UI manager assigned.");
+        
         bulletCount = maxAmmo + characterStatSO.bonusMaxAmmo;
         for (int i = bulletCount; i != 0; i--)
         {

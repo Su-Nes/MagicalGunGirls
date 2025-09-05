@@ -9,7 +9,6 @@ using Yarn.Unity;
 
 public class PlayerStatsManager : MonoBehaviour
 {
-    [SerializeField] private float maxHealth = 100f;
     private bool isDead;
     public bool Invincible;
     [SerializeField] private Image healthUIBar;
@@ -29,7 +28,7 @@ public class PlayerStatsManager : MonoBehaviour
     
     private void Start()
     {
-        health = maxHealth;
+        health = DataPersistenceManager.Instance.maxPlayerHealth;
         
         volume = FindObjectOfType<Volume>(); // god this is a pain in the ass
         volume.profile.TryGet(out ChromaticAberration ca);
@@ -44,8 +43,8 @@ public class PlayerStatsManager : MonoBehaviour
 
     private void Update()
     {
-        healthUIBar.fillAmount = health / maxHealth;
-        healthUIText.text = $"{health}/{maxHealth}";
+        healthUIBar.fillAmount = health / DataPersistenceManager.Instance.maxPlayerHealth;
+        healthUIText.text = $"{health}/{DataPersistenceManager.Instance.maxPlayerHealth}";
 
         if (health <= 0f && !isDead)
             Die();
@@ -62,20 +61,11 @@ public class PlayerStatsManager : MonoBehaviour
         }
         
         health += add;
-        if (health > maxHealth)
-            health = maxHealth;
+        if (health > DataPersistenceManager.Instance.maxPlayerHealth)
+            health = DataPersistenceManager.Instance.maxPlayerHealth;
 
         if (health < 0f)
             health = 0f;
-    }
-    
-    public void ModifyMaxHealthValue(float add)
-    {
-        maxHealth += add;
-        ModifyHealthValue(add);
-        
-        if (health > maxHealth)
-            health = maxHealth;
     }
 
     private IEnumerator GetHitEffect()

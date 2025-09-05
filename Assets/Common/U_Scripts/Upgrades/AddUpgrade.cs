@@ -8,7 +8,7 @@ using UnityEngine;
 public class AddUpgrade : MonoBehaviour
 {
     [SerializeField] private Stats debugStats;
-    [SerializeField] private Upgrade debugUpgrade;
+    private Upgrade debugUpgrade;
 
     private void Start()
     {

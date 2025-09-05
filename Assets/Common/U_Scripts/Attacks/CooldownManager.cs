@@ -9,8 +9,13 @@ public class CooldownManager : AttackManager
     private float timer;
 
 
-    private void Start()
+    private void Awake()
     {
+        if (statUIManager != null)
+            statUIManager.CreateUI(this);
+        else
+            Debug.LogError($"{name} doesn't have a stat UI manager assigned.");
+        
         timer = cooldownTime;
         EnableAttacks();
         EnableAbilities();

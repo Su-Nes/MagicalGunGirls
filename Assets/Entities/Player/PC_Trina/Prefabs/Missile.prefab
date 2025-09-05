@@ -169,16 +169,15 @@ MonoBehaviour:
   minPitch: 0.9
   maxPitch: 1.1
   characterStatSO: {fileID: 11400000, guid: 78202ad9fa2c92042a3f8e2ca6a78a6a, type: 2}
-  modelRenderer: {fileID: 6623004975439746395}
   effectObject: {fileID: 270152106369743988, guid: 11dc25f7361669f47a77f6e680381e02,
     type: 3}
+  model: {fileID: 7577338156716580612}
   effectLifetime: 1
   throwForce: 0
   throwDirection: 0
   explodeOnImpact: 1
   impactDetectionDelay: 0
   explodeTimer: 1
-  objectLifetime: 2
   radius: 7
   damage: 10
   stunTime: 0.5
