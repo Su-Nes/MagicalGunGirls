@@ -26,6 +26,7 @@ public class BarracksUpgradeManager : MonoBehaviour
         }
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     public void ToggleDisplay()
     {
         shopCanvas.SetActive(!shopCanvas.activeSelf);
@@ -85,9 +86,9 @@ public class BarracksUpgradeManager : MonoBehaviour
 
     public void DisableCharacterUpgradeScreens()
     {
-        foreach (Transform button in characterButtonHolder)
+        foreach (Transform shopScreen in characterStoreHolder)
         {
-            button.gameObject.SetActive(false);
+            shopScreen.gameObject.SetActive(false);
         }
     }
 
