@@ -50,8 +50,6 @@ MonoBehaviour:
   upgradeSelectCanvas: {fileID: 5966513961910667891}
   characterButtonHolder: {fileID: 5038973443743972043}
   characterStoreHolder: {fileID: 1579508820386939860}
-  upgradeDescriptionText: {fileID: 4420551589149565964}
-  upgradeCostText: {fileID: 2311880003775435615}
 --- !u!1 &92131588765859353
 GameObject:
   m_ObjectHideFlags: 0
@@ -14569,7 +14567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterStats: {fileID: 11400000, guid: 2b1211e83849bf04f9d6db1d9143f3ae, type: 2}
   statsText: {fileID: 0}
-  upgradeToApply: {fileID: 11400000, guid: f06ad16215e139947930f6c4b25857a5, type: 2}
+  UpgradeValues: {fileID: 0}
 --- !u!1001 &4181539433586981460
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15350,11 +15348,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2656727683494030282, guid: bf7a61f675b0afe4ba4b3c35b1e0bbdb,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1789929985131311741}
     - target: {fileID: 4310067369562987572, guid: bf7a61f675b0afe4ba4b3c35b1e0bbdb,
         type: 3}
       propertyPath: m_Name
@@ -15370,30 +15363,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf7a61f675b0afe4ba4b3c35b1e0bbdb, type: 3}
---- !u!114 &2311880003775435615 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5262540984071800088, guid: bf7a61f675b0afe4ba4b3c35b1e0bbdb,
-    type: 3}
-  m_PrefabInstance: {fileID: 7574280215461221959}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4420551589149565964 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6072483449121911371, guid: bf7a61f675b0afe4ba4b3c35b1e0bbdb,
-    type: 3}
-  m_PrefabInstance: {fileID: 7574280215461221959}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5966513961910667891 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4310067369562987572, guid: bf7a61f675b0afe4ba4b3c35b1e0bbdb,
@@ -15869,7 +15838,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterStats: {fileID: 11400000, guid: 2b1211e83849bf04f9d6db1d9143f3ae, type: 2}
   statsText: {fileID: 0}
-  upgradeToApply: {fileID: 11400000, guid: f06ad16215e139947930f6c4b25857a5, type: 2}
+  UpgradeValues: {fileID: 0}
 --- !u!1001 &8663621418049128295
 PrefabInstance:
   m_ObjectHideFlags: 0

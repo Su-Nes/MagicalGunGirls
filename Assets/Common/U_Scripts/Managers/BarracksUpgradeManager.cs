@@ -34,13 +34,6 @@ public class BarracksUpgradeManager : MonoBehaviour
         RefreshCharacterSelect();
     }
 
-    public void OnConfirmUpgrade()
-    {
-        RefreshCharacterSelect();
-        
-        upgradeSelectCanvas.SetActive(true);
-    }
-
     private void RefreshCharacterSelect()
     {
         foreach (Transform child in characterButtonHolder)
@@ -58,7 +51,7 @@ public class BarracksUpgradeManager : MonoBehaviour
         }
     }
 
-    public void EnableCharacterUpgradeScreen(string charName)
+    private void EnableCharacterUpgradeScreen(string charName)
     {
         int i = 0;
         foreach (Transform button in characterStoreHolder)

@@ -23,5 +23,7 @@ public class Stats : ScriptableObject
         
         moveSpeed += upgrade.BonusMoveSpeed;
         bonusMaxAmmo += upgrade.BonusAmmo;
+
+        DataPersistenceManager.Instance.mendingNectar -= upgrade.Cost;
     }
 }

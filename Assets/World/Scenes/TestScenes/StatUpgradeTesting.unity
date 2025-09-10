@@ -916,7 +916,7 @@ GameObject:
   - component: {fileID: 1014108309}
   - component: {fileID: 1014108313}
   m_Layer: 0
-  m_Name: MissionBoard
+  m_Name: Debug Barracks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2526,6 +2526,11 @@ PrefabInstance:
       propertyPath: UpgradeDescription
       value: awoduyg
       objectReference: {fileID: 0}
+    - target: {fileID: 3934439573696467572, guid: fc8e1f20d6f94c7469be5205c4f2e318,
+        type: 3}
+      propertyPath: m_Name
+      value: UpgradeManager
+      objectReference: {fileID: 0}
     - target: {fileID: 3937928384710742615, guid: fc8e1f20d6f94c7469be5205c4f2e318,
         type: 3}
       propertyPath: UpgradeDescription
@@ -2585,6 +2590,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5334790625808894048, guid: fc8e1f20d6f94c7469be5205c4f2e318,
+        type: 3}
+      propertyPath: mendingNectar
+      value: 476
       objectReference: {fileID: 0}
     - target: {fileID: 5966513961910667891, guid: fc8e1f20d6f94c7469be5205c4f2e318,
         type: 3}
