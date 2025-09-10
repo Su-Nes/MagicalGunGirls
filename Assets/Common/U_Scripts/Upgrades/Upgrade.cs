@@ -17,4 +17,6 @@ public class Upgrade : MonoBehaviour
     
     public float BonusMoveSpeed;
     public int BonusAmmo;
+    
+    
 }

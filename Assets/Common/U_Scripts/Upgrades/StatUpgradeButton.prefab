@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8679631259270916921}
   - component: {fileID: 471555966620078669}
   - component: {fileID: 7188741937600726038}
-  - component: {fileID: 4080150556846620532}
+  - component: {fileID: 7625593367793779654}
   m_Layer: 5
   m_Name: StatUpgradeButton
   m_TagString: Untagged
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4080150556846620532
+--- !u!114 &7625593367793779654
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,10 +131,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1552765460413751531}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df458aa96414072428537881c48b2b5b, type: 3}
+  m_Script: {fileID: 11500000, guid: b786526f684d7d246a3fa2f4e52365d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgrade: {fileID: 0}
+  UpgradeDescription: 
+  Cost: 0
+  BonusMaxHealth: 0
+  CooldownModifierMultReduction: 0
+  ReloadSpeedMultReduction: 0
+  FireDelayMultReduction: 0
+  BonusAttackModifier: 0
+  BonusMoveSpeed: 0
+  BonusAmmo: 0
 --- !u!1 &2674514430923177397
 GameObject:
   m_ObjectHideFlags: 0

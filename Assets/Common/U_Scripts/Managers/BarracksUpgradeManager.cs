@@ -11,7 +11,6 @@ public class BarracksUpgradeManager : MonoBehaviour
 
     [SerializeField] private GameObject shopCanvas, upgradeSelectCanvas;
     [SerializeField] private Transform characterButtonHolder, characterStoreHolder;
-    [SerializeField] private TMP_Text upgradeDescriptionText, upgradeCostText;
     
 
     private void Awake()
@@ -33,12 +32,6 @@ public class BarracksUpgradeManager : MonoBehaviour
         GameManager.Instance.FreezePlayer = shopCanvas.activeSelf;
         
         RefreshCharacterSelect();
-    }
-
-    public void DisplayUpgradeDetails(Upgrade upgrade)
-    {
-        upgradeDescriptionText.text = upgrade.UpgradeDescription;
-        upgradeCostText.text = upgrade.Cost.ToString();
     }
 
     public void OnConfirmUpgrade()
