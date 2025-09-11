@@ -31,6 +31,7 @@ public class BarracksUpgradeManager : MonoBehaviour
         shopCanvas.SetActive(!shopCanvas.activeSelf);
         GameManager.Instance.FreezePlayer = shopCanvas.activeSelf;
         
+        FindObjectOfType<CharacterSwap>().ResetCharacter();
         RefreshCharacterSelect();
     }
 
@@ -76,10 +77,5 @@ public class BarracksUpgradeManager : MonoBehaviour
         {
             shopScreen.gameObject.SetActive(false);
         }
-    }
-
-    public void FinishUpgrade()
-    {
-        upgradeSelectCanvas.SetActive(false);
     }
 }

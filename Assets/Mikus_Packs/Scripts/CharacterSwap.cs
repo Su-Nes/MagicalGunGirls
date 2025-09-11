@@ -54,7 +54,7 @@ public class CharacterSwap : MonoBehaviour
     private void InitialiseCharacters()
     {
         teamSizeText.text = $"Max team size: {DataPersistenceManager.Instance.maxCharacters}";
-        
+
         foreach (Transform child in UIParent)
         {
             Destroy(child.gameObject);
@@ -126,6 +126,7 @@ public class CharacterSwap : MonoBehaviour
     {
         foreach (SetActiveCharacter ch in GetComponentsInChildren<SetActiveCharacter>())
         {
+            ch.SetCharacterState(false);
             ch.SetCharacterState(ch.transform.GetSiblingIndex() == whichCharacter); // enable only one char with index whichCharacter
         }
     }
@@ -139,5 +140,10 @@ public class CharacterSwap : MonoBehaviour
         {
             ch.SetCharacterState(ch.transform.GetSiblingIndex() == characterIndex); // enable only one char with index whichCharacter
         }
+    }
+
+    public void ResetCharacter()
+    {
+        Swap();
     }
 }

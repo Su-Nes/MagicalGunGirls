@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class UpgradeShopManager : MonoBehaviour
 {
-    [SerializeField] private TMP_Text upgradeDescriptionText, upgradeCostText;
+    [SerializeField] private TMP_Text upgradeDescriptionText, upgradeCostText, currentMoneyText;
     [SerializeField] private Button purchaseButton;
     [SerializeField] private Stats characterToUpgrade;
     private Upgrade selectedUpgrade;
@@ -25,14 +25,18 @@ public class UpgradeShopManager : MonoBehaviour
 
     private void DisplayUpgradeDetails(Upgrade upgrade)
     {
+        purchaseButton.gameObject.SetActive(true);
+        
         selectedUpgrade = upgrade;
         
         upgradeDescriptionText.text = upgrade.UpgradeDescription;
-        upgradeCostText.text = upgrade.Cost.ToString();
+        upgradeCostText.text = $"Cost:\n{upgrade.Cost.ToString()} MN" ;
     }
 
     private void Update()
     {
+        currentMoneyText.text = $"{DataPersistenceManager.Instance.mendingNectar} MN" ;
+        
         if (selectedUpgrade == null)
         {
             purchaseButton.interactable = false;
@@ -44,8 +48,6 @@ public class UpgradeShopManager : MonoBehaviour
 
     public void ConfirmUpgrade()
     {
-        // todo: disable purchase button if not enough money
-        
         characterToUpgrade.ApplyUpgrade(selectedUpgrade);
     }
 }

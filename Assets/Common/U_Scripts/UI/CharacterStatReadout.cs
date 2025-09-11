@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,6 +11,12 @@ public class CharacterStatReadout : MonoBehaviour
     
     private void Start()
     {
-        GetComponent<TMP_Text>().text = $"Move speed - {characterStats.moveSpeed}\nBonus max ammo - {characterStats.bonusMaxAmmo}\nFire rate modifier - {characterStats.fireDelayMultiplier*100}%\nReload time modifier - {characterStats.reloadTimeModifier*100}%\nAttack DMG modifier - {characterStats.attackDmgModifier*100}%";
+        GetComponent<TMP_Text>().text = $"Move speed - {characterStats.moveSpeed}\nBonus max ammo - {characterStats.bonusMaxAmmo}\nFire rate modifier - {characterStats.fireDelayMultiplier*100}%\nReload time modifier - {characterStats.reloadTimeModifier*100}%\nCooldown modifier - {characterStats.cooldownModifier}\nAttack DMG modifier - {characterStats.attackDmgModifier*100}%";
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+            Start();
     }
 }

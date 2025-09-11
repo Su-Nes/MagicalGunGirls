@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: +15 move speed
+  m_text: "Select your desired upgrade\n on the left."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 10d874496e5e69941ba546adab2a66de, type: 2}
   m_sharedMaterial: {fileID: -4691263220526949991, guid: 10d874496e5e69941ba546adab2a66de,
@@ -647,8 +647,8 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_VertexColorAlwaysGammaSpace: 1
+  m_AdditionalShaderChannelsFlag: 31
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 3
@@ -765,8 +765,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -11.300003, y: -12.80809}
-  m_SizeDelta: {x: 11.246, y: -29.808}
+  m_AnchoredPosition: {x: -11.300003, y: -12}
+  m_SizeDelta: {x: 11.246, y: -28.59}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &992881560316857640
 CanvasRenderer:
@@ -849,8 +849,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8339330847367059980}
   m_HandleRect: {fileID: 3845114129896771990}
   m_Direction: 2
-  m_Value: -0.00000011886366
-  m_Size: 0.52429646
+  m_Value: 1
+  m_Size: 0.5242965
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1188,7 +1188,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3047821700006954013}
   - {fileID: 5261199703152919078}
   - {fileID: 7666435981934016422}
   - {fileID: 5151740066818736373}
@@ -1197,10 +1196,10 @@ RectTransform:
   - {fileID: 2302970713991259278}
   m_Father: {fileID: 2623129337044153673}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 256.74442}
-  m_SizeDelta: {x: 0, y: 539.7151}
+  m_AnchoredPosition: {x: -211, y: 0}
+  m_SizeDelta: {x: 211, y: 539.7151}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &768468082912375996
 MonoBehaviour:
@@ -1242,6 +1241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeDescriptionText: {fileID: 8938606760730638440}
   upgradeCostText: {fileID: 376811302124995983}
+  currentMoneyText: {fileID: 3557719011329679538}
   purchaseButton: {fileID: 2656727683494030282}
   characterToUpgrade: {fileID: 11400000, guid: 008e068757af7e6448b3769437a0c8ec, type: 2}
 --- !u!1 &7043808827576107878
@@ -1309,9 +1309,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Cost:
-
-    200 Soul Nectar'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 10d874496e5e69941ba546adab2a66de, type: 2}
   m_sharedMaterial: {fileID: -4691263220526949991, guid: 10d874496e5e69941ba546adab2a66de,
@@ -1625,8 +1623,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 185.5, y: -161.1}
-  m_SizeDelta: {x: 300.72, y: 50}
+  m_AnchoredPosition: {x: 173, y: -161.1}
+  m_SizeDelta: {x: 82.69, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5276452504710583319
 CanvasRenderer:
@@ -1656,7 +1654,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 431 SN
+  m_text: 1726 MN
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 10d874496e5e69941ba546adab2a66de, type: 2}
   m_sharedMaterial: {fileID: -4691263220526949991, guid: 10d874496e5e69941ba546adab2a66de,
@@ -1691,7 +1689,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1744,7 +1742,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4895342299257248361
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1955,12 +1953,12 @@ PrefabInstance:
     - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 105.6431
+      value: 105.5
       objectReference: {fileID: 0}
     - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -241.90001
+      value: -187.05
       objectReference: {fileID: 0}
     - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
         type: 3}
@@ -2003,6 +2001,21 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 28
       objectReference: {fileID: 0}
+    - target: {fileID: 7625593367793779654, guid: 29240739c42a4174fa1d933a487caf2d,
+        type: 3}
+      propertyPath: Cost
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625593367793779654, guid: 29240739c42a4174fa1d933a487caf2d,
+        type: 3}
+      propertyPath: UpgradeDescription
+      value: +5% Primary weapon fire rate
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625593367793779654, guid: 29240739c42a4174fa1d933a487caf2d,
+        type: 3}
+      propertyPath: FireDelayMultReduction
+      value: -0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2013,197 +2026,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
     type: 3}
   m_PrefabInstance: {fileID: 170751872684936657}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &275041064943019845
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 155879090541080323}
-    m_Modifications:
-    - target: {fileID: 1552765460413751531, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: m_Name
-      value: MaxHealthUpgrade
-      objectReference: {fileID: 0}
-    - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 160
-      objectReference: {fileID: 0}
-    - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.219512
-      objectReference: {fileID: 0}
-    - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.000013801618
-      objectReference: {fileID: 0}
-    - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.000000014901159
-      objectReference: {fileID: 0}
-    - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 105.6431
-      objectReference: {fileID: 0}
-    - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -22.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4069262984882567885, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: Cost
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 4069262984882567885, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: BonusMaxHealth
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4069262984882567885, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: UpgradeDescription
-      value: + 20 max HP
-      objectReference: {fileID: 0}
-    - target: {fileID: 4080150556846620532, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: upgrade
-      value: 
-      objectReference: {fileID: 11400000, guid: f06ad16215e139947930f6c4b25857a5,
-        type: 2}
-    - target: {fileID: 5864823582451183059, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: m_text
-      value: + Max health
-      objectReference: {fileID: 0}
-    - target: {fileID: 5864823582451183059, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 27.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7188741937600726038, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7188741937600726038, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7188741937600726038, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7625593367793779654, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: Cost
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 7625593367793779654, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: BonusMaxHealth
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7625593367793779654, guid: 29240739c42a4174fa1d933a487caf2d,
-        type: 3}
-      propertyPath: UpgradeDescription
-      value: +15 Max Health
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4080150556846620532, guid: 29240739c42a4174fa1d933a487caf2d, type: 3}
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 29240739c42a4174fa1d933a487caf2d, type: 3}
---- !u!224 &3047821700006954013 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
-    type: 3}
-  m_PrefabInstance: {fileID: 275041064943019845}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3722442174340537210
 PrefabInstance:
@@ -2301,12 +2123,12 @@ PrefabInstance:
     - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 105.6431
+      value: 105.5
       objectReference: {fileID: 0}
     - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -296.75
+      value: -241.90001
       objectReference: {fileID: 0}
     - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
         type: 3}
@@ -2348,6 +2170,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontSize
       value: 27.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625593367793779654, guid: 29240739c42a4174fa1d933a487caf2d,
+        type: 3}
+      propertyPath: Cost
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625593367793779654, guid: 29240739c42a4174fa1d933a487caf2d,
+        type: 3}
+      propertyPath: BonusAmmo
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625593367793779654, guid: 29240739c42a4174fa1d933a487caf2d,
+        type: 3}
+      propertyPath: UpgradeDescription
+      value: +20 Max ammo
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2456,12 +2293,12 @@ PrefabInstance:
     - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 105.6431
+      value: 105.5
       objectReference: {fileID: 0}
     - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -351.6
+      value: -296.75
       objectReference: {fileID: 0}
     - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
         type: 3}
@@ -2494,6 +2331,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 0ba5efa9b157ac24c9e24b3dd9d54060,
         type: 2}
+    - target: {fileID: 7625593367793779654, guid: 29240739c42a4174fa1d933a487caf2d,
+        type: 3}
+      propertyPath: BonusMoveSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625593367793779654, guid: 29240739c42a4174fa1d933a487caf2d,
+        type: 3}
+      propertyPath: UpgradeDescription
+      value: +15 move speed
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2601,12 +2448,12 @@ PrefabInstance:
     - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 105.6431
+      value: 105.5
       objectReference: {fileID: 0}
     - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -132.2
+      value: -77.35
       objectReference: {fileID: 0}
     - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
         type: 3}
@@ -2642,6 +2489,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontSize
       value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625593367793779654, guid: 29240739c42a4174fa1d933a487caf2d,
+        type: 3}
+      propertyPath: Cost
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625593367793779654, guid: 29240739c42a4174fa1d933a487caf2d,
+        type: 3}
+      propertyPath: UpgradeDescription
+      value: -10% Reload times
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625593367793779654, guid: 29240739c42a4174fa1d933a487caf2d,
+        type: 3}
+      propertyPath: ReloadSpeedMultReduction
+      value: -0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2750,12 +2612,12 @@ PrefabInstance:
     - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 105.6431
+      value: 105.5
       objectReference: {fileID: 0}
     - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -77.35
+      value: -22.5
       objectReference: {fileID: 0}
     - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
         type: 3}
@@ -2791,6 +2653,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontSize
       value: 25.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625593367793779654, guid: 29240739c42a4174fa1d933a487caf2d,
+        type: 3}
+      propertyPath: UpgradeDescription
+      value: +10% Base damage
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625593367793779654, guid: 29240739c42a4174fa1d933a487caf2d,
+        type: 3}
+      propertyPath: BonusAttackModifier
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2899,12 +2771,12 @@ PrefabInstance:
     - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 105.6431
+      value: 105.5
       objectReference: {fileID: 0}
     - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -187.05
+      value: -132.2
       objectReference: {fileID: 0}
     - target: {fileID: 2998603315609510744, guid: 29240739c42a4174fa1d933a487caf2d,
         type: 3}
@@ -2940,6 +2812,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontSize
       value: 20.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625593367793779654, guid: 29240739c42a4174fa1d933a487caf2d,
+        type: 3}
+      propertyPath: UpgradeDescription
+      value: -15% Cooldown duration
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625593367793779654, guid: 29240739c42a4174fa1d933a487caf2d,
+        type: 3}
+      propertyPath: CooldownModifierMultReduction
+      value: -0.15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

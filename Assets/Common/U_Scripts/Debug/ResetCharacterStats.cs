@@ -27,5 +27,7 @@ public class ResetCharacterStats : MonoBehaviour
             targetStatObjects[i].attackDmgModifier = stat.attackDmgModifier;
             i++;
         }
+        
+        FindObjectOfType<CharacterSwap>().ResetCharacter();
     }
 }
