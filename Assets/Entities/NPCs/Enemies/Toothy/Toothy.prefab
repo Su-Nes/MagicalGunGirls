@@ -359,6 +359,9 @@ MonoBehaviour:
   _spriteFlicker: {fileID: 3698154797184695404}
   deathParticles: {fileID: 270152106369743988, guid: 3d14b5ee44077bc4a8b905087d1e8660,
     type: 3}
+  nectarOrb: {fileID: 5179218761713253111, guid: 4f65be458654285449714c654f6e7fb4,
+    type: 3}
+  nectarOrbDropChance: 0
   hurtSound: {fileID: 8300000, guid: efa37fddcf8b4ad44bc6e9391bb9e525, type: 3}
 --- !u!114 &8093870161643622060
 MonoBehaviour:

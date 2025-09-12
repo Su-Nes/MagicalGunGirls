@@ -143,11 +143,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
+  health: 0
   moveSpeed: 275
   fallVelocity: 5
   _spriteFlicker: {fileID: 5050967590326730102}
   deathParticles: {fileID: 270152106369743988, guid: 3d14b5ee44077bc4a8b905087d1e8660,
     type: 3}
+  nectarOrb: {fileID: 5179218761713253111, guid: 4f65be458654285449714c654f6e7fb4,
+    type: 3}
+  nectarOrbDropChance: 0
   hurtSound: {fileID: 8300000, guid: efa37fddcf8b4ad44bc6e9391bb9e525, type: 3}
   firePeriod: 1
   fireRangeFromPlayer: 18
@@ -456,6 +460,7 @@ MonoBehaviour:
   attackInputName: 
   _ammoManager: {fileID: 0}
   ammoSpentPerShot: 1
+  fireDelay: 0.5
   resetReloadTimeOnFire: 0
   _cooldownManager: {fileID: 0}
   cooldownTime: 5

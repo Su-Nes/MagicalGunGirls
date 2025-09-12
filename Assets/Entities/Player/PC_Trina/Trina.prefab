@@ -1309,9 +1309,9 @@ MonoBehaviour:
   ammoText: {fileID: 5061685460491350967}
   cooldownUI: {fileID: 6034852005311947241}
   reloadOverwritten: 0
-  reloadTime: 2
+  reloadTime: 3
   fillConsecutively: 1
-  maxAmmo: 4
+  maxAmmo: 3
   objParent: {fileID: 0}
   objRepresentation: {fileID: 0}
   UIParent: {fileID: 0}

@@ -11,7 +11,12 @@ public class CharacterStatReadout : MonoBehaviour
     
     private void Start()
     {
-        GetComponent<TMP_Text>().text = $"Move speed - {characterStats.moveSpeed}\nBonus max ammo - {characterStats.bonusMaxAmmo}\nFire rate modifier - {characterStats.fireDelayMultiplier*100}%\nReload time modifier - {characterStats.reloadTimeModifier*100}%\nCooldown modifier - {characterStats.cooldownModifier}\nAttack DMG modifier - {characterStats.attackDmgModifier*100}%";
+        GetComponent<TMP_Text>().text = $"Attack DMG modifier - {Mathf.RoundToInt(characterStats.attackDmgModifier*100)}%\n" +
+                                        $"Reload time modifier - {Mathf.RoundToInt(characterStats.reloadTimeModifier*100)}%\n" +
+                                        $"Cooldown modifier - {Mathf.RoundToInt(characterStats.cooldownModifier*100)}%\n" +
+                                        $"Shot delay modifier - {Mathf.RoundToInt(characterStats.fireDelayMultiplier * 100)}%\n" +
+                                        $"Bonus max ammo - {characterStats.bonusMaxAmmo}\n" +
+                                        $"Move speed - {characterStats.moveSpeed}\n";
     }
 
     private void Update()

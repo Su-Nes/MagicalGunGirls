@@ -21,7 +21,8 @@ public class EnemyAI : MonoBehaviour
     private float stunTime, spawnInvincibilityTimer, spawnInvincibilityTime = .5f;
     
     [SerializeField] protected SpriteFlicker _spriteFlicker;
-    [SerializeField] protected GameObject deathParticles;
+    [SerializeField] protected GameObject deathParticles, nectarOrb;
+    [SerializeField] protected float nectarOrbDropChance;
     [SerializeField] protected AudioClip hurtSound;
     
         
@@ -116,17 +117,17 @@ public class EnemyAI : MonoBehaviour
         if (MissionManager.Instance != null)
             MissionManager.Instance.EnemyKilled();
 
-        if (ObjectPoolManager.IsInPool(gameObject))
-            ObjectPoolManager.ReturnObjectToPool(gameObject);
-        else 
-            Destroy(gameObject);
-
         ObjectPoolManager.SpawnObject(deathParticles, transform.position, deathParticles.transform.rotation,
             ObjectPoolManager.PoolType.GameObject);
+
+        if (Random.Range(0f, 1f) < nectarOrbDropChance) // randomly drop mending nectar orb
+            ObjectPoolManager.SpawnObject(nectarOrb, transform.position, Quaternion.identity, ObjectPoolManager.PoolType.GameObject);
         
         GetComponent<PlayRandomSound>().Play(); // death SFX
         
         if (ScoreManager.Instance is not null)
             ScoreManager.Instance.UpdateScore(1);
+        
+        ObjectPoolManager.ReturnObjectToPool(gameObject);
     }
 }

@@ -17,13 +17,13 @@ public class Stats : ScriptableObject
         DataPersistenceManager.Instance.maxPlayerHealth += upgrade.BonusMaxHealth;
         
         cooldownModifier += upgrade.CooldownModifierMultReduction;
-        cooldownModifier = Mathf.Clamp01(cooldownModifier);
+        cooldownModifier = Mathf.Clamp(cooldownModifier, 0, cooldownModifier);
 
         reloadTimeModifier += upgrade.ReloadSpeedMultReduction;
-        reloadTimeModifier = Mathf.Clamp01(reloadTimeModifier);
+        reloadTimeModifier = Mathf.Clamp(reloadTimeModifier, 0, reloadTimeModifier);
         
         fireDelayMultiplier += upgrade.FireDelayMultReduction;
-        fireDelayMultiplier = Mathf.Clamp01(fireDelayMultiplier);
+        fireDelayMultiplier = Mathf.Clamp(fireDelayMultiplier, 0, fireDelayMultiplier);
 
         attackDmgModifier += upgrade.BonusAttackModifier;
         

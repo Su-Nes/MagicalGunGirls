@@ -38,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 45}
+  m_SizeDelta: {x: 100, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8679631259270916921
 CanvasRenderer:
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b786526f684d7d246a3fa2f4e52365d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UpgradeDescription: 10% More base damage
+  UpgradeDescription: -5% Delay between primary weapon attacks.
   Cost: 250
   BonusMaxHealth: 0
   CooldownModifierMultReduction: 0

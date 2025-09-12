@@ -105,6 +105,9 @@ MonoBehaviour:
   _spriteFlicker: {fileID: 0}
   deathParticles: {fileID: 270152106369743988, guid: 3d14b5ee44077bc4a8b905087d1e8660,
     type: 3}
+  nectarOrb: {fileID: 5179218761713253111, guid: 4f65be458654285449714c654f6e7fb4,
+    type: 3}
+  nectarOrbDropChance: 1
   hurtSound: {fileID: 0}
   splitBallCount: 0
   splitBallObj: {fileID: 2337053378836740986}

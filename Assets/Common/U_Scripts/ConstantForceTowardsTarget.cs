@@ -5,6 +5,7 @@ using Random = UnityEngine.Random;
 public class ConstantForceTowardsTarget : MonoBehaviour
 {
     [SerializeField] private Transform target;
+    [SerializeField] private string targetName;
     [SerializeField] private float baseForce = 1f;
     [SerializeField] private float pullRadius = 5f;
     private float force;
@@ -17,8 +18,12 @@ public class ConstantForceTowardsTarget : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         if (target == null)
+        {
             target = transform.parent;
-
+            if(targetName != null)
+                target = GameObject.Find(targetName).transform;
+        }
+        
         transform.position = target.position;
     }
 
