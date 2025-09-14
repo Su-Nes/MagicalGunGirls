@@ -35,7 +35,7 @@ public class UpgradeShopManager : MonoBehaviour
 
     private void Update()
     {
-        currentMoneyText.text = $"{DataPersistenceManager.Instance.mendingNectar} MN" ;
+        currentMoneyText.text = $"{DataPersistenceManager.Instance.MendingNectar} MN" ;
         
         if (selectedUpgrade == null)
         {
@@ -43,7 +43,7 @@ public class UpgradeShopManager : MonoBehaviour
             return;
         }
         
-        purchaseButton.interactable = selectedUpgrade.Cost < DataPersistenceManager.Instance.mendingNectar;
+        purchaseButton.interactable = selectedUpgrade.Cost < DataPersistenceManager.Instance.MendingNectar;
     }
 
     public void ConfirmUpgrade()

@@ -6,31 +6,32 @@ public class ConstantForceTowardsTarget : MonoBehaviour
 {
     [SerializeField] private Transform target;
     [SerializeField] private string targetName;
+    [SerializeField] private Vector3 initialForce;
     [SerializeField] private float baseForce = 1f;
     [SerializeField] private float pullRadius = 5f;
     private float force;
     [SerializeField] private float randomForce = 1f;
     
     private Rigidbody rb;
-    
-    
+
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         if (target == null)
         {
             target = transform.parent;
-            if(targetName != null)
+            if (targetName != null)
                 target = GameObject.Find(targetName).transform;
         }
-        
-        transform.position = target.position;
-    }
+
+        rb.AddForce(initialForce, ForceMode.Impulse);
+}
 
     private void FixedUpdate()
     {
         force = baseForce * Vector3.Distance(target.position, transform.position) / pullRadius;
-        
+
         Vector3 direction = (target.position - transform.position).normalized;
         rb.AddForce(direction * force + Random.insideUnitSphere * randomForce);
     }

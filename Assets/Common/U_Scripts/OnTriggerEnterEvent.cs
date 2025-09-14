@@ -35,6 +35,6 @@ public class OnTriggerEnterEvent : MonoBehaviour
             
             ObjectPoolManager.ReturnObjectToPool(gameObject);
         }
-            
+        
     }
 }

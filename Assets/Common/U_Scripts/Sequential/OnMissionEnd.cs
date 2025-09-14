@@ -10,7 +10,7 @@ public class OnMissionEnd : MonoBehaviour
     
     public void EndMission()
     {
-        DataPersistenceManager.Instance.mendingNectar += nectarReward;
+        DataPersistenceManager.Instance.AddMendingNectar(nectarReward);
         DataPersistenceManager.Instance.missionsCompleted++;
         GameManager.Instance.DestroyAllEnemies();
         GameManager.Instance.LoadSceneWithName(transitionSceneName);

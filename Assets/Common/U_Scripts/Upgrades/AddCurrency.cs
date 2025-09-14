@@ -10,7 +10,7 @@ public class AddCurrency : MonoBehaviour
     
     public void AddMendingNectar()
     {
-        DataPersistenceManager.Instance.mendingNectar += Random.Range(minAmount, maxAmount + 1);
+        DataPersistenceManager.Instance.AddMendingNectar(Random.Range(minAmount, maxAmount + 1));
         SFXManager.Instance.PlaySFXClip(clip, transform.position, .6f, 1.3f, 1.6f);
     }
 }
